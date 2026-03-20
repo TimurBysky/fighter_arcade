@@ -10,18 +10,15 @@ grow_amount = 1.73
 material = SubResource("StandardMaterial3D_w1njn")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yt2qg"]
-radius = 0.2662933
+radius = 0.18626119
 
-[node name="Tracer" type="Node3D" unique_id=1777471890]
+[node name="Tracer_body" type="CharacterBody3D" unique_id=1676835296]
+motion_mode = 1
 script = ExtResource("1_yt2qg")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1940251743]
-motion_mode = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1620450578]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=312854016]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("SphereMesh_yt2qg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=215218920]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=719839676]
 shape = SubResource("SphereShape3D_yt2qg")
-disabled = true
