@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://7105ohynf88f"]
 
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://fighter.tscn" id="1_u52ul"]
+[ext_resource type="Texture2D" uid="uid://eevr2ptql1bj" path="res://Assets/weather-top-white-heaven-view.jpg" id="1_vonw3"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
+panorama = ExtResource("1_vonw3")
+energy_multiplier = 0.8
 
 [sub_resource type="Sky" id="Sky_vonw3"]
+sky_material = SubResource("PanoramaSkyMaterial_oi3di")
 
 [sub_resource type="Environment" id="Environment_oi3di"]
-background_mode = 1
-background_color = Color(0.3810549, 0.79293424, 0.9274085, 1)
+background_mode = 2
+background_color = Color(0.38039216, 0.7921569, 0.9254902, 1)
 sky = SubResource("Sky_vonw3")
-ambient_light_energy = 0.0
+tonemap_exposure = 1.88
 
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
 
@@ -18,6 +24,7 @@ ambient_light_energy = 0.0
 environment = SubResource("Environment_oi3di")
 
 [node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("1_u52ul")]
+speed = 10.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
