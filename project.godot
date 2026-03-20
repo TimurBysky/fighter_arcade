@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Новый игровой проект"
+config/name="Воздушная аркада"
+run/main_scene="uid://7105ohynf88f"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

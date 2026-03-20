@@ -1,20 +1,24 @@
 [gd_scene format=3 uid="uid://7105ohynf88f"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_5xgho"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_u52ul"]
+[ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://fighter.tscn" id="1_u52ul"]
 
 [sub_resource type="Sky" id="Sky_vonw3"]
-sky_material = SubResource("PanoramaSkyMaterial_u52ul")
 
 [sub_resource type="Environment" id="Environment_oi3di"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.3810549, 0.79293424, 0.9274085, 1)
 sky = SubResource("Sky_vonw3")
+ambient_light_energy = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
 
 [node name="Level" type="Node3D" unique_id=1222772376]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=683701138]
-mesh = SubResource("PrismMesh_5xgho")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=857818750]
 environment = SubResource("Environment_oi3di")
+
+[node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("1_u52ul")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+mesh = SubResource("BoxMesh_u52ul")
