@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://h5myw6qoksxo"]
 
 [ext_resource type="Script" uid="uid://bh8tisjd60su1" path="res://fighter.gd" id="1_efvb3"]
+[ext_resource type="Script" uid="uid://c0tso0m8d5xly" path="res://camera_3d.gd" id="2_umvcx"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_6jilj"]
 
@@ -23,5 +24,7 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.19
 shape = SubResource("CapsuleShape3D_efvb3")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1195417779]
-transform = Transform3D(1.8126126e-08, -0.41467735, 0.9099685, -3.9775983e-08, 0.9099685, 0.41467735, -1, -4.3711385e-08, 3.5527137e-15, 1.934026, 1.8087938, 0)
+transform = Transform3D(1.8126126e-08, -0.41467735, 0.9099685, -3.9775983e-08, 0.9099685, 0.41467735, -1, -4.3711385e-08, 3.5527137e-15, 2, 2, 0)
 fov = 105.0
+script = ExtResource("2_umvcx")
+speed = 4.5

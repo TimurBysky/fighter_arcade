@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	var movement = Vector3.ZERO
 	movement.z = input_direction * speed
 	
+	
 	fighter.velocity = movement
 		
 	fighter.move_and_slide()
