@@ -7,7 +7,6 @@ var is_alive = true
 
 func _ready() -> void:
 	area3D.body_entered.connect(collision)
-	collision_layer = 3
 	collision_mask = 0
 	area3D.collision_mask = 2
 	 

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bh8tisjd60su1" path="res://fighter.gd" id="1_efvb3"]
 [ext_resource type="Script" uid="uid://c0tso0m8d5xly" path="res://camera_3d.gd" id="2_umvcx"]
+[ext_resource type="Texture2D" uid="uid://b08fo432ub7rb" path="res://Assets/PNG/MainPanel03.png" id="3_qq641"]
+[ext_resource type="Script" uid="uid://h5wpwigggx5i" path="res://ui_panel.gd" id="4_l3gly"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_6jilj"]
 
@@ -31,3 +33,16 @@ transform = Transform3D(1.8126126e-08, -0.41467735, 0.9099685, -3.9775983e-08, 0
 fov = 105.0
 script = ExtResource("2_umvcx")
 speed = 5.5
+
+[node name="UI_Panel" type="Sprite3D" parent="." unique_id=743516293]
+transform = Transform3D(0.635, 1.4901161e-08, -1.4998493e-15, -1.4901161e-08, 0.635, 2.7118577e-15, 2.7650755e-16, 2.7118577e-15, 0.635, 1, -1.72, 2.4)
+modulate = Color(18.892157, 18.892157, 18.892157, 0.84313726)
+billboard = 1
+texture = ExtResource("3_qq641")
+script = ExtResource("4_l3gly")
+speed = 10.0
+
+[node name="Label3D" type="Label3D" parent="UI_Panel" unique_id=1910362219]
+transform = Transform3D(1, 1.7763568e-15, 0, -1.7763568e-15, 1, 0, 2.646978e-23, 0, 1, 0.09269715, 0, 0)
+billboard = 1
+text = "Text"
