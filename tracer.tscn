@@ -24,3 +24,4 @@ mesh = SubResource("SphereMesh_yt2qg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=215218920]
 shape = SubResource("SphereShape3D_yt2qg")
+disabled = true

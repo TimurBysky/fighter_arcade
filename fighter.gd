@@ -10,17 +10,19 @@ func _ready() -> void:
 	fighter.collision_layer = 1
 
 
-
 func _process(delta: float) -> void:
 	var input_direction = Input.get_axis("ui_right", "ui_left")
 	
 	var movement = Vector3.ZERO
 	movement.z = input_direction * speed
-	
-	
+		
 	fighter.velocity = movement
 		
 	fighter.move_and_slide()
+	
+	var pos = fighter.global_position
+	pos.z = clamp(pos.z, -11.0, 11.0)
+	fighter.global_position = pos
 	
 	if Input.is_key_pressed(KEY_SPACE) and can_shoot:
 			shoot()

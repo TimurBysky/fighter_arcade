@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://7105ohynf88f"]
 
+[ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://level.gd" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://fighter.tscn" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://eevr2ptql1bj" path="res://Assets/weather-top-white-heaven-view.jpg" id="1_vonw3"]
 
@@ -19,13 +20,37 @@ tonemap_exposure = 1.88
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
 
 [node name="Level" type="Node3D" unique_id=1222772376]
+script = ExtResource("1_oi3di")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=857818750]
 environment = SubResource("Environment_oi3di")
 
 [node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("1_u52ul")]
-speed = 10.0
+speed = 15.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=429894954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 0)
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=715005551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 8)
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1604731037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, -8)
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1707181267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 11)
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=389290977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="Spawn_timer" type="Timer" parent="." unique_id=2000338609]
+autostart = true
