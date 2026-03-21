@@ -21,18 +21,18 @@ func create_enemy() -> void:
 	spawn_timer.start(randf_range(0.5, 1.5))
 	await  spawn_timer.timeout
 	
-	var generate_object_for_spawn = randi_range(1,3)
+	var generate_object_for_spawn = randi_range(1,10)
 	var object_for_spawn: PackedScene
 	
 	var generate_position = randi_range(1,3)
 	var spawn_position = Vector3(-27,0,0)
 	
 	match  generate_object_for_spawn:
-		1:
+		1,2,3,4,5,6:
 			object_for_spawn = enemy
-		2:
+		7,8:
 			object_for_spawn = health
-		3:
+		9,10:
 			object_for_spawn = ammo
 	
 	match generate_position:
@@ -44,8 +44,8 @@ func create_enemy() -> void:
 			spawn_position.z = 8.0
 			
 	var instance = object_for_spawn.instantiate()
-	add_child(instance)
 	instance.global_position = spawn_position
+	add_child(instance)
 	
 	create_enemy()
 	

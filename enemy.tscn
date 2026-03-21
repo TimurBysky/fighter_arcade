@@ -8,15 +8,20 @@ albedo_color = Color(1, 0, 0.015686275, 1)
 [sub_resource type="PrismMesh" id="PrismMesh_4gyqm"]
 material = SubResource("StandardMaterial3D_7k104")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7k104"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7xaro"]
 size = Vector3(1.4141846, 1, 1.7571411)
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=455732525]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=455732525 groups=["Enemy"]]
 script = ExtResource("1_7k104")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2058456753]
 transform = Transform3D(4.371139e-08, 1, -8.742278e-08, 1, -4.371139e-08, 0, -3.821371e-15, -8.742278e-08, -1, 0, 0, 0)
 mesh = SubResource("PrismMesh_4gyqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1775691028]
+shape = SubResource("BoxShape3D_7k104")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=684457750]
 

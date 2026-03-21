@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ledv5"]
 
-[node name="Health" unique_id=1362761265 instance=ExtResource("1_ledv5")]
+[node name="Health" unique_id=1362761265 groups=["Health"] instance=ExtResource("1_ledv5")]
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1557855185]
 mesh = SubResource("CapsuleMesh_ledv5")

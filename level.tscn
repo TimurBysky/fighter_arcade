@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://level.gd" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://fighter.tscn" id="1_u52ul"]
-[ext_resource type="Texture2D" uid="uid://eevr2ptql1bj" path="res://Assets/weather-top-white-heaven-view.jpg" id="1_vonw3"]
+[ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_oi3di"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
-panorama = ExtResource("1_vonw3")
-energy_multiplier = 0.8
+panorama = ExtResource("2_oi3di")
+energy_multiplier = 0.75
 
 [sub_resource type="Sky" id="Sky_vonw3"]
 sky_material = SubResource("PanoramaSkyMaterial_oi3di")
@@ -15,6 +15,8 @@ sky_material = SubResource("PanoramaSkyMaterial_oi3di")
 background_mode = 2
 background_color = Color(0.38039216, 0.7921569, 0.9254902, 1)
 sky = SubResource("Sky_vonw3")
+sky_custom_fov = 8.2
+ambient_light_sky_contribution = 0.0
 tonemap_exposure = 1.88
 
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
@@ -53,3 +55,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
 mesh = SubResource("BoxMesh_u52ul")
 
 [node name="Spawn_timer" type="Timer" parent="." unique_id=2000338609]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1800400399]
+transform = Transform3D(0.9875652, -0.03319021, 0.15366666, -0.15721016, -0.20849478, 0.9653056, 0, -0.97746015, -0.21112004, 3.1510062, 3.8153665, -5.493323)
+light_energy = 1.027
+shadow_enabled = true

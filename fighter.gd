@@ -5,6 +5,8 @@ extends Node3D
 
 @export var speed = 5.0
 @export var fire_rate = 0.1  # Секунд между выстрелами
+@export var health = 3
+@export var ammo = 20
 var can_shoot = true
 
 func _ready() -> void:
@@ -33,8 +35,9 @@ func shoot():
 	can_shoot = false
 	
 	var instance = tracer.instantiate()
-	add_child(instance)
 	instance.global_position = fighter.global_position + Vector3(-1,0,0)
+	add_child(instance)
+	ammo -= 1
 	# Автоматическое удаление трассера
 	
 	# Задержка перед следующим выстрелом
@@ -42,8 +45,11 @@ func shoot():
 	can_shoot = true
 	
 func on_body_entered(body):
-	if(body.name == "Ammo"):
+	if(body.is_in_group("Ammo")):
 		print("Получил патроны!")
-	if(body.name == "Health"):
+	if(body.is_in_group ("Health")):
 		print("Получил рем-комплект!")
-	print("Касание!")
+	if(body.is_in_group ("Enemy")):
+		print("Враг!")
+		health -= 1
+	print("Касание!", body.name)
