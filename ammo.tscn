@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c021nq3dsh6bp"]
+
+[ext_resource type="PackedScene" uid="uid://bfoih8kgotppa" path="res://bonus.tscn" id="1_mulmr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mulmr"]
+
+[node name="Ammo" unique_id=1362761265 instance=ExtResource("1_mulmr")]
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1557855185]
+mesh = SubResource("BoxMesh_mulmr")

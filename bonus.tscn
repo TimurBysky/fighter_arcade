@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bfoih8kgotppa"]
+
+[ext_resource type="Script" uid="uid://0g6vy3n05bbk" path="res://bonus.gd" id="1_e6yrp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6yrp"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=253409948]
+script = ExtResource("1_e6yrp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1557855185]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1102294874]
+shape = SubResource("BoxShape3D_e6yrp")

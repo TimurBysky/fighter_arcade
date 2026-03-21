@@ -1,6 +1,7 @@
 extends Node3D
 @onready var fighter = $CharacterBody3D
 @onready var tracer =  preload("res://tracer.tscn")
+@onready var area3D = $CharacterBody3D/Area3D
 
 @export var speed = 5.0
 @export var fire_rate = 0.1  # Секунд между выстрелами
@@ -8,7 +9,8 @@ var can_shoot = true
 
 func _ready() -> void:
 	fighter.collision_layer = 1
-
+	area3D.body_entered.connect(on_body_entered)
+	area3D.collision_mask = 4
 
 func _process(delta: float) -> void:
 	var input_direction = Input.get_axis("ui_right", "ui_left")
@@ -39,3 +41,9 @@ func shoot():
 	await get_tree().create_timer(fire_rate).timeout
 	can_shoot = true
 	
+func on_body_entered(body):
+	if(body.name == "Ammo"):
+		print("Получил патроны!")
+	if(body.name == "Health"):
+		print("Получил рем-комплект!")
+	print("Касание!")
