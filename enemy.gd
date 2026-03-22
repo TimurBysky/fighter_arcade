@@ -1,6 +1,7 @@
 extends CharacterBody3D
 @onready var area3D = $Area3D
 @export var speed = 5.0
+@export var health = 5
 
 var is_alive = true
 
@@ -8,6 +9,7 @@ var is_alive = true
 func _ready() -> void:
 	area3D.body_entered.connect(collision)
 	collision_mask = 0
+	collision_layer = 2
 	area3D.collision_mask = 2
 	 
 func _process(delta: float) -> void:
