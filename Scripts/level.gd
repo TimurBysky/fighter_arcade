@@ -1,8 +1,8 @@
 extends Node3D
 
-@onready var enemy = preload("res://enemy.tscn")
-@onready var ammo = preload("res://ammo.tscn")
-@onready var health = preload("res://health.tscn")
+@onready var enemy = preload("res://Scenes/enemy.tscn")
+@onready var ammo = preload("res://Scenes/ammo.tscn")
+@onready var health = preload("res://Scenes/health.tscn")
 @onready var spawn_timer = $Spawn_timer
 
 

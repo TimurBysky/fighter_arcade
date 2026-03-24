@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7105ohynf88f"]
 
-[ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://level.gd" id="1_oi3di"]
-[ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://fighter.tscn" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_oi3di"]
+[ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_oi3di"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]

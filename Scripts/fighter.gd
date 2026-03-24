@@ -1,7 +1,7 @@
 extends Node3D
 @onready var fighter = $CharacterBody3D
 @onready var fighter_model = $CharacterBody3D/Fighter_Model
-@onready var tracer =  preload("res://tracer.tscn")
+@onready var tracer =  preload("res://Scenes/tracer.tscn")
 @onready var area3D = $CharacterBody3D/Area3D
 
 @export var speed = 5.0
