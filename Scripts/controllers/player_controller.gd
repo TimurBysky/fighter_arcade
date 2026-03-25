@@ -49,6 +49,8 @@ func shoot() -> void:
 	# Сообщаем view создать визуальный выстрел
 	if view.has_method("create_shot_effect"):
 		view.create_shot_effect()
+	if view.has_method("update_ammo_display"):
+		view.update_ammo_display(model.current_ammo)
 	
 	# Задержка между выстрелами
 	await get_tree().create_timer(model.fire_rate).timeout
@@ -61,16 +63,22 @@ func handle_collision(other_body: Node) -> void:
 	# Логика обработки столкновений
 	if other_body.is_in_group("Ammo"):
 		model.add_ammo(30)
+		if view.has_method("update_ammo_display"):
+			view.update_ammo_display(model.current_ammo)
 		if view.has_method("play_pickup_sound"):
 			view.play_pickup_sound()
 			
 	elif other_body.is_in_group("Health"):
 		model.heal(1)
+		if view.has_method("update_health_display"):
+			view.update_health_display(model.current_health, model.max_health)
 		if view.has_method("play_heal_effect"):
 			view.play_heal_effect()
 			
 	elif other_body.is_in_group("Enemy"):
 		model.take_damage(1)
+		if view.has_method("update_health_display"):
+			view.update_health_display(model.current_health, model.max_health)
 		if view.has_method("play_hit_effect"):
 			view.play_hit_effect()
 	

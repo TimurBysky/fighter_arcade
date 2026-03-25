@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://h5myw6qoksxo"]
 
 [ext_resource type="Script" uid="uid://cloqpoeykb360" path="res://Scripts/views/player/player_view.gd" id="1_3dnt7"]
+[ext_resource type="Script" uid="uid://c0tso0m8d5xly" path="res://Scripts/camera_3d.gd" id="2_umvcx"]
 [ext_resource type="Texture2D" uid="uid://b08fo432ub7rb" path="res://Assets/PNG/MainPanel03.png" id="3_qq641"]
+[ext_resource type="Script" uid="uid://h5wpwigggx5i" path="res://Scripts/views/ui/ui_panel.gd" id="4_6p8wg"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_6jilj"]
 
@@ -19,6 +21,7 @@ motion_mode = 1
 
 [node name="Fighter_Model" type="MeshInstance3D" parent="CharacterBody3D" unique_id=211890141]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("PrismMesh_6jilj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1820825583]
@@ -35,19 +38,18 @@ shape = SubResource("BoxShape3D_l3gly")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1195417779]
 transform = Transform3D(1.8126126e-08, -0.41467735, 0.9099685, -3.9775983e-08, 0.9099685, 0.41467735, -1, -4.3711385e-08, 3.5527137e-15, 2, 2, 0)
 fov = 105.0
+script = ExtResource("2_umvcx")
 
 [node name="UI_Panel" type="Sprite3D" parent="." unique_id=743516293]
-transform = Transform3D(0.635, 1.4901161e-08, -1.4998493e-15, -1.4901161e-08, 0.635, 2.7118577e-15, 2.7650755e-16, 2.7118577e-15, 0.635, 1, -1.72, 2.4)
+transform = Transform3D(-0.05445303, -0.3239374, 0.5434376, -0.03229716, 0.5461589, 0.32232332, -0.631836, -1.5312027e-08, -0.06331066, 0.937901, -0.42926133, 2.4)
 modulate = Color(18.892157, 18.892157, 18.892157, 0.84313726)
-billboard = 1
 texture = ExtResource("3_qq641")
+script = ExtResource("4_6p8wg")
 
 [node name="Health_UI" type="Label3D" parent="UI_Panel" unique_id=1910362219]
-transform = Transform3D(1, 1.7763568e-15, 0, -1.7763568e-15, 1, 0, 2.646978e-23, 0, 1, 0.09269715, 0, 0)
-billboard = 1
+transform = Transform3D(1, 1.2434498e-14, 0, -1.2434498e-14, 1, 0, 5.293956e-23, 0, 1, 0.131, 0.28915143, 0.28380036)
 text = "Text"
 
 [node name="Ammo_UI" type="Label3D" parent="UI_Panel" unique_id=6103836]
-transform = Transform3D(1, 1.7763568e-15, 0, -1.7763568e-15, 1, 0, 2.646978e-23, 0, 1, 0.09269715, 0, 0)
-billboard = 1
+transform = Transform3D(1, 1.2434498e-14, 0, -1.2434498e-14, 1, 0, 5.293956e-23, 0, 1, 0.17875957, -0.30926323, 0.28380036)
 text = "Text"

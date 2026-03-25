@@ -9,8 +9,9 @@ class_name PlayerView
 @onready var tracer_scene = preload("res://Scenes/tracer.tscn")
 
 # UI элементы (если есть)
-@onready var health_label: Label = $"../UI/HealthLabel"
-@onready var ammo_label: Label = $"../UI/AmmoLabel"
+@onready var ui_panel: Sprite3D = $UI_Panel
+@onready var health_label: Label3D = $UI_Panel/Health_UI
+@onready var ammo_label: Label3D = $UI_Panel/Ammo_UI
 
 var is_alive: bool = true
 var controller: PlayerController
@@ -41,7 +42,9 @@ func _process(delta: float) -> void:
 	var pos = fighter.global_position
 	pos.z = clamp(pos.z, -11.0, 11.0)
 	fighter.global_position = pos
-	
+	ui_panel.move_to_player(fighter, delta)
+
+
 	# Обработка стрельбы
 	controller.handle_shoot_input()
 
