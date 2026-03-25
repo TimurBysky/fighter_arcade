@@ -21,7 +21,6 @@ motion_mode = 1
 
 [node name="Fighter_Model" type="MeshInstance3D" parent="CharacterBody3D" unique_id=211890141]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 mesh = SubResource("PrismMesh_6jilj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1820825583]
