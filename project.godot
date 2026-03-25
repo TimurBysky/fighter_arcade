@@ -16,6 +16,10 @@ run/main_scene="uid://7105ohynf88f"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerController="*uid://3661ngyljnfs"
+
 [display]
 
 window/size/always_on_top=true
