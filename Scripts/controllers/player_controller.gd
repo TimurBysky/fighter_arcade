@@ -26,7 +26,7 @@ func setup(player_view: Node, player_model: PlayerData) -> void:
 		view.update_ammo_display(model.current_ammo)
 
 # Обработка ввода (логика управления)
-func process_input(delta: float) -> Vector3:
+func process_input() -> Vector3:
 	if not view or not view.is_alive:
 		return Vector3.ZERO
 		

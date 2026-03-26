@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_r72go")
+speed = 2.0
+max_health = 10
 metadata/_custom_type_script = "uid://h3nega2lwani"

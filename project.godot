@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerController="*uid://3661ngyljnfs"
+EnemyFactory="*uid://c6by5rs2maytt"
 
 [display]
 

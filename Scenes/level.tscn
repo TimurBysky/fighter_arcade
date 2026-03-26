@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_oi3di"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_oi3di"]
+[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_81xng"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
 panorama = ExtResource("2_oi3di")
@@ -28,7 +29,6 @@ script = ExtResource("1_oi3di")
 environment = SubResource("Environment_oi3di")
 
 [node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("1_u52ul")]
-speed = 15.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
@@ -60,3 +60,6 @@ mesh = SubResource("BoxMesh_u52ul")
 transform = Transform3D(0.9875652, -0.03319021, 0.15366666, -0.15721016, -0.20849478, 0.9653056, 0, -0.97746015, -0.21112004, 3.1510062, 3.8153665, -5.493323)
 light_energy = 1.027
 shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_81xng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)

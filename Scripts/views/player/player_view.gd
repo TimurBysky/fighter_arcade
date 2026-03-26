@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 		return
 		
 	# Получаем движение от контроллера
-	var movement = controller.process_input(delta)
+	var movement = controller.process_input()
 	
 	fighter.velocity = movement
 	fighter.move_and_slide()

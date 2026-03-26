@@ -8,7 +8,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	create_enemy()
+	create_object()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func create_enemy() -> void:
+func create_object() -> void:
 	
 	spawn_timer.start(randf_range(0.5, 1.5))
 	await  spawn_timer.timeout
@@ -47,5 +47,5 @@ func create_enemy() -> void:
 	instance.global_position = spawn_position
 	add_child(instance)
 	
-	create_enemy()
+	create_object()
 	
