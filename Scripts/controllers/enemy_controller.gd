@@ -6,6 +6,7 @@ var view: Node
 # Called when the node enters the scene tree for the first time.
 
 signal enemy_destroy
+signal take_damage(current_health: int, max_health: int)
 
 func setup(enemy_view: CharacterBody3D, enemy_model: EnemyData):
 	model = enemy_model
@@ -25,6 +26,7 @@ func handle_collision(other_body: Node) -> void:
 		
 	if(other_body.is_in_group("bullets")):
 		model.take_damage()
+		take_damage.emit(model.current_health, model.max_health)
 		if(other_body.has_method("destroy")):
 			other_body.destroy()
 

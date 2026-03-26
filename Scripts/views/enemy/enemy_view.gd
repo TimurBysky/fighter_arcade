@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name EnemyView
 
 @onready var area3D = $Area3D
+@onready var ui = $HealthBar
 var controller: EnemyController
 
 
@@ -14,9 +15,9 @@ func _ready() -> void:
 	
 	area3D.body_entered.connect(controller.handle_collision)
 	controller.enemy_destroy.connect(destroy)
+	controller.take_damage.connect(update_health_bar)
 	
-	var original_model = load("res://Scripts/models/enemy/enemy_data.tres")
-	var model = original_model.duplicate()
+	var model = EnemyFactory.create_enemy()
 	controller.setup(self, model)
 	
 	collision_mask = 0
@@ -30,6 +31,9 @@ func _process(delta: float) -> void:
 		
 	velocity = controller.moving()
 	move_and_slide()
+	
+func update_health_bar(current_health: int, max_health: int):
+	ui.update_health(current_health, max_health)
 	
 func destroy():
 	if not is_alive:
