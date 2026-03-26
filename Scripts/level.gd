@@ -4,48 +4,24 @@ extends Node3D
 @onready var ammo = preload("res://Scenes/ammo.tscn")
 @onready var health = preload("res://Scenes/health.tscn")
 @onready var spawn_timer = $Spawn_timer
-
+#var ObjectList: Node
+#var GeneratingObjects: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	create_object()
+	spawn_timer.timeout.connect(create_object)
+	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func create_object() -> void:
+	var level_model:LevelData = load("res://Scripts/levels/level_data.tres")
+	var level_controller = get_node("/root/LevelController")
+	var object_list = level_model.get_objects()
 	
-	spawn_timer.start(randf_range(0.5, 1.5))
-	await  spawn_timer.timeout
-	
-	var generate_object_for_spawn = randi_range(1,10)
-	var object_for_spawn: PackedScene
-	
-	var generate_position = randi_range(1,3)
-	var spawn_position = Vector3(-27,0,0)
-	
-	match  generate_object_for_spawn:
-		1,2,3,4,5,6:
-			object_for_spawn = enemy
-		7,8:
-			object_for_spawn = health
-		9,10:
-			object_for_spawn = ammo
-	
-	match generate_position:
-		1:
-			spawn_position.z = -8.0
-		2:
-			spawn_position.z = 0.0
-		3:
-			spawn_position.z = 8.0
-			
-	var instance = object_for_spawn.instantiate()
-	instance.global_position = spawn_position
+	var object_for_spawn = level_controller.get_random_object_with_chance(level_model.get_objects())
+	var instance = load(object_list[object_for_spawn]["scene"]).instantiate()
+	instance.global_position = level_controller.get_random_position(level_model.get_spawn_positions())
 	add_child(instance)
-	
-	create_object()
+	print(object_for_spawn)
 	
