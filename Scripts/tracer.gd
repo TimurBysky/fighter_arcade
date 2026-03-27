@@ -2,7 +2,7 @@ extends CharacterBody3D
 @export var tracer_lifetime = 2.0
 
 @export var speed = 10.0
-
+@export var direction: Vector3 = Vector3(-1, 0, 0) 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("bullets")
@@ -12,9 +12,8 @@ func _ready() -> void:
 	queue_free()
 	 
 func _process(delta: float) -> void:
-	var movement = Vector3.ZERO
-	movement.x = -speed
-	velocity = movement
+	velocity = direction * speed
+	move_and_slide()
 
 	move_and_slide()
 

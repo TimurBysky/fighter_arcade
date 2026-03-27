@@ -8,6 +8,7 @@ var model: PlayerData
 var view: Node
 var shoot_cooldown: bool = false
 
+
 # Сигналы для других систем
 signal player_destroyed
 
@@ -47,14 +48,26 @@ func shoot() -> void:
 	model.consume_ammo()
 	
 	# Сообщаем view создать визуальный выстрел
-	if view.has_method("create_shot_effect"):
-		view.create_shot_effect()
+	match(model.have_shoot_bonus):
+		true:
+			_shoot_with_bonus()
+		false:
+			_shoot_without_bonus()
+		
 	if view.has_method("update_ammo_display"):
 		view.update_ammo_display(model.current_ammo)
 	
 	# Задержка между выстрелами
 	await get_tree().create_timer(model.fire_rate).timeout
 	shoot_cooldown = false
+
+func _shoot_without_bonus():
+	if view.has_method("create_shot_effect"):
+		view.create_shot_effect()
+
+func _shoot_with_bonus():
+	if view.has_method("create_bonus_shot_effect"):
+		view.create_bonus_shot_effect()
 
 func handle_collision(other_body: Node) -> void:
 	if not view or not view.is_alive:

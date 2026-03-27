@@ -4,4 +4,18 @@
 
 [resource]
 script = ExtResource("1_t80d6")
+object_list = {
+"ammo_crate": {
+"chance": 15,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_light_plane": {
+"chance": 70,
+"scene": "res://Scenes/enemy.tscn"
+},
+"health_pill": {
+"chance": 15,
+"scene": "res://Scenes/health.tscn"
+}
+}
 metadata/_custom_type_script = "uid://gpvxauv701we"

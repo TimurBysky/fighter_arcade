@@ -25,7 +25,7 @@ func get_random_object_with_chance(objects_dict: Dictionary) -> String:
 	var random_value = randi() % 100  # 0-99
 	var cumulative = 0
 	
-	for object_type in objects_dict:
+	for object_type in objects_dict: 
 		var chance = objects_dict[object_type]["chance"]
 		cumulative += chance
 		

@@ -9,6 +9,7 @@ class_name PlayerData
 @export var current_ammo: int = 20
 @export var speed: float = 5.0
 @export var fire_rate: float = 0.1
+@export var have_shoot_bonus: bool = false
 
 # Сигналы для оповещения о изменениях (чистая логика!)
 signal health_changed(new_health: int, max_health: int)
