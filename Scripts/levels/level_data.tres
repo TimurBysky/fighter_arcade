@@ -6,7 +6,7 @@
 script = ExtResource("1_t80d6")
 object_list = {
 "ammo_crate": {
-"chance": 15,
+"chance": 0,
 "scene": "res://Scenes/ammo.tscn"
 },
 "enemy_light_plane": {
@@ -14,8 +14,12 @@ object_list = {
 "scene": "res://Scenes/enemy.tscn"
 },
 "health_pill": {
-"chance": 15,
+"chance": 0,
 "scene": "res://Scenes/health.tscn"
+},
+"shoot_bonus": {
+"chance": 30,
+"scene": "res://Scenes/shoot_bonus.tscn"
 }
 }
 metadata/_custom_type_script = "uid://gpvxauv701we"

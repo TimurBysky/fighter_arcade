@@ -7,7 +7,7 @@ extends Node
 var model: PlayerData
 var view: Node
 var shoot_cooldown: bool = false
-
+var timer: Timer
 
 # Сигналы для других систем
 signal player_destroyed
@@ -61,13 +61,26 @@ func shoot() -> void:
 	await get_tree().create_timer(model.fire_rate).timeout
 	shoot_cooldown = false
 
-func _shoot_without_bonus():
+func _shoot_without_bonus() -> void:
 	if view.has_method("create_shot_effect"):
 		view.create_shot_effect()
 
-func _shoot_with_bonus():
+func _shoot_with_bonus() -> void:
 	if view.has_method("create_bonus_shot_effect"):
 		view.create_bonus_shot_effect()
+
+func _activate_shoot_bonus():
+	model.have_shoot_bonus = true
+	if (timer):
+		timer.stop()
+	timer = Timer.new()
+	add_child(timer)
+	timer.start(5.0)
+	timer.timeout.connect(_disable_shoot_bonus)
+
+func _disable_shoot_bonus() -> void:
+	model.have_shoot_bonus = false
+	timer.queue_free()
 
 func handle_collision(other_body: Node) -> void:
 	if not view or not view.is_alive:
@@ -87,6 +100,11 @@ func handle_collision(other_body: Node) -> void:
 			view.update_health_display(model.current_health, model.max_health)
 		if view.has_method("play_heal_effect"):
 			view.play_heal_effect()
+			
+	elif other_body.is_in_group("shoot_bonus"):
+		_activate_shoot_bonus()
+		if view.has_method("bonus_take_effect"):
+			view.bonus_take_effect()
 			
 	elif other_body.is_in_group("Enemy"):
 		model.take_damage(1)
