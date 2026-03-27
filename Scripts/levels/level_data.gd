@@ -3,10 +3,13 @@ class_name LevelData
 
 const SPAWN_POSITIONS = {
 	"left": Vector3(-27, 0,-8),
+	"left2": Vector3(-27, 0,-4),
 	"center": Vector3(-27, 0, 0),
+	"right2": Vector3(-27, 0, 4),
 	"right": Vector3(-27, 0, 8)
 }
 
+@export var spawn_interval: float = 2.0
 @export var level_id: int = 0
 @export var level_name: String
 @export var object_list = {

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_t80d6")
+spawn_interval = 0.89
 object_list = {
 "ammo_crate": {
 "chance": 0,
