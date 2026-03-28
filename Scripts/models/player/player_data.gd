@@ -5,8 +5,8 @@ class_name PlayerData
 # Экспортируем параметры для настройки в редакторе
 @export var max_health: int = 3
 @export var current_health: int = 3
-@export var max_ammo: int = 99
-@export var current_ammo: int = 20
+@export var max_ammo: int = 100
+@export var current_ammo: int = 100
 @export var speed: float = 5.0
 @export var fire_rate: float = 0.1
 @export var have_shoot_bonus: bool = false
@@ -63,7 +63,7 @@ func die() -> void:
 func respawn() -> void:
 	damage_multypler = standart_damage_multypler
 	current_health = max_health
-	current_ammo = 20
+	current_ammo = max_ammo
 	player_respawned.emit()
 	health_changed.emit(current_health, max_health)
 	ammo_changed.emit(current_ammo)
@@ -72,6 +72,6 @@ func respawn() -> void:
 func reset() -> void:
 	damage_multypler = standart_damage_multypler
 	current_health = max_health
-	current_ammo = 20
+	current_ammo = max_ammo
 	health_changed.emit(current_health, max_health)
 	ammo_changed.emit(current_ammo)

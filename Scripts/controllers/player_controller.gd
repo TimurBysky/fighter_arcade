@@ -136,11 +136,14 @@ func _on_player_died() -> void:
 		view.destroy()
 	player_destroyed.emit()
 
+
 func _on_player_respawned() -> void:
 	if view and view.has_method("respawn"):
 		view.respawn()
 
+func reset():
+	model.respawn()
 # Для тестирования
-func destroy() -> void:
-	if view and view.has_method("destroy"):
-		view.destroy()
+#func destroy() -> void:
+	#if view and view.has_method("destroy"):
+		#view.destroy()
