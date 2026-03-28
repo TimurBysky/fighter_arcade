@@ -10,7 +10,8 @@ class_name PlayerData
 @export var speed: float = 5.0
 @export var fire_rate: float = 0.1
 @export var have_shoot_bonus: bool = false
-
+@export var standart_damage_multypler: float = 1.0
+var damage_multypler: float
 # Сигналы для оповещения о изменениях (чистая логика!)
 signal health_changed(new_health: int, max_health: int)
 signal ammo_changed(new_ammo: int)
@@ -19,6 +20,7 @@ signal player_respawned()
 
 func _init():
 	# Инициализация
+	damage_multypler = standart_damage_multypler
 	current_health = max_health
 	current_ammo = 20
 
@@ -52,10 +54,14 @@ func consume_ammo() -> void:
 		current_ammo -= 1
 		ammo_changed.emit(current_ammo)
 
+func reset_damage_multypler() -> void:
+	damage_multypler = standart_damage_multypler
+
 func die() -> void:
 	player_died.emit()
 
 func respawn() -> void:
+	damage_multypler = standart_damage_multypler
 	current_health = max_health
 	current_ammo = 20
 	player_respawned.emit()
@@ -64,6 +70,7 @@ func respawn() -> void:
 
 # Сброс состояния (для переиспользования)
 func reset() -> void:
+	damage_multypler = standart_damage_multypler
 	current_health = max_health
 	current_ammo = 20
 	health_changed.emit(current_health, max_health)

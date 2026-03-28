@@ -49,7 +49,10 @@ func _process(delta: float) -> void:
 	controller.handle_shoot_input()
 
 # Визуальный эффект выстрела
-func shot_effect(have_shoot_bonus: bool = false, damage_multypler: float = 1.0) -> void:
+func shot_effect(params: Dictionary = {}) -> void:
+	
+	var have_shoot_bonus = params.get("have_shoot_bonus", false)
+	var damage_multiplier = params.get("damage_multiplier")
 	var angles = [0]
 	
 	if(have_shoot_bonus):
@@ -65,6 +68,7 @@ func shot_effect(have_shoot_bonus: bool = false, damage_multypler: float = 1.0) 
 		
 		instance.direction = direction
 		instance.global_position = fighter.global_position + Vector3(-1, 0, 0)
+		instance.damage = damage_multiplier
 		add_child(instance)
 	
 	

@@ -7,5 +7,5 @@
 [node name="extra_damage_bonus" unique_id=253409948 groups=["extra_damage"] instance=ExtResource("1_tjnnn")]
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1557855185]
-transform = Transform3D(0.99998814, 0.0048694494, 0, -0.0048694494, 0.99998814, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.05780974, 0.053942423, 0.9968692, -0.68222815, 0.7311394, 0, -0.72885036, -0.6800922, 0.07906801, 0, 0, 0)
 mesh = SubResource("TubeTrailMesh_ws8r2")

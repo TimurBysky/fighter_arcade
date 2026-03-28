@@ -11,15 +11,19 @@ object_list = {
 "scene": "res://Scenes/ammo.tscn"
 },
 "enemy_light_plane": {
-"chance": 70,
+"chance": 60,
 "scene": "res://Scenes/enemy.tscn"
+},
+"extra_damage": {
+"chance": 40,
+"scene": "res://Scenes/extra_damage_bonus.tscn"
 },
 "health_pill": {
 "chance": 0,
 "scene": "res://Scenes/health.tscn"
 },
 "shoot_bonus": {
-"chance": 30,
+"chance": 0,
 "scene": "res://Scenes/shoot_bonus.tscn"
 }
 }

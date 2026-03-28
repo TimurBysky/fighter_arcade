@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 @export var speed = 10.0
 @export var direction: Vector3 = Vector3(-1, 0, 0) 
+var damage: float = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("bullets")

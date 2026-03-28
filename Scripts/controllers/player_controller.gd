@@ -7,8 +7,8 @@ extends Node
 var model: PlayerData
 var view: Node
 var shoot_cooldown: bool = false
-var timer: Timer
-
+var timer_shoot_bonus: Timer
+var timer_extra_damage: Timer
 # Сигналы для других систем
 signal player_destroyed
 
@@ -50,9 +50,9 @@ func shoot() -> void:
 	# Сообщаем view создать визуальный выстрел
 	match(model.have_shoot_bonus):
 		true:
-			_shoot(true)
+			_shoot({"have_shoot_bonus": true, "damage_multiplier": model.damage_multypler})
 		false:
-			_shoot(false, 2.0)
+			_shoot({"damage_multiplier": model.damage_multypler})
 		
 	if view.has_method("update_ammo_display"):
 		view.update_ammo_display(model.current_ammo)
@@ -61,22 +61,35 @@ func shoot() -> void:
 	await get_tree().create_timer(model.fire_rate).timeout
 	shoot_cooldown = false
 
-func _shoot(have_shoot_bonus: bool = false, damage_multypler: float = 1.0) -> void:
+func _shoot(params: Dictionary = {}) -> void:
 	if view.has_method("shot_effect"):
-		view.shot_effect(have_shoot_bonus, damage_multypler)
+		view.shot_effect(params)
 
 func _activate_shoot_bonus():
 	model.have_shoot_bonus = true
-	if (timer):
-		timer.stop()
-	timer = Timer.new()
-	add_child(timer)
-	timer.start(5.0)
-	timer.timeout.connect(_disable_shoot_bonus)
+	if (timer_shoot_bonus):
+		timer_shoot_bonus.stop()
+	timer_shoot_bonus = Timer.new()
+	add_child(timer_shoot_bonus)
+	timer_shoot_bonus.start(5.0)
+	timer_shoot_bonus.timeout.connect(_disable_shoot_bonus)
 
 func _disable_shoot_bonus() -> void:
 	model.have_shoot_bonus = false
-	timer.queue_free()
+	timer_shoot_bonus.queue_free()
+
+func _activate_extra_damage():
+	model.damage_multypler = 100.0
+	if (timer_extra_damage):
+		timer_extra_damage.stop()
+	timer_extra_damage = Timer.new()
+	add_child(timer_extra_damage)
+	timer_extra_damage.start(5.0)
+	timer_extra_damage.timeout.connect(_disable_extra_damage)
+
+func _disable_extra_damage():
+	model.reset_damage_multypler()
+	timer_extra_damage.queue_free()
 
 func handle_collision(other_body: Node) -> void:
 	if not view or not view.is_alive:
@@ -99,6 +112,11 @@ func handle_collision(other_body: Node) -> void:
 			
 	elif other_body.is_in_group("shoot_bonus"):
 		_activate_shoot_bonus()
+		if view.has_method("bonus_take_effect"):
+			view.bonus_take_effect()
+			
+	elif other_body.is_in_group("extra_damage"):
+		_activate_extra_damage()
 		if view.has_method("bonus_take_effect"):
 			view.bonus_take_effect()
 			

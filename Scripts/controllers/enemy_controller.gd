@@ -25,7 +25,7 @@ func handle_collision(other_body: Node) -> void:
 		return
 		
 	if(other_body.is_in_group("bullets")):
-		model.take_damage()
+		model.take_damage(other_body.damage)
 		take_damage.emit(model.current_health, model.max_health)
 		if(other_body.has_method("destroy")):
 			other_body.destroy()
