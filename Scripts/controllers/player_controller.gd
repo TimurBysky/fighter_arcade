@@ -50,9 +50,9 @@ func shoot() -> void:
 	# Сообщаем view создать визуальный выстрел
 	match(model.have_shoot_bonus):
 		true:
-			_shoot_with_bonus()
+			_shoot(true)
 		false:
-			_shoot_without_bonus()
+			_shoot(false, 2.0)
 		
 	if view.has_method("update_ammo_display"):
 		view.update_ammo_display(model.current_ammo)
@@ -61,13 +61,9 @@ func shoot() -> void:
 	await get_tree().create_timer(model.fire_rate).timeout
 	shoot_cooldown = false
 
-func _shoot_without_bonus() -> void:
-	if view.has_method("create_shot_effect"):
-		view.create_shot_effect()
-
-func _shoot_with_bonus() -> void:
-	if view.has_method("create_bonus_shot_effect"):
-		view.create_bonus_shot_effect()
+func _shoot(have_shoot_bonus: bool = false, damage_multypler: float = 1.0) -> void:
+	if view.has_method("shot_effect"):
+		view.shot_effect(have_shoot_bonus, damage_multypler)
 
 func _activate_shoot_bonus():
 	model.have_shoot_bonus = true

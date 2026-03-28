@@ -49,18 +49,12 @@ func _process(delta: float) -> void:
 	controller.handle_shoot_input()
 
 # Визуальный эффект выстрела
-func create_shot_effect() -> void:
-	var instance = tracer_scene.instantiate()
-	instance.global_position = fighter.global_position + Vector3(-1, 0, 0)
-	add_child(instance)
+func shot_effect(have_shoot_bonus: bool = false, damage_multypler: float = 1.0) -> void:
+	var angles = [0]
 	
-	# Воспроизводим звук выстрела
-	if $ShootSound:
-		$ShootSound.play()
-
-func create_bonus_shot_effect():
-	var angles = [-25, 0, 25]  # углы отклонения по горизонтали
-	
+	if(have_shoot_bonus):
+		angles = [-25, 0, 25]
+		
 	for angle in angles:
 		var instance = tracer_scene.instantiate()
 		var angle_rad = deg_to_rad(angle)
@@ -72,6 +66,26 @@ func create_bonus_shot_effect():
 		instance.direction = direction
 		instance.global_position = fighter.global_position + Vector3(-1, 0, 0)
 		add_child(instance)
+	
+	
+	# Воспроизводим звук выстрела
+	if $ShootSound:
+		$ShootSound.play()
+
+#func create_bonus_shot_effect():
+	#var angles = [-25, 0, 25]  # углы отклонения по горизонтали
+	#
+	#for angle in angles:
+		#var instance = tracer_scene.instantiate()
+		#var angle_rad = deg_to_rad(angle)
+		#
+		## Движение влево с отклонением по Z (горизонталь)
+		#var direction = Vector3(-cos(angle_rad), 0, sin(angle_rad))
+		#direction = direction.normalized()
+		#
+		#instance.direction = direction
+		#instance.global_position = fighter.global_position + Vector3(-1, 0, 0)
+		#add_child(instance)
 # Визуальный эффект попадания
 func play_hit_effect() -> void:
 	# Визуальная вспышка
