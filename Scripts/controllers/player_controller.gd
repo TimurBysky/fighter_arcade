@@ -78,8 +78,8 @@ func _disable_shoot_bonus() -> void:
 	model.have_shoot_bonus = false
 	timer_shoot_bonus.queue_free()
 
-func _activate_extra_damage():
-	model.damage_multypler = 100.0
+func _activate_extra_damage(multypler: float = 2.0):
+	model.damage_multypler = multypler
 	if (timer_extra_damage):
 		timer_extra_damage.stop()
 	timer_extra_damage = Timer.new()
@@ -116,7 +116,7 @@ func handle_collision(other_body: Node) -> void:
 			view.bonus_take_effect()
 			
 	elif other_body.is_in_group("extra_damage"):
-		_activate_extra_damage()
+		_activate_extra_damage(other_body.bonus_damage_multiplyer)
 		if view.has_method("bonus_take_effect"):
 			view.bonus_take_effect()
 			
