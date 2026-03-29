@@ -2,7 +2,7 @@
 # Структура: Button -> { TextureRect, Label, StarsContainer }
 
 # views/level/level_icon.gd
-extends Node2D
+extends Panel
 class_name LevelIcon
 
 @onready var preview_texture: TextureRect = $MarginContainer/VBoxContainer/Picture

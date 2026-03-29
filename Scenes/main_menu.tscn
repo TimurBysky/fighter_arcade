@@ -76,6 +76,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 150
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 150
@@ -87,18 +88,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 3
 
-[node name="Button" type="Button" parent="Level_selector/MarginContainer/GridContainer" unique_id=1232150858]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "LEVEL"
-
 [node name="MarginContainer2" type="MarginContainer" parent="Level_selector" unique_id=694057857]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
