@@ -76,20 +76,6 @@ func shot_effect(params: Dictionary = {}) -> void:
 	if $ShootSound:
 		$ShootSound.play()
 
-#func create_bonus_shot_effect():
-	#var angles = [-25, 0, 25]  # углы отклонения по горизонтали
-	#
-	#for angle in angles:
-		#var instance = tracer_scene.instantiate()
-		#var angle_rad = deg_to_rad(angle)
-		#
-		## Движение влево с отклонением по Z (горизонталь)
-		#var direction = Vector3(-cos(angle_rad), 0, sin(angle_rad))
-		#direction = direction.normalized()
-		#
-		#instance.direction = direction
-		#instance.global_position = fighter.global_position + Vector3(-1, 0, 0)
-		#add_child(instance)
 # Визуальный эффект попадания
 func play_hit_effect() -> void:
 	# Визуальная вспышка

@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 PlayerController="*uid://3661ngyljnfs"
 EnemyFactory="*uid://c6by5rs2maytt"
 LevelController="*uid://c0u3kmbtjyoqc"
+MainMenuController="*uid://caqb2fe3m73bp"
 
 [display]
 

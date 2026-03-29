@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dh4id21lxovra"]
 
+[ext_resource type="Script" uid="uid://dohs3ahdyotix" path="res://Scripts/main_menu/menu_view.gd" id="1_1ehe0"]
 [ext_resource type="PackedScene" uid="uid://hil5k653pupr" path="res://Assets/cartoon_aircraft.glb" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://eevr2ptql1bj" path="res://Assets/weather-top-white-heaven-view.jpg" id="2_48xlc"]
 
@@ -16,6 +17,7 @@ sky_custom_fov = 47.5
 sky_rotation = Vector3(0, 0.9215338, 0)
 
 [node name="Main_menu" type="Node3D" unique_id=514432764]
+script = ExtResource("1_1ehe0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=31172821]
 
@@ -25,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
@@ -35,13 +38,27 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=990200799]
+[node name="Start_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=990200799]
 layout_mode = 2
 text = "START"
 
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1669984973]
+[node name="Exit_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1669984973]
 layout_mode = 2
 text = "EXIT"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=306095892]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer2" unique_id=1901496541]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "TOTAL SCORE:"
+
+[node name="Enemy_kill_count" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer2" unique_id=646746252]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "ENEMY KILL COUNT:"
 
 [node name="Sketchfab_Scene" parent="." unique_id=1674326903 instance=ExtResource("1_28flt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

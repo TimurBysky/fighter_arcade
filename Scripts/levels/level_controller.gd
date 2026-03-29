@@ -8,7 +8,6 @@ func _ready() -> void:
 	
 func setup(level_view: Node):
 	view = level_view
-	
 
 func init_player(player_node: Node) -> void:
 	player = player_node

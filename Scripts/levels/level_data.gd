@@ -23,3 +23,6 @@ func get_objects() -> Dictionary:
 
 func get_spawn_positions() -> Dictionary:
 	return SPAWN_POSITIONS
+
+func get_level_id():
+	return level_id
