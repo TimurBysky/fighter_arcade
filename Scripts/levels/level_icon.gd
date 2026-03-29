@@ -8,7 +8,7 @@ class_name LevelIcon
 @onready var preview_texture: TextureRect = $MarginContainer/VBoxContainer/Picture
 @export var level_name_button: Button
 #@onready var level_label: Label = $LevelLabel
-#@onready var stars_container: HBoxContainer = $StarsContainer
+@export var stars_container: HBoxContainer
 #@onready var lock_icon: TextureRect = $LockIcon
 
 
@@ -31,28 +31,30 @@ func update_display() -> void:
 	
 	if level_progress.is_unlocked:
 		#lock_icon.visible = false
+		stars_container.visible = true
 		level_name_button.disabled = false
 		update_stars()
 	else:
 		#lock_icon.visible = true
-		#stars_container.visible = false
+		stars_container.visible = false
 		level_name_button.disabled = true
 
 func update_stars() -> void:
-	# Очищаем старые звезды
-	#for child in stars_container.get_children():
-		#child.queue_free()
-	#
-	## Добавляем звезды (0-3)
-	#for i in range(3):
-		#var star = TextureRect.new()
-		#star.texture = preload("res://assets/ui/star_empty.png")  # путь к текстуре пустой звезды
-		#star.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
-		#
-		#if i < level_progress.stars_earned:
-			#star.texture = preload("res://assets/ui/star_filled.png")  # путь к текстуре заполненной звезды
-		#
-		#stars_container.add_child(star)
+	 #Очищаем старые звезды
+	for child in stars_container.get_children():
+		child.queue_free()
+	
+	# Добавляем звезды (0-3)
+	for i in range(3):
+		var star = TextureRect.new()
+		star.texture = preload("res://Assets/star_outline.png")  # путь к текстуре пустой звезды
+		star.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		star.custom_minimum_size = Vector2(32,30)
+		
+		if i < level_progress.stars_earned:
+			star.texture = preload("res://Assets/star.png")  # путь к текстуре заполненной звезды
+		
+		stars_container.add_child(star)
 	pass
 	
 func _on_pressed() -> void:

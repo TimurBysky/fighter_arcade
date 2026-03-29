@@ -12,7 +12,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 	
 func setup(level_view: Node):
-	var level_data = LevelData.new()
 	view = level_view
 
 func init_player(player_node: Node) -> void:

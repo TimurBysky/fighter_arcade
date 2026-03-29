@@ -110,6 +110,15 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 text = "BACK"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="Level_selector/MarginContainer2" unique_id=1226098874]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="total_stars_label" type="Label" parent="Level_selector/MarginContainer2/VBoxContainer2" unique_id=907715724]
+layout_mode = 2
+text = "TOTAL STARS:"
+
 [node name="Sketchfab_Scene" parent="." unique_id=1674326903 instance=ExtResource("1_28flt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 

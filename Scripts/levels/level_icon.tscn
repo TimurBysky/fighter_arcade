@@ -2,8 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://emjwku6jrbh1" path="res://icon.svg" id="1_6ga4p"]
 [ext_resource type="Script" uid="uid://b2aoshuln5ppn" path="res://Scripts/levels/level_icon.gd" id="1_8xhl2"]
+[ext_resource type="Texture2D" uid="uid://d0jyo2m2ujdy1" path="res://Assets/star_outline.png" id="3_d8wvl"]
 
-[node name="Panel" type="Panel" unique_id=870245895 node_paths=PackedStringArray("level_name_button")]
+[node name="Panel" type="Panel" unique_id=870245895 node_paths=PackedStringArray("level_name_button", "stars_container")]
 custom_minimum_size = Vector2(128, 128)
 anchors_preset = 8
 anchor_left = 0.5
@@ -18,18 +19,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8xhl2")
 level_name_button = NodePath("MarginContainer/VBoxContainer/Level_name_button")
+stars_container = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=278869094]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -83.5
+offset_right = 64.0
+offset_bottom = 83.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=598517239]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Picture" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1375317456]
 custom_minimum_size = Vector2(128, 128)
@@ -39,3 +49,27 @@ texture = ExtResource("1_6ga4p")
 [node name="Level_name_button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1887007109]
 layout_mode = 2
 text = "LEVEL NAME"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1039045344]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Star" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=95451675]
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+texture = ExtResource("3_d8wvl")
+expand_mode = 1
+
+[node name="Star2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=45754735]
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+texture = ExtResource("3_d8wvl")
+expand_mode = 1
+
+[node name="Star3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1032041535]
+custom_minimum_size = Vector2(32, 30)
+layout_mode = 2
+texture = ExtResource("3_d8wvl")
+expand_mode = 1

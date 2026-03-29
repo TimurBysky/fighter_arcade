@@ -3,7 +3,7 @@ extends CanvasLayer
 class_name LevelSelectorView
 
 @onready var levels_grid: GridContainer = $MarginContainer/GridContainer
-#@onready var total_stars_label: Label = $TopPanel/TotalStarsLabel
+@onready var total_stars_label: Label = $MarginContainer2/VBoxContainer2/total_stars_label
 #@onready var progress_label: Label = $TopPanel/ProgressLabel
 
 var controller: LevelController
@@ -37,7 +37,7 @@ func update_statistics() -> void:
 		if progress.times_completed > 0:
 			completed += 1
 	
-	#total_stars_label.text = "★ %d" % total_stars
+	total_stars_label.text = "★ %d" % total_stars
 	#progress_label.text = "Пройдено: %d/%d" % [completed, controller.all_levels.size()]
 
 # Обновление после завершения уровня (можно вызвать при возврате на карту)
