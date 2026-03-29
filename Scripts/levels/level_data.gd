@@ -11,7 +11,8 @@ const SPAWN_POSITIONS = {
 
 @export var spawn_interval: float = 2.0
 @export var level_id: int = 0
-@export var level_name: String
+@export var level_name: String = "Уровень 1"
+@export var scene_path: String = "res://Scripts/levels/scenes/level.tscn"
 @export var object_list = {
 	"enemy_light_plane": {"chance" : 60, "scene": "res://Scenes/enemy.tscn"},
 	"ammo_crate" : {"chance" : 20, "scene": "res://Scenes/ammo.tscn"},

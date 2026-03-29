@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b72wfub038g65"]
+
+[ext_resource type="Texture2D" uid="uid://emjwku6jrbh1" path="res://icon.svg" id="1_6ga4p"]
+[ext_resource type="Script" uid="uid://b2aoshuln5ppn" path="res://Scripts/levels/level_icon.gd" id="1_8xhl2"]
+
+[node name="level_icon" type="Node2D" unique_id=824557773 node_paths=PackedStringArray("level_name_button")]
+script = ExtResource("1_8xhl2")
+level_name_button = NodePath("MarginContainer/VBoxContainer/Level_name_button")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=33709248]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=879100713]
+layout_mode = 2
+
+[node name="Picture" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=330176328]
+layout_mode = 2
+texture = ExtResource("1_6ga4p")
+
+[node name="Level_name_button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=696145966]
+layout_mode = 2
+text = "LEVEL NAME"
