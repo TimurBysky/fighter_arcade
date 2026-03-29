@@ -33,7 +33,7 @@ func _score_changed():
 		view.update_score_data()
 
 func start_level(level_id: int = 0):
-	get_tree().change_scene_to_file("res://Scenes/level.tscn")
+	get_tree().change_scene_to_file("res://Scripts/levels/scenes/level.tscn")
 
 func close_game():
 	get_tree().quit()

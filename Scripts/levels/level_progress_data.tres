@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LevelProgressData" format=3 uid="uid://bompji7rxpk0n"]
+
+[ext_resource type="Script" uid="uid://cb80axdvr63wk" path="res://Scripts/levels/level_progress_data.gd" id="1_v56ck"]
+
+[resource]
+script = ExtResource("1_v56ck")
+metadata/_custom_type_script = "uid://cb80axdvr63wk"
