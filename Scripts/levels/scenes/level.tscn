@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://7105ohynf88f"]
 
-[ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_oi3di"]
-[ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="1_u52ul"]
-[ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_oi3di"]
-[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_81xng"]
+[ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_7ejdl"]
+[ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_gx4wa"]
+[ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_5pwas"]
+[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_4f64y"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
-panorama = ExtResource("2_oi3di")
+panorama = ExtResource("2_gx4wa")
 energy_multiplier = 0.75
 
 [sub_resource type="Sky" id="Sky_vonw3"]
@@ -23,12 +23,12 @@ tonemap_exposure = 1.88
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
 
 [node name="Level" type="Node3D" unique_id=1222772376]
-script = ExtResource("1_oi3di")
+script = ExtResource("1_7ejdl")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=857818750]
 environment = SubResource("Environment_oi3di")
 
-[node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("1_u52ul")]
+[node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("3_5pwas")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
@@ -63,7 +63,7 @@ transform = Transform3D(0.9875652, -0.03319021, 0.15366666, -0.15721016, -0.2084
 light_energy = 1.027
 shadow_enabled = true
 
-[node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_81xng")]
+[node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_4f64y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
