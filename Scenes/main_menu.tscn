@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dohs3ahdyotix" path="res://Scripts/main_menu/menu_view.gd" id="1_1ehe0"]
 [ext_resource type="PackedScene" uid="uid://hil5k653pupr" path="res://Assets/cartoon_aircraft.glb" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://eevr2ptql1bj" path="res://Assets/weather-top-white-heaven-view.jpg" id="2_48xlc"]
+[ext_resource type="Script" uid="uid://bpiodwk117hes" path="res://Scripts/levels/level_selector/level_selector_view.gd" id="2_ce3w2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1ehe0"]
 panorama = ExtResource("2_48xlc")
@@ -20,7 +21,6 @@ sky_rotation = Vector3(0, 0.9215338, 0)
 script = ExtResource("1_1ehe0")
 
 [node name="Main_screne" type="CanvasLayer" parent="." unique_id=31172821]
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Main_screne" unique_id=2073239209]
 anchors_preset = 15
@@ -62,6 +62,8 @@ size_flags_horizontal = 0
 text = "ENEMY KILL COUNT:"
 
 [node name="Level_selector_screne" type="CanvasLayer" parent="." unique_id=234729961]
+visible = false
+script = ExtResource("2_ce3w2")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level_selector_screne" unique_id=1715674070]
 anchors_preset = 15

@@ -31,10 +31,7 @@ func _kill_count_changed(enemy_kill_count: int):
 func _score_changed():
 	if(view.has_method("update_score_data")):
 		view.update_score_data()
-
-func start_level(level_id: int = 0):
-	get_tree().change_scene_to_file("res://Scenes/level.tscn")
-
+		
 func close_game():
 	get_tree().quit()
 	
