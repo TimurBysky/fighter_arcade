@@ -17,7 +17,7 @@ func _ready() -> void:
 	level_controller.setup(self)
 	if(player):
 		level_controller.init_player(player_controller)
-	var restart_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Button
+	var restart_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Restart_button
 	restart_button.pressed.connect(_restart)
 
 func create_object() -> void:

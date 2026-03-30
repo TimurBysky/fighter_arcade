@@ -18,6 +18,7 @@ const SPAWN_POSITIONS = {
 	"ammo_crate" : {"chance" : 20, "scene": "res://Scenes/ammo.tscn"},
 	"health_pill": {"chance" : 20, "scene": "res://Scenes/health.tscn"}
 }
+var stars_count: int
 
 func get_objects() -> Dictionary:
 	return object_list
