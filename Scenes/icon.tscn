@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dtd5xwg6l2ef1"]
+
+[ext_resource type="Texture2D" uid="uid://emjwku6jrbh1" path="res://icon.svg" id="1_7vlay"]
+[ext_resource type="Texture2D" uid="uid://4ejwyjn8hgej" path="res://Assets/star_outline.png" id="2_rsedf"]
+
+[node name="icon" type="Control" unique_id=2042154271]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2049248882]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Picture" type="TextureRect" parent="VBoxContainer" unique_id=945654620]
+layout_mode = 2
+texture = ExtResource("1_7vlay")
+
+[node name="Level_name" type="Label" parent="VBoxContainer" unique_id=460041711]
+layout_mode = 2
+text = "LEVEL NAME"
+horizontal_alignment = 1
+
+[node name="Start_button" type="Button" parent="VBoxContainer" unique_id=1766065540]
+layout_mode = 2
+text = "START"
+
+[node name="Stars_container" type="HBoxContainer" parent="VBoxContainer" unique_id=1566554239]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1664384867]
+custom_minimum_size = Vector2(38, 33)
+layout_mode = 2
+texture = ExtResource("2_rsedf")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=546676799]
+custom_minimum_size = Vector2(38, 33)
+layout_mode = 2
+texture = ExtResource("2_rsedf")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1872873648]
+custom_minimum_size = Vector2(38, 33)
+layout_mode = 2
+texture = ExtResource("2_rsedf")
+expand_mode = 1

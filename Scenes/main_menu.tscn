@@ -19,9 +19,10 @@ sky_rotation = Vector3(0, 0.9215338, 0)
 [node name="Main_menu" type="Node3D" unique_id=514432764]
 script = ExtResource("1_1ehe0")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=31172821]
+[node name="Main_screne" type="CanvasLayer" parent="." unique_id=31172821]
+visible = false
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=2073239209]
+[node name="MarginContainer" type="MarginContainer" parent="Main_screne" unique_id=2073239209]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,32 +34,68 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=2095826983]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_screne/MarginContainer" unique_id=2095826983]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="Start_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=990200799]
+[node name="Start_button" type="Button" parent="Main_screne/MarginContainer/VBoxContainer" unique_id=990200799]
 layout_mode = 2
 text = "START"
 
-[node name="Exit_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1669984973]
+[node name="Exit_button" type="Button" parent="Main_screne/MarginContainer/VBoxContainer" unique_id=1669984973]
 layout_mode = 2
 text = "EXIT"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=306095892]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main_screne/MarginContainer" unique_id=306095892]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Score" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer2" unique_id=1901496541]
+[node name="Score" type="Label" parent="Main_screne/MarginContainer/VBoxContainer2" unique_id=1901496541]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "TOTAL SCORE:"
 
-[node name="Enemy_kill_count" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer2" unique_id=646746252]
+[node name="Enemy_kill_count" type="Label" parent="Main_screne/MarginContainer/VBoxContainer2" unique_id=646746252]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "ENEMY KILL COUNT:"
+
+[node name="Level_selector_screne" type="CanvasLayer" parent="." unique_id=234729961]
+
+[node name="MarginContainer" type="MarginContainer" parent="Level_selector_screne" unique_id=1715674070]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Level_selector_screne/MarginContainer" unique_id=802711722]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Back_button" type="Button" parent="Level_selector_screne/MarginContainer/HBoxContainer" unique_id=1014640889]
+layout_mode = 2
+text = "BACK"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Level_selector_screne" unique_id=254339426]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 150
+
+[node name="GridContainer" type="GridContainer" parent="Level_selector_screne/MarginContainer2" unique_id=1729883521]
+layout_mode = 2
 
 [node name="Sketchfab_Scene" parent="." unique_id=1674326903 instance=ExtResource("1_28flt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

@@ -1,10 +1,10 @@
 extends Node
 class_name MainMenuView
 
-@onready var start_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Start_button
-@onready var exit_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Exit_button
-@onready var score_label: Label = $CanvasLayer/MarginContainer/VBoxContainer2/Score
-@onready var enemy_kill_count_label: Label = $CanvasLayer/MarginContainer/VBoxContainer2/Enemy_kill_count
+@onready var start_button: Button = $Main_screne/MarginContainer/VBoxContainer/Start_button
+@onready var exit_button: Button = $Main_screne/MarginContainer/VBoxContainer/Exit_button
+@onready var score_label: Label = $Main_screne/MarginContainer/VBoxContainer2/Score
+@onready var enemy_kill_count_label: Label = $Main_screne/MarginContainer/VBoxContainer2/Enemy_kill_count
 
 @onready var contorller = get_node("/root/MainMenuController")
 
