@@ -25,6 +25,8 @@ const SPAWN_POSITIONS = {
 	
 }
 
+@export var level_goals: Dictionary = {}
+
 var is_unlocked: bool
 
 func get_objects() -> Dictionary:
