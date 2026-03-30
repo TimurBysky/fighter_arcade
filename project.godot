@@ -11,10 +11,13 @@ config_version=5
 [application]
 
 config/name="Воздушная аркада"
+config/description="Воздушная аркада - скролл-шутер"
 config/tags=PackedStringArray("аркада", "на_реакцию")
 run/main_scene="uid://7105ohynf88f"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.7906201, 0.8690231, 0.97060484, 1)
+boot_splash/image="uid://dn5e7jrwxqwki"
+config/icon="uid://icip23u4mj4n"
 
 [autoload]
 
