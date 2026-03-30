@@ -2,9 +2,9 @@
 extends CanvasLayer
 class_name LevelSelectorView
 
-@onready var levels_container: GridContainer = $MarginContainer/ScrollContainer/GridContainer
-@onready var total_stars_label: Label = $TopPanel/TotalStarsLabel
-@onready var back_button: Button = $TopPanel/BackButton
+@onready var levels_container: GridContainer = $MarginContainer2/GridContainer
+@onready var total_stars_label: Label = $MarginContainer/HBoxContainer/Total_stars
+@onready var back_button: Button = $MarginContainer/HBoxContainer/Back_button
 
 @export var level_icon_scene: PackedScene
 
@@ -14,7 +14,7 @@ var save_manager
 
 func _ready() -> void:
 	controller = get_node("/root/LevelController")
-	save_manager = get_node("/root/SaveManager")
+	save_manager = get_node("/root/SaveMenager")
 	
 	controller.levels_loaded.connect(_on_levels_loaded)
 	back_button.pressed.connect(_on_back_pressed)
@@ -38,13 +38,13 @@ func generate_level_icons(levels: Array[LevelData]) -> void:
 	for level in levels:
 		var level_info = level.get_level_info().values()[0]
 		var level_id = level_info["level_id"]
-		
+		print_debug("Создана иконка!")
 		# Получаем прогресс уровня из сохранений
 		var progress = save_manager.get_level_progress(level_id)
 		
 		var icon = level_icon_scene.instantiate()
-		icon.setup(level, progress, controller)
 		levels_container.add_child(icon)
+		icon.setup(level, progress, controller)
 
 func update_statistics() -> void:
 	var total_stars = save_manager.get_total_stars()

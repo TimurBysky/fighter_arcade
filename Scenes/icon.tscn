@@ -5,16 +5,32 @@
 [ext_resource type="Texture2D" uid="uid://4ejwyjn8hgej" path="res://Assets/star_outline.png" id="2_rsedf"]
 
 [node name="icon" type="Control" unique_id=2042154271]
+custom_minimum_size = Vector2(128, 120)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_mremn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2049248882]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -113.5
+offset_right = 64.0
+offset_bottom = 113.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Picture" type="TextureRect" parent="VBoxContainer" unique_id=945654620]
 layout_mode = 2

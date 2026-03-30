@@ -8,18 +8,22 @@ class_name LevelIcon
 @onready var star1: TextureRect = $VBoxContainer/HBoxContainer/Star1
 @onready var star2: TextureRect = $VBoxContainer/HBoxContainer/Star2
 @onready var star3: TextureRect = $VBoxContainer/HBoxContainer/Star3
+@onready var controller = get_node("/root/LevelController")
 
 var level_data: LevelData
 var level_progress: Dictionary = {}  # прогресс из PlayerSaveData
-var controller: LevelController
+
+
+func _ready() -> void:
+	start_button.pressed.connect(_on_start_pressed)
+
 
 func setup(level: LevelData, progress: Dictionary, level_controller: LevelController) -> void:
 	level_data = level
 	level_progress = progress
 	controller = level_controller
-	
+	await ready
 	update_display()
-	start_button.pressed.connect(_on_start_pressed)
 
 func update_display() -> void:
 	var level_info = level_data.get_level_info().values()[0]
@@ -50,4 +54,5 @@ func update_stars(stars_earned: int) -> void:
 			stars[i].modulate = Color.GRAY   # Серая звезда
 
 func _on_start_pressed() -> void:
+	print_debug("Кнопка нажата, информация об уровне: ", level_data)
 	controller.start_level(level_data)

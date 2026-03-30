@@ -17,7 +17,7 @@ func load_all_levels() -> void:
 	all_levels.clear()
 	
 	# Сканируем папку с .tres файлами уровней
-	var dir = DirAccess.open("res://Scripts/levels/")
+	var dir = DirAccess.open("res://Scripts/levels/level_scenes/")
 	
 	if dir:
 		dir.list_dir_begin()
@@ -25,7 +25,7 @@ func load_all_levels() -> void:
 		
 		while file_name != "":
 			if file_name.ends_with(".tres") and file_name != "level_data.tres":
-				var level_path = "res://Scripts/levels/" + file_name
+				var level_path = "res://Scripts/levels/level_scenes/" + file_name
 				var level_data = load(level_path)
 				if level_data is LevelData:
 					all_levels.append(level_data)
@@ -39,7 +39,7 @@ func load_all_levels() -> void:
 	all_levels.sort_custom(func(a, b): 
 		return a.get_level_info().values()[0]["level_id"] < b.get_level_info().values()[0]["level_id"]
 	)
-	
+	print_debug("Загружены уровни: ", all_levels)
 	levels_loaded.emit(all_levels)
 
 func get_all_levels() -> Array[LevelData]:
@@ -55,6 +55,9 @@ func init_player(player_node: Node) -> void:
 
 func start_level(level_data: LevelData) -> void:
 	current_level_data = level_data
+	var info = level_data.get_level_info().values()[0]
+	print("START LEVEL: ", info["level_name"])
+	print("SCENE PATH: ", level_data.level_scene)
 	get_tree().change_scene_to_file(level_data.level_scene)
 
 func get_current_level_data() -> LevelData:

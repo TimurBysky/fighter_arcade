@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://hil5k653pupr" path="res://Assets/cartoon_aircraft.glb" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://eevr2ptql1bj" path="res://Assets/weather-top-white-heaven-view.jpg" id="2_48xlc"]
 [ext_resource type="Script" uid="uid://bpiodwk117hes" path="res://Scripts/levels/level_selector/level_selector_view.gd" id="2_ce3w2"]
+[ext_resource type="PackedScene" uid="uid://dtd5xwg6l2ef1" path="res://Scenes/icon.tscn" id="3_n45e2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1ehe0"]
 panorama = ExtResource("2_48xlc")
@@ -64,6 +65,7 @@ text = "ENEMY KILL COUNT:"
 [node name="Level_selector_screne" type="CanvasLayer" parent="." unique_id=234729961]
 visible = false
 script = ExtResource("2_ce3w2")
+level_icon_scene = ExtResource("3_n45e2")
 
 [node name="MarginContainer" type="MarginContainer" parent="Level_selector_screne" unique_id=1715674070]
 anchors_preset = 15
@@ -71,6 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
@@ -85,12 +88,16 @@ size_flags_vertical = 8
 layout_mode = 2
 text = "BACK"
 
+[node name="Total_stars" type="Label" parent="Level_selector_screne/MarginContainer/HBoxContainer" unique_id=138178648]
+layout_mode = 2
+
 [node name="MarginContainer2" type="MarginContainer" parent="Level_selector_screne" unique_id=254339426]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 150
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 150
@@ -98,6 +105,9 @@ theme_override_constants/margin_bottom = 150
 
 [node name="GridContainer" type="GridContainer" parent="Level_selector_screne/MarginContainer2" unique_id=1729883521]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+columns = 3
 
 [node name="Sketchfab_Scene" parent="." unique_id=1674326903 instance=ExtResource("1_28flt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
