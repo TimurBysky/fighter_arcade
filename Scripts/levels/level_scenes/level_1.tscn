@@ -67,7 +67,6 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
-visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1229010264]
 anchors_preset = 15
@@ -83,6 +82,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=686251265]
+[node name="Restart_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=686251265]
 layout_mode = 2
 text = "RESTART"
+
+[node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=864545513]
+layout_mode = 2
+text = "MAIN MENU"

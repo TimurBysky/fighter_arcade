@@ -29,8 +29,9 @@ func update_display() -> void:
 	var level_info = level_data.get_level_info().values()[0]
 	
 	# Название уровня
-	level_name.text = level_info["level_name"]
-	
+	await level_name.ready
+	level_name.text = "Тест"
+	print_debug("Информация об уровне: ", level_info["level_name"])
 	# Проверяем, открыт ли уровень
 	var is_unlocked = not level_progress.is_empty()
 	

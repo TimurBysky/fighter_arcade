@@ -1,6 +1,8 @@
 # controllers/level_controller.gd
 extends Node
 
+@onready var main_menu = get_node("/root/MainMenuController")
+
 signal level_selected(level_data: LevelData)
 signal level_completed(level_id: int, stars: int)
 signal levels_loaded(levels: Array)
@@ -9,6 +11,7 @@ var current_level_data: LevelData
 var current_level_view: Node
 var player: Node
 var all_levels: Array[LevelData] = []
+
 
 func _ready() -> void:
 	load_all_levels()
@@ -78,6 +81,11 @@ func get_random_object_with_chance(objects_dict: Dictionary) -> String:
 			return object_type
 	
 	return objects_dict.keys()[0]
+
+func exit_to_mani_menu():
+	#SaveMenager.save_game()
+	get_tree().change_scene_to_file(main_menu.get_main_menu_scene())
+	
 
 func _on_player_destroyed() -> void:
 	await get_tree().create_timer(1.0).timeout

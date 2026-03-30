@@ -4,5 +4,11 @@
 
 [resource]
 script = ExtResource("1_a4vik")
-level_scene = "res://Scripts/levels/level_scenes/level_1.tscn"
+level_info = {
+"Level1": {
+"level_id": 0,
+"level_name": "Уровень 1",
+"stars_count": 2
+}
+}
 metadata/_custom_type_script = "uid://gpvxauv701we"
