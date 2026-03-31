@@ -83,9 +83,17 @@ func get_random_object_with_chance(objects_dict: Dictionary) -> String:
 	return objects_dict.keys()[0]
 
 func exit_to_mani_menu():
-	#SaveMenager.save_game()
 	get_tree().change_scene_to_file(main_menu.get_main_menu_scene())
+
+func register_enemy(enemy_controller: EnemyController) -> void:
+	if not enemy_controller.enemy_destroy.is_connected(_on_enemy_killed):
+		enemy_controller.enemy_destroy.connect(_on_enemy_killed)
+		print_debug("Сигнал подключен")
 	
+func _on_enemy_killed(enemy_type: String):
+	print_debug("Враг убит!")
+	SaveMenager.add_kill(current_level_data.get_level_id(), enemy_type)
+	SaveMenager.save_game()
 
 func _on_player_destroyed() -> void:
 	await get_tree().create_timer(1.0).timeout

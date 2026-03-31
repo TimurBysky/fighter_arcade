@@ -1,14 +1,16 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cpxdqijh2cx3h"]
 
-[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_a4vik"]
+[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_uh0lf"]
 
 [resource]
-script = ExtResource("1_a4vik")
+script = ExtResource("1_uh0lf")
+spawn_interval = 0.2
+level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
 level_info = {
 "Level1": {
 "level_id": 0,
 "level_name": "Уровень 1",
-"stars_count": 2
+"stars_count": 0
 }
 }
 metadata/_custom_type_script = "uid://gpvxauv701we"

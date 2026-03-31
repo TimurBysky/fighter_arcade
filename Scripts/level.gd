@@ -51,7 +51,9 @@ func create_object() -> void:
 	var instance = load(scene_path).instantiate()
 	instance.global_position = level_controller.get_random_position(level_model.get_spawn_positions())
 	add_child(instance)
-
+	if instance.is_in_group("Enemy"):
+		level_controller.register_enemy(instance.controller)
+		
 func show_defeat_screen() -> void:
 	UI.visible = true
 

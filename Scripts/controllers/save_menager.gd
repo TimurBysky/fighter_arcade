@@ -2,7 +2,8 @@
 extends Node
 
 var save_data: PlayerSaveData
-const SAVE_PATH = "res://Saves/"
+#const SAVE_PATH = "user://save_data.tres"
+const SAVE_PATH = "res://Scripts/models/player/Saves/player_save_data.tres"
 
 signal data_updated
 
@@ -23,18 +24,11 @@ func load_game() -> void:
 	data_updated.emit()
 
 func save_game() -> void:
-	ResourceSaver.save(save_data, SAVE_PATH)
-
-func unlock_level(level_data: LevelData) -> void:
-	var level_info = level_data.get_level_info().values()[0]
-	save_data.unlock_level(level_info)
-	save_game()
-	data_updated.emit()
-
-func add_star(level_id: int) -> void:
-	save_data.add_star(level_id)
-	save_game()
-	data_updated.emit()
+	var error = ResourceSaver.save(save_data, SAVE_PATH)
+	if error == OK:
+		print("Сохранено в: ", SAVE_PATH)
+	else:
+		print("Ошибка сохранения: ", error)
 
 func get_level_progress(level_id: int) -> Dictionary:
 	return save_data.get_level_progress(level_id)
@@ -44,3 +38,19 @@ func get_total_stars() -> int:
 
 func is_level_unlocked(level_id: int) -> bool:
 	return save_data.is_level_unlocked(level_id)
+
+func unlock_level(level_data: LevelData) -> void:
+	var level_info = level_data.get_level_info().values()[0]
+	save_data.unlock_level(level_info)
+	save_game()
+	data_updated.emit()
+
+func add_kill(level_id: int, enemy_type: String) -> void:
+	save_data.add_kill(level_id, enemy_type)
+	save_game()
+	data_updated.emit()
+
+func add_star(level_id: int) -> void:
+	save_data.add_star(level_id)
+	save_game()
+	data_updated.emit()

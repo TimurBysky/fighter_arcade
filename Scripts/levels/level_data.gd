@@ -16,16 +16,24 @@ const SPAWN_POSITIONS = {
 	"ammo_crate" : {"chance" : 20, "scene": "res://Scenes/ammo.tscn"},
 	"health_pill": {"chance" : 20, "scene": "res://Scenes/health.tscn"}
 }
-@export var level_info: Dictionary = {\
-	"Level1":{\
-		"level_id": 0,
-		"level_name": "Уровень 1",
-		"stars_count": 0
-	}
-	
-}
+
+@export var level_info: Dictionary = {}
+#{\
+	#"Level1":{\
+		#"level_id": 0,
+		#"level_name": "Уровень 1",
+		#"stars_count": 0,
+		#"killed" :{\
+		#},
+		#"best_time" : 0
+	#}
+#}
 
 var is_unlocked: bool
+
+func get_level_id() -> int:
+	var level_data = level_info.values()[0]
+	return level_data["level_id"]
 
 func get_objects() -> Dictionary:
 	return object_list

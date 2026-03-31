@@ -22,21 +22,20 @@ func setup(level: LevelData, progress: Dictionary, level_controller: LevelContro
 	level_data = level
 	level_progress = progress
 	controller = level_controller
-	await ready
-	update_display()
+	await ready #функция setup может быть вызван раньше чем ready  
+	update_display()#поэтому ждём, т.к. элементы могли не успеть инициализироваться
 
 func update_display() -> void:
 	var level_info = level_data.get_level_info().values()[0]
 	
 	# Название уровня
-	await level_name.ready
 	level_name.text = "Тест"
 	print_debug("Информация об уровне: ", level_info["level_name"])
 	# Проверяем, открыт ли уровень
 	var is_unlocked = not level_progress.is_empty()
 	
 	if is_unlocked:
-		start_button.disabled = false
+		start_button.disabled = true
 		# Обновляем звезды
 		var stars_earned = level_progress.get("stars_count", 0)
 		update_stars(stars_earned)

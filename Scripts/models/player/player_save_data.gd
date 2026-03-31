@@ -25,6 +25,19 @@ func add_star(level_id: int) -> void:
 			total_stars_count += 1
 			break
 
+
+func add_kill(level_id: int, enemy_type: String) -> void:
+	var key = str(level_id)
+	if unlocked_levels.has(key):
+		if not unlocked_levels[key].has("killed"):
+			unlocked_levels[key]["killed"] = {}
+		
+		if not unlocked_levels[key]["killed"].has(enemy_type):
+			unlocked_levels[key]["killed"][enemy_type] = 0
+		
+		unlocked_levels[key]["killed"][enemy_type] += 1
+		print("Убит %s! Всего: %d" % [enemy_type, unlocked_levels[key]["killed"][enemy_type]])
+
 func unlock_level(level_info: Dictionary) -> void:
 	# Получаем level_id из переданного словаря
 	var level_id = level_info.get("level_id", -1)

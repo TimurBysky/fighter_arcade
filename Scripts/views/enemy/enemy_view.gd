@@ -14,7 +14,6 @@ func _ready() -> void:
 	add_child(controller)
 	
 	area3D.body_entered.connect(controller.handle_collision)
-	controller.enemy_destroy.connect(destroy)
 	controller.take_damage.connect(update_health_bar)
 	
 	var model = EnemyFactory.create_enemy()
