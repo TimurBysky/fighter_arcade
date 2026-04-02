@@ -48,19 +48,19 @@ text = "START"
 [node name="Stars_container" type="HBoxContainer" parent="VBoxContainer" unique_id=1566554239]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1664384867]
+[node name="star1" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1664384867]
 custom_minimum_size = Vector2(38, 33)
 layout_mode = 2
 texture = ExtResource("2_rsedf")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=546676799]
+[node name="star2" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=546676799]
 custom_minimum_size = Vector2(38, 33)
 layout_mode = 2
 texture = ExtResource("2_rsedf")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1872873648]
+[node name="star3" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1872873648]
 custom_minimum_size = Vector2(38, 33)
 layout_mode = 2
 texture = ExtResource("2_rsedf")

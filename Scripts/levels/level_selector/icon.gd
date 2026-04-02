@@ -5,9 +5,10 @@ class_name LevelIcon
 @onready var picture: TextureRect = $VBoxContainer/Picture
 @onready var level_name: Label = $VBoxContainer/Level_name
 @onready var start_button: Button = $VBoxContainer/Start_button
-@onready var star1: TextureRect = $VBoxContainer/HBoxContainer/Star1
-@onready var star2: TextureRect = $VBoxContainer/HBoxContainer/Star2
-@onready var star3: TextureRect = $VBoxContainer/HBoxContainer/Star3
+@onready var star_1: TextureRect = $VBoxContainer/Stars_container/star1
+@onready var star_2: TextureRect = $VBoxContainer/Stars_container/star2
+@onready var star_3: TextureRect = $VBoxContainer/Stars_container/star3
+
 @onready var controller = get_node("/root/LevelController")
 
 var level_data: LevelData
@@ -22,20 +23,19 @@ func setup(level: LevelData, progress: Dictionary, level_controller: LevelContro
 	level_data = level
 	level_progress = progress
 	controller = level_controller
-	await ready #функция setup может быть вызван раньше чем ready  
 	update_display()#поэтому ждём, т.к. элементы могли не успеть инициализироваться
+	print_debug("Иконка готова!")
 
 func update_display() -> void:
 	var level_info = level_data.get_level_info().values()[0]
 	
 	# Название уровня
-	level_name.text = "Тест"
-	print_debug("Информация об уровне: ", level_info["level_name"])
+	level_name.text = level_info["level_name"]
 	# Проверяем, открыт ли уровень
 	var is_unlocked = not level_progress.is_empty()
 	
 	if is_unlocked:
-		start_button.disabled = true
+		start_button.disabled = false
 		# Обновляем звезды
 		var stars_earned = level_progress.get("stars_count", 0)
 		update_stars(stars_earned)
@@ -45,7 +45,7 @@ func update_display() -> void:
 		modulate = Color(0.5, 0.5, 0.5)
 
 func update_stars(stars_earned: int) -> void:
-	var stars = [star1, star2, star3]
+	var stars = [star_1, star_2, star_3]
 	
 	for i in range(stars.size()):
 		if i < stars_earned:
