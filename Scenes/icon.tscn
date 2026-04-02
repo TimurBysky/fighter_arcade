@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://4ejwyjn8hgej" path="res://Assets/star_outline.png" id="2_rsedf"]
 
 [node name="icon" type="Control" unique_id=2042154271]
-custom_minimum_size = Vector2(128, 120)
+custom_minimum_size = Vector2(128, 252)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,13 +54,13 @@ layout_mode = 2
 texture = ExtResource("2_rsedf")
 expand_mode = 1
 
-[node name="star2" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=546676799]
+[node name="star2" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=109363087]
 custom_minimum_size = Vector2(38, 33)
 layout_mode = 2
 texture = ExtResource("2_rsedf")
 expand_mode = 1
 
-[node name="star3" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1872873648]
+[node name="star3" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=314887299]
 custom_minimum_size = Vector2(38, 33)
 layout_mode = 2
 texture = ExtResource("2_rsedf")

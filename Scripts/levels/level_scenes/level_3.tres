@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://is5n1v6723tn"]
+
+[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_ypvqq"]
+
+[resource]
+script = ExtResource("1_ypvqq")
+spawn_interval = 0.2
+level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
+level_info = {
+"Level2": {
+"killed": {},
+"level_id": 2,
+"level_name": "Уровень 3",
+"stars_count": 0
+},
+"best_time": 0
+}
+metadata/_custom_type_script = "uid://gpvxauv701we"

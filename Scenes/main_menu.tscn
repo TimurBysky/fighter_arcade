@@ -107,7 +107,7 @@ theme_override_constants/margin_bottom = 150
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-columns = 3
+columns = 6
 
 [node name="Sketchfab_Scene" parent="." unique_id=1674326903 instance=ExtResource("1_28flt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

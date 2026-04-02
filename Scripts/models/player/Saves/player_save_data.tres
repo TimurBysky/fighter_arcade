@@ -1,16 +1,14 @@
-[gd_resource type="Resource" script_class="PlayerSaveData" format=3]
+[gd_resource type="Resource" script_class="PlayerSaveData" format=3 uid="uid://llgq7kjboqog"]
 
-[ext_resource type="Script" path="res://Scripts/models/player/player_save_data.gd" id="1_dvpco"]
+[ext_resource type="Script" uid="uid://xakmdxf7dkm" path="res://Scripts/models/player/player_save_data.gd" id="1_dvpco"]
 
 [resource]
 script = ExtResource("1_dvpco")
 unlocked_levels = {
 "0": {
-"killed": {
-"enemy_light_plane": 9
+"stars_count": 0
 },
-"level_id": 0,
-"level_name": "Уровень 1",
+"1": {
 "stars_count": 0
 }
 }

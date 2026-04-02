@@ -38,6 +38,7 @@ func update_display() -> void:
 		start_button.disabled = false
 		# Обновляем звезды
 		var stars_earned = level_progress.get("stars_count", 0)
+		print_debug("Звёзд: ",stars_earned)
 		update_stars(stars_earned)
 	else:
 		start_button.disabled = true
