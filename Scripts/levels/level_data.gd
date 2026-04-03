@@ -9,7 +9,7 @@ const SPAWN_POSITIONS = {
 	"right": Vector3(-27, 0, 8)
 }
 
-@export var level_id: int = 0
+@export var level_id: int
 @export var level_name: String = "Уровень"
 @export var level_scene: String = "res://Scripts/levels/level_scenes/level_1.tscn"
 @export var spawn_interval: float = 2.0

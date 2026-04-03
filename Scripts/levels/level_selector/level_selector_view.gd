@@ -37,7 +37,7 @@ func generate_level_icons(levels: Array[LevelData]) -> void:
 	# Создаем иконку для каждого уровня
 	for level in levels:
 		var level_id = level.get_level_id()
-		print_debug("Создана иконка!")
+		print_debug("Провеяем уровень ", level_id)
 		# Получаем прогресс уровня из сохранений
 		var progress = save_manager.get_level_progress(level_id)
 		

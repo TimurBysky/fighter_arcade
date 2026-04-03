@@ -4,15 +4,8 @@
 
 [resource]
 script = ExtResource("1_adfvd")
-spawn_interval = 0.2
+level_id = 3
+level_name = "Уровень 4"
 level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
-level_info = {
-"Level2": {
-"killed": {},
-"level_id": 3,
-"level_name": "Уровень 4",
-"stars_count": 0
-},
-"best_time": 0
-}
+spawn_interval = 0.2
 metadata/_custom_type_script = "uid://gpvxauv701we"

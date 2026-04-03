@@ -60,5 +60,6 @@ func is_level_unlocked(level_id: int) -> bool:
 
 func get_level_progress(level_id: int) -> Dictionary:
 	if is_level_unlocked(level_id):
+		print_debug("Информация об уровне: ",unlocked_levels[str(level_id)])
 		return unlocked_levels[str(level_id)]
 	return {}

@@ -27,10 +27,10 @@ func setup(level: LevelData, progress: Dictionary, level_controller: LevelContro
 	print_debug("Иконка готова!")
 
 func update_display() -> void:
-	var level_name = level_data.get_level_name()
+	var _level_name = level_data.get_level_name()
 	
 	# Название уровня
-#	level_name.text = level_name
+	level_name.text = _level_name
 	# Проверяем, открыт ли уровень
 	var is_unlocked = not level_progress.is_empty()
 	
