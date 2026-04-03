@@ -6,6 +6,9 @@
 script = ExtResource("1_dvpco")
 unlocked_levels = {
 "0": {
+"killed": {
+"enemy_light_plane": 6
+},
 "stars_count": 0
 },
 "1": {

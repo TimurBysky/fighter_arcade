@@ -32,7 +32,7 @@ func load_all_levels() -> void:
 				var level_data = load(level_path)
 				if level_data is LevelData:
 					all_levels.append(level_data)
-					print("Загружен уровень: ", level_data.get_level_info().values()[0]["level_name"])
+					#print("Загружен уровень: ", level_data.get_level_info().values()[0]["level_name"])
 			
 			file_name = dir.get_next()
 		
@@ -40,7 +40,7 @@ func load_all_levels() -> void:
 	
 	# Сортируем по ID
 	all_levels.sort_custom(func(a, b): 
-		return a.get_level_info().values()[0]["level_id"] < b.get_level_info().values()[0]["level_id"]
+		return a.get_level_id() < b.get_level_id()
 	)
 	print_debug("Загружены уровни: ", all_levels)
 	levels_loaded.emit(all_levels)
@@ -58,8 +58,8 @@ func init_player(player_node: Node) -> void:
 
 func start_level(level_data: LevelData) -> void:
 	current_level_data = level_data
-	var info = level_data.get_level_info().values()[0]
-	print("START LEVEL: ", info["level_name"])
+	var level_name = level_data.get_level_name()
+	print("START LEVEL: ", level_name)
 	print("SCENE PATH: ", level_data.level_scene)
 	get_tree().change_scene_to_file(level_data.level_scene)
 
@@ -102,6 +102,5 @@ func _on_player_destroyed() -> void:
 
 func complete_level(stars: int) -> void:
 	if current_level_data:
-		var level_info = current_level_data.get_level_info().values()[0]
-		var level_id = level_info["level_id"]
+		var level_id = current_level_data.get_level_id()
 		level_completed.emit(level_id, stars)

@@ -17,8 +17,8 @@ func load_game() -> void:
 		save_data = PlayerSaveData.new()
 		# Открываем первый уровень
 		var first_level = load("res://Scripts/levels/level_scenes/level_1.tres")
-		var level_info = first_level.get_level_info().values()[0]
-		save_data.unlock_level(level_info)
+		var level_id = first_level.get_level_id()
+		save_data.unlock_level(level_id)
 		save_game()
 	
 	data_updated.emit()
@@ -39,9 +39,8 @@ func get_total_stars() -> int:
 func is_level_unlocked(level_id: int) -> bool:
 	return save_data.is_level_unlocked(level_id)
 
-func unlock_level(level_data: LevelData) -> void:
-	var level_info = level_data.get_level_info().values()[0]
-	save_data.unlock_level(level_info)
+func unlock_level(level_id: int) -> void:
+	save_data.unlock_level(level_id)
 	save_game()
 	data_updated.emit()
 

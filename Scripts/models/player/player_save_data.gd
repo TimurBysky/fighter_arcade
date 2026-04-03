@@ -38,17 +38,18 @@ func add_kill(level_id: int, enemy_type: String) -> void:
 		unlocked_levels[key]["killed"][enemy_type] += 1
 		print("Убит %s! Всего: %d" % [enemy_type, unlocked_levels[key]["killed"][enemy_type]])
 
-func unlock_level(level_info: Dictionary) -> void:
+func unlock_level(level_id: int) -> void:
 	# Получаем level_id из переданного словаря
-	var level_id = level_info.get("level_id", -1)
-	
+
 	if level_id == -1:
 		print("Ошибка: level_id не найден")
 		return
 	
-	# Используем level_id как ключ
-	unlocked_levels[str(level_id)] = level_info
-	
+	var level_data = {}
+	level_data["stars_count"] = 0
+
+	# Добавляем его в основной словарь
+	unlocked_levels[level_id] = level_data
 	# Если уровень уже был открыт, не увеличиваем счетчик
 	if not is_level_unlocked(level_id):
 		print("Уровень %d открыт!" % level_id)

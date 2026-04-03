@@ -9,37 +9,27 @@ const SPAWN_POSITIONS = {
 	"right": Vector3(-27, 0, 8)
 }
 
-@export var spawn_interval: float = 2.0
+@export var level_id: int = 0
+@export var level_name: String = "Уровень"
 @export var level_scene: String = "res://Scripts/levels/level_scenes/level_1.tscn"
+@export var spawn_interval: float = 2.0
 @export var object_list = {
 	"enemy_light_plane": {"chance" : 60, "scene": "res://Scenes/enemy.tscn"},
 	"ammo_crate" : {"chance" : 20, "scene": "res://Scenes/ammo.tscn"},
 	"health_pill": {"chance" : 20, "scene": "res://Scenes/health.tscn"}
 }
 
-@export var level_info: Dictionary = {}
-#{\
-	#"Level1":{\
-		#"level_id": 0,
-		#"level_name": "Уровень 1",
-		#"stars_count": 0,
-		#"killed" :{\
-		#},
-		#"best_time" : 0
-	#}
-#}
-
-var is_unlocked: bool
-
 func get_level_id() -> int:
-	var level_data = level_info.values()[0]
-	return level_data["level_id"]
+	return level_id
+	
+func get_level_name() -> String:
+	return level_name
+	
+func get_level_scene() -> String:
+	return level_scene
 
 func get_objects() -> Dictionary:
 	return object_list
 
 func get_spawn_positions() -> Dictionary:
 	return SPAWN_POSITIONS
-
-func get_level_info() -> Dictionary:
-	return level_info
