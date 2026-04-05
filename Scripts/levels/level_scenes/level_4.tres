@@ -8,4 +8,18 @@ level_id = 3
 level_name = "Уровень 4"
 level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
 spawn_interval = 0.2
+object_list = {
+"ammo_crate": {
+"chance": 20,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_light_plane": {
+"chance": 60,
+"scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
+},
+"health_pill": {
+"chance": 20,
+"scene": "res://Scenes/health.tscn"
+}
+}
 metadata/_custom_type_script = "uid://gpvxauv701we"

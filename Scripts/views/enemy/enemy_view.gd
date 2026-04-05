@@ -3,8 +3,8 @@ class_name EnemyView
 
 @onready var area3D = $Area3D
 @onready var ui = $HealthBar
+@export var current_model: EnemyData = load("res://Scripts/models/enemy/enemy_data.tres")
 var controller: EnemyController
-
 
 var is_alive = true
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 	area3D.body_entered.connect(controller.handle_collision)
 	controller.take_damage.connect(update_health_bar)
 	
-	var model = EnemyFactory.create_enemy()
+	var model = EnemyFactory.create_enemy(current_model)
 	controller.setup(self, model)
 	
 	collision_mask = 0

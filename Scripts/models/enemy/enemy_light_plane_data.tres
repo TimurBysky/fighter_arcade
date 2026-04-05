@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://c4gclvm8wcuod"]
+
+[ext_resource type="Script" uid="uid://h3nega2lwani" path="res://Scripts/models/enemy/enemy_data.gd" id="1_gri2l"]
+
+[resource]
+script = ExtResource("1_gri2l")
+speed = 4.0
+max_health = 3
+metadata/_custom_type_script = "uid://h3nega2lwani"

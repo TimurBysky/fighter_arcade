@@ -7,5 +7,27 @@ script = ExtResource("1_cg23w")
 level_id = 1
 level_name = "Уровень 2"
 level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
-spawn_interval = 0.2
+spawn_interval = 0.7
+object_list = {
+"ammo_crate": {
+"chance": 10,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_light_plane": {
+"chance": 40,
+"scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
+},
+"enemy_medium_plane": {
+"chance": 20,
+"scene": "res://Scenes/Enemies/enemy_medium_plane.tscn"
+},
+"health_pill": {
+"chance": 20,
+"scene": "res://Scenes/health.tscn"
+},
+"spread_bonus": {
+"chance": 10,
+"scene": "res://Scenes/shoot_bonus.tscn"
+}
+}
 metadata/_custom_type_script = "uid://gpvxauv701we"
