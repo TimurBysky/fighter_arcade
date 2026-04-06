@@ -18,6 +18,7 @@ func shoot_by_(owner: String = "player"):
 			collision_layer = 4
 		"enemy":
 			collision_layer = 16
+			speed = 5.0
 	
 func _process(delta: float) -> void:
 	velocity = direction * speed
