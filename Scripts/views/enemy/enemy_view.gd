@@ -21,8 +21,6 @@ func _ready() -> void:
 	var model = EnemyFactory.create_enemy(current_model)
 	controller.setup(self, model)
 	
-	shoot_timer.start(model.fire_rate)
-	shoot_timer.timeout.connect(shoot)
 	collision_mask = 0
 	collision_layer = 2
 	area3D.collision_mask = 4
@@ -38,7 +36,7 @@ func _process(delta: float) -> void:
 func update_health_bar(current_health: int, max_health: int):
 	ui.update_health(current_health, max_health)
 	
-func shoot():
+func shooting_effect():
 	var angle = 180
 
 	var instance = tracer_scene.instantiate() as Tracer

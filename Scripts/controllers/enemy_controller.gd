@@ -1,7 +1,7 @@
 extends Node
 class_name EnemyController
 
-
+var Shoot_timer: Timer
 var model: EnemyData
 var view: Node
 var shoot_cooldown: bool
@@ -14,6 +14,12 @@ func setup(enemy_view: CharacterBody3D, enemy_model: EnemyData):
 	model = enemy_model
 	view = enemy_view
 	
+	Shoot_timer = Timer.new()
+	Shoot_timer.start(model.fire_rate)
+	Shoot_timer.autostart = true
+	Shoot_timer.timeout.connect(shoot)
+	add_child(Shoot_timer)
+	print_debug("Таймер врага: ", Shoot_timer.time_left)
 	model.enemy_died.connect(_on_enemy_died)
 	
 func moving() -> Vector3:
@@ -21,7 +27,13 @@ func moving() -> Vector3:
 	movement.x = model.speed
 	
 	return movement
-
+	
+func shoot():
+	if !model.is_alive():
+		return
+		
+	if view.has_method("shooting_effect"):
+		view.shooting_effect()
 
 func handle_collision(other_body: Node) -> void:
 	if not view or not view.is_alive:
