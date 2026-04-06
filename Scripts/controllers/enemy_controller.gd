@@ -15,9 +15,10 @@ func setup(enemy_view: CharacterBody3D, enemy_model: EnemyData):
 	view = enemy_view
 	
 	Shoot_timer = Timer.new()
-	Shoot_timer.start(model.fire_rate)
-	Shoot_timer.autostart = true
 	Shoot_timer.timeout.connect(shoot)
+	Shoot_timer.wait_time = model.fire_rate
+	Shoot_timer.autostart = true 
+	Shoot_timer.one_shot = false
 	add_child(Shoot_timer)
 	print_debug("Таймер врага: ", Shoot_timer.time_left)
 	model.enemy_died.connect(_on_enemy_died)

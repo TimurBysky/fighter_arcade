@@ -126,6 +126,12 @@ func handle_collision(other_body: Node) -> void:
 			view.update_health_display(model.current_health, model.max_health)
 		if view.has_method("play_hit_effect"):
 			view.play_hit_effect()
+	elif other_body.is_in_group("bullets"):
+		model.take_damage(1)
+		if view.has_method("update_health_display"):
+			view.update_health_display(model.current_health, model.max_health)
+		if view.has_method("play_hit_effect"):
+			view.play_hit_effect()
 	
 	# Уничтожаем объект, с которым столкнулись
 	print_debug("Столкновение с ",other_body, " слой : ", other_body.collision_layer)

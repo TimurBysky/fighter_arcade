@@ -12,6 +12,10 @@ radius = 0.7558594
 height = 2.5636597
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l3gly"]
+size = Vector3(1, 0.9268799, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6p8wg"]
+radius = 0.43455192
 
 [node name="Fighter" type="Node3D" unique_id=760376573]
 script = ExtResource("1_3dnt7")
@@ -33,6 +37,11 @@ disabled = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D" unique_id=683919915]
 transform = Transform3D(-8.742277e-08, -2, 0, 1.9999999, -8.742278e-08, 0, 0, 0, 1.9999999, 0.19454956, 8.504031e-09, 0)
 shape = SubResource("BoxShape3D_l3gly")
+
+[node name="Area3D_for_Bullets" type="Area3D" parent="CharacterBody3D" unique_id=92824862]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D_for_Bullets" unique_id=1158511538]
+shape = SubResource("SphereShape3D_6p8wg")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1195417779]
 transform = Transform3D(1.8126126e-08, -0.41467735, 0.9099685, -3.9775983e-08, 0.9099685, 0.41467735, -1, -4.3711385e-08, 3.5527137e-15, 2, 2, 0)

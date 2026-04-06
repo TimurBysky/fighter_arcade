@@ -6,6 +6,7 @@ class_name PlayerView
 @onready var fighter: CharacterBody3D = $CharacterBody3D
 @onready var fighter_model: Node3D = $CharacterBody3D/Fighter_Model
 @onready var area_3d: Area3D = $CharacterBody3D/Area3D
+@onready var area_3d_for_bullets: Area3D = $CharacterBody3D/Area3D_for_Bullets
 @onready var tracer_scene = preload("res://Scenes/tracer.tscn")
 
 # UI элементы (если есть)
@@ -23,7 +24,9 @@ func _ready() -> void:
 	# Подключаем сигналы Area3D
 	fighter.collision_layer = 1
 	area_3d.body_entered.connect(_on_body_entered)
-	area_3d.collision_mask = 26
+	area_3d_for_bullets.body_entered.connect(_on_body_entered)
+	area_3d.collision_mask = 10
+	area_3d_for_bullets.collision_mask = 16
 	
 	# Регистрируем себя в контроллере
 	var player_model = load("res://Scripts/models/player/player_data.tres")

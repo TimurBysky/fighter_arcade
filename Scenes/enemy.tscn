@@ -31,5 +31,3 @@ script = ExtResource("2_afpow")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1057668, 0)
 billboard = 1
 texture = ExtResource("2_1f0kj")
-
-[node name="Shoot_timer" type="Timer" parent="." unique_id=1919489183]
