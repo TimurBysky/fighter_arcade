@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var bonus_damage_multiplyer = 2.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	collision_layer = 4
+	collision_layer = 8
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

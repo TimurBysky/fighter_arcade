@@ -128,6 +128,8 @@ func handle_collision(other_body: Node) -> void:
 			view.play_hit_effect()
 	
 	# Уничтожаем объект, с которым столкнулись
+	print_debug("Столкновение с ",other_body, " слой : ", other_body.collision_layer)
+	
 	if other_body.has_method("destroy"):
 		other_body.destroy()
 

@@ -21,8 +21,9 @@ func _ready() -> void:
 	controller = get_node("/root/PlayerController")
 	
 	# Подключаем сигналы Area3D
+	fighter.collision_layer = 1
 	area_3d.body_entered.connect(_on_body_entered)
-	area_3d.collision_mask = 3 | 4
+	area_3d.collision_mask = 26
 	
 	# Регистрируем себя в контроллере
 	var player_model = load("res://Scripts/models/player/player_data.tres")
@@ -59,7 +60,7 @@ func shot_effect(params: Dictionary = {}) -> void:
 		angles = [-25, 0, 25]
 		
 	for angle in angles:
-		var instance = tracer_scene.instantiate()
+		var instance = tracer_scene.instantiate() as Tracer
 		var angle_rad = deg_to_rad(angle)
 		
 		# Движение влево с отклонением по Z (горизонталь)
@@ -70,7 +71,7 @@ func shot_effect(params: Dictionary = {}) -> void:
 		instance.global_position = fighter.global_position + Vector3(-1, 0, 0)
 		instance.damage = damage_multiplier
 		add_child(instance)
-	
+		instance.shoot_by_("player")
 	
 	# Воспроизводим звук выстрела
 	if $ShootSound:

@@ -1,8 +1,10 @@
 extends Node
 class_name EnemyController
 
+
 var model: EnemyData
 var view: Node
+var shoot_cooldown: bool
 # Called when the node enters the scene tree for the first time.
 
 signal enemy_destroy(enemy_type: String)
@@ -19,6 +21,7 @@ func moving() -> Vector3:
 	movement.x = model.speed
 	
 	return movement
+
 
 func handle_collision(other_body: Node) -> void:
 	if not view or not view.is_alive:

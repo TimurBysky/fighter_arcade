@@ -1,9 +1,11 @@
 extends CharacterBody3D
 class_name EnemyView
 
+@export var current_model: EnemyData = load("res://Scripts/models/enemy/enemy_data.tres")
+@onready var shoot_timer: Timer = $Shoot_timer
 @onready var area3D = $Area3D
 @onready var ui = $HealthBar
-@export var current_model: EnemyData = load("res://Scripts/models/enemy/enemy_data.tres")
+@onready var tracer_scene = preload("res://Scenes/tracer.tscn")
 var controller: EnemyController
 
 var is_alive = true
@@ -19,9 +21,11 @@ func _ready() -> void:
 	var model = EnemyFactory.create_enemy(current_model)
 	controller.setup(self, model)
 	
+	shoot_timer.start(model.fire_rate)
+	shoot_timer.timeout.connect(shoot)
 	collision_mask = 0
 	collision_layer = 2
-	area3D.collision_mask = 2
+	area3D.collision_mask = 4
 	 
 func _process(delta: float) -> void:
 
@@ -34,6 +38,21 @@ func _process(delta: float) -> void:
 func update_health_bar(current_health: int, max_health: int):
 	ui.update_health(current_health, max_health)
 	
+func shoot():
+	var angle = 180
+
+	var instance = tracer_scene.instantiate() as Tracer
+	var angle_rad = deg_to_rad(angle)
+	
+	# Движение влево с отклонением по Z (горизонталь)
+	var direction = Vector3(-cos(angle_rad), 0, sin(angle_rad))
+	direction = direction.normalized()
+	
+	instance.direction = direction
+	add_child(instance)
+	instance.shoot_by_("enemy")
+
+
 func destroy():
 	if not is_alive:
 		return
