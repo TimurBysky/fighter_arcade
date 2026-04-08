@@ -2,6 +2,7 @@
 extends Node
 
 @onready var main_menu = get_node("/root/MainMenuController")
+var spawn_timer: Timer
 
 signal level_selected(level_data: LevelData)
 signal level_completed(level_id: int, stars: int)
@@ -15,6 +16,22 @@ var all_levels: Array[LevelData] = []
 
 func _ready() -> void:
 	load_all_levels()
+	
+	
+func start_timer():
+	spawn_timer = Timer.new()
+	spawn_timer.timeout.connect(_create_object)
+	spawn_timer.wait_time = current_level_data.spawn_interval
+	spawn_timer.autostart = true
+	add_child(spawn_timer)
+
+func _create_object():
+	if !current_level_view:
+		pass
+	
+	if current_level_view.has_method("create_object"):
+		current_level_view.create_object()
+	
 
 func load_all_levels() -> void:
 	all_levels.clear()
@@ -62,6 +79,7 @@ func start_level(level_data: LevelData) -> void:
 	print("START LEVEL: ", level_name)
 	print("SCENE PATH: ", level_data.level_scene)
 	get_tree().change_scene_to_file(level_data.level_scene)
+	start_timer()
 
 func get_current_level_data() -> LevelData:
 	return current_level_data

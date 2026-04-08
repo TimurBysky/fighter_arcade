@@ -20,13 +20,6 @@ func _ready() -> void:
 		print("Ошибка: данные уровня не загружены!")
 		return
 	
-	#print("Загружен уровень: ", level_model.get_level_info().values()[0]["level_name"])
-	
-	# Настройка уровня
-	spawn_timer.timeout.connect(create_object)
-	spawn_timer.wait_time = level_model.spawn_interval
-	spawn_timer.start()
-	
 	level_controller.setup(self)
 	if player:
 		level_controller.init_player(player_controller)
