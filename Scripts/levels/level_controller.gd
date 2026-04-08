@@ -147,7 +147,8 @@ func _on_enemy_killed(enemy_type: String, score: int):
 				print_debug("ДОБАВЛЕНА ЗВЕЗДА! Кол-во звёзд на уровне: ",  current_stars)
 		
 	SaveMenager.save_game()
-
+	
+#TODO сделать reset поля current_score 
 
 func _on_player_destroyed() -> void:
 	await get_tree().create_timer(1.0).timeout
