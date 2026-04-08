@@ -7,7 +7,7 @@ var view: Node
 var shoot_cooldown: bool
 # Called when the node enters the scene tree for the first time.
 
-signal enemy_destroy(enemy_type: String)
+signal enemy_destroy(enemy_type: String, score: int)
 signal take_damage(current_health: int, max_health: int)
 
 func setup(enemy_view: CharacterBody3D, enemy_model: EnemyData):
@@ -49,4 +49,4 @@ func handle_collision(other_body: Node) -> void:
 func _on_enemy_died(enemy_type: String):
 	if view.has_method("destroy"):
 		view.destroy()
-	enemy_destroy.emit(enemy_type)
+	enemy_destroy.emit(enemy_type, enemy_type)

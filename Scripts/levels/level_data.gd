@@ -25,6 +25,9 @@ func get_level_id() -> int:
 	
 func get_level_name() -> String:
 	return level_name
+
+func get_level_max_score():
+	return max_score
 	
 func get_level_scene() -> String:
 	return level_scene

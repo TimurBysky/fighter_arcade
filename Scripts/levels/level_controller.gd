@@ -26,8 +26,8 @@ func start_timer():
 	add_child(spawn_timer)
 
 func _create_object():
-	if !current_level_view:
-		pass
+	if not is_instance_valid(current_level_view):
+			return
 	
 	if current_level_view.has_method("create_object"):
 		current_level_view.create_object()
@@ -108,10 +108,27 @@ func register_enemy(enemy_controller: EnemyController) -> void:
 		enemy_controller.enemy_destroy.connect(_on_enemy_killed)
 		print_debug("Сигнал подключен")
 	
-func _on_enemy_killed(enemy_type: String):
+func _on_enemy_killed(enemy_type: String, score: int):
 	print_debug("Враг убит!")
 	SaveMenager.add_kill(current_level_data.get_level_id(), enemy_type)
+	SaveMenager.add_score(current_level_data.get_level_id(), score)
+	calculate_stars()
 	SaveMenager.save_game()
+
+func calculate_stars():
+	var level_id = current_level_data.get_level_id()
+	var current_score = SaveMenager.get_current_score(level_id)
+	var max_score = current_level_data.get_level_max_score()
+	var step = max_score / 3.0  # шаг для одной звезды
+	
+	if current_score >= max_score:
+		SaveMenager.add_star(level_id)
+	elif current_score >= step * 2:
+		return 2
+	elif current_score >= step:
+		return 1
+	else:
+		return 0
 
 func _on_player_destroyed() -> void:
 	await get_tree().create_timer(1.0).timeout

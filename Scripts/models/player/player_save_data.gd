@@ -25,7 +25,6 @@ func add_star(level_id: int) -> void:
 			total_stars_count += 1
 			break
 
-
 func add_kill(level_id: int, enemy_type: String) -> void:
 	var key = str(level_id)
 	if unlocked_levels.has(key):
@@ -37,6 +36,15 @@ func add_kill(level_id: int, enemy_type: String) -> void:
 		
 		unlocked_levels[key]["killed"][enemy_type] += 1
 		print("Убит %s! Всего: %d" % [enemy_type, unlocked_levels[key]["killed"][enemy_type]])
+
+func add_score(level_id: int, score: int):
+	var key = str(level_id)
+	if unlocked_levels.has(key):
+		if not unlocked_levels[key].has("current_score"):
+			unlocked_levels[key]["current_score"] = {}
+		
+		unlocked_levels[key]["current_score"] += score
+		print("Добавлено очков: ", unlocked_levels[key]["current_score"])
 
 func unlock_level(level_id: int) -> void:
 	# Получаем level_id из переданного словаря
@@ -63,3 +71,11 @@ func get_level_progress(level_id: int) -> Dictionary:
 		print_debug("Информация об уровне: ",unlocked_levels[str(level_id)])
 		return unlocked_levels[str(level_id)]
 	return {}
+
+func get_current_level_score(level_id: int) -> int:
+	if is_level_unlocked(level_id):
+		var key = str(level_id)
+		if unlocked_levels.has(key):
+			if unlocked_levels[key].has("current_score"):
+				return unlocked_levels[key]["current_score"]
+	return 0

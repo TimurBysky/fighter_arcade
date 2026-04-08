@@ -4,6 +4,7 @@ class_name EnemyData
 @export var speed = 5.0
 @export var max_health: int = 5
 @export var enemy_type: String = "enemy_light_plane"
+@export var score: int = 100
 @export var fire_rate: float = 2.0
 var current_health: int
 

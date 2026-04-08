@@ -35,6 +35,9 @@ func get_level_progress(level_id: int) -> Dictionary:
 
 func get_total_stars() -> int:
 	return save_data.total_stars_count
+	
+func get_current_score(level_id) -> int:
+	return save_data.get_current_level_score(level_id)
 
 func is_level_unlocked(level_id: int) -> bool:
 	return save_data.is_level_unlocked(level_id)
@@ -51,5 +54,10 @@ func add_kill(level_id: int, enemy_type: String) -> void:
 
 func add_star(level_id: int) -> void:
 	save_data.add_star(level_id)
+	save_game()
+	data_updated.emit()
+
+func add_score(level_id: int, score: int):
+	save_data.add_score(level_id, score)
 	save_game()
 	data_updated.emit()

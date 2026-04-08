@@ -6,7 +6,7 @@
 script = ExtResource("1_ypvqq")
 level_id = 2
 level_name = "Уровень 3"
-level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
+level_scene = "res://Scripts/levels/level_scenes/level_3.tscn"
 spawn_interval = 0.2
 object_list = {
 "ammo_crate": {

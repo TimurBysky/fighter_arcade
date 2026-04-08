@@ -5,7 +5,6 @@
 [resource]
 script = ExtResource("1_uh0lf")
 level_name = "Уровень 1"
-level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
 object_list = {
 "ammo_crate": {
 "chance": 20,
