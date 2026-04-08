@@ -39,6 +39,12 @@ func get_total_stars() -> int:
 func get_current_score(level_id) -> int:
 	return save_data.get_current_level_score(level_id)
 
+func get_max_stars() -> int:
+	return save_data.get_max_stars()
+	
+func get_current_stars(level_id: int) -> int:
+	return save_data.get_current_stars(level_id)
+
 func is_level_unlocked(level_id: int) -> bool:
 	return save_data.is_level_unlocked(level_id)
 

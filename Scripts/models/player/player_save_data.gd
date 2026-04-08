@@ -15,15 +15,17 @@ func get_player_data() -> Dictionary:
 
 func add_star(level_id: int) -> void:
 	if unlocked_levels.is_empty():
+		print_debug("Разблокированные уровни ", unlocked_levels)
 		return
 	
-	for key in unlocked_levels:
-		var level = unlocked_levels[key]
-		if level.get("level_id", -1) == level_id:
-			var current_stars = level.get("stars_count", 0)
-			level["stars_count"] = min(current_stars + 1, max_stars)
+	var key = str(level_id)
+	if unlocked_levels.has(key):
+		# ✅ Правильный доступ к словарю уровня
+		if unlocked_levels[key].has("stars_count"):
+			var current_stars = unlocked_levels[key]["stars_count"]  # через key!
+			unlocked_levels[key]["stars_count"] = min(current_stars + 1, max_stars)
 			total_stars_count += 1
-			break
+			print_debug("---ИГРОК: Добавляем звезду! Теперь звезд: ", unlocked_levels[key]["stars_count"])
 
 func add_kill(level_id: int, enemy_type: String) -> void:
 	var key = str(level_id)
@@ -41,7 +43,7 @@ func add_score(level_id: int, score: int):
 	var key = str(level_id)
 	if unlocked_levels.has(key):
 		if not unlocked_levels[key].has("current_score"):
-			unlocked_levels[key]["current_score"] = {}
+			unlocked_levels[key]["current_score"] = 0
 		
 		unlocked_levels[key]["current_score"] += score
 		print("Добавлено очков: ", unlocked_levels[key]["current_score"])
@@ -79,3 +81,11 @@ func get_current_level_score(level_id: int) -> int:
 			if unlocked_levels[key].has("current_score"):
 				return unlocked_levels[key]["current_score"]
 	return 0
+
+func get_current_stars(level_id: int) -> int:
+	if is_level_unlocked(level_id):
+		return unlocked_levels[str(level_id)]["stars_count"]
+	return 0
+
+func get_max_stars() -> int:
+	return max_stars

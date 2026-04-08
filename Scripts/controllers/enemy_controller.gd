@@ -49,4 +49,4 @@ func handle_collision(other_body: Node) -> void:
 func _on_enemy_died(enemy_type: String):
 	if view.has_method("destroy"):
 		view.destroy()
-	enemy_destroy.emit(enemy_type, enemy_type)
+	enemy_destroy.emit(enemy_type, model.score)

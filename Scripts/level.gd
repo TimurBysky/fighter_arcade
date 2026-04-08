@@ -51,6 +51,8 @@ func show_defeat_screen() -> void:
 	UI.visible = true
 
 func _exit_to_main_menu():
+	if player_controller and player_controller.has_method("reset"):
+		player_controller.reset()
 	level_controller.exit_to_mani_menu()
 
 func _restart() -> void:

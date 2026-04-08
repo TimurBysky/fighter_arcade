@@ -104,31 +104,50 @@ func exit_to_mani_menu():
 	get_tree().change_scene_to_file(main_menu.get_main_menu_scene())
 
 func register_enemy(enemy_controller: EnemyController) -> void:
+	if not enemy_controller:
+		print("Ошибка: enemy_controller = null")
+		return
+	
 	if not enemy_controller.enemy_destroy.is_connected(_on_enemy_killed):
 		enemy_controller.enemy_destroy.connect(_on_enemy_killed)
 		print_debug("Сигнал подключен")
 	
-func _on_enemy_killed(enemy_type: String, score: int):
-	print_debug("Враг убит!")
-	SaveMenager.add_kill(current_level_data.get_level_id(), enemy_type)
-	SaveMenager.add_score(current_level_data.get_level_id(), score)
-	calculate_stars()
-	SaveMenager.save_game()
-
-func calculate_stars():
+func calculate_stars() -> int:
 	var level_id = current_level_data.get_level_id()
 	var current_score = SaveMenager.get_current_score(level_id)
 	var max_score = current_level_data.get_level_max_score()
-	var step = max_score / 3.0  # шаг для одной звезды
+	print_debug("Текущие очки(для просчёта звёзд): ", current_score)
+	
+	var step = max_score / 3.0
 	
 	if current_score >= max_score:
-		SaveMenager.add_star(level_id)
+		return 3
 	elif current_score >= step * 2:
 		return 2
 	elif current_score >= step:
 		return 1
 	else:
 		return 0
+
+func _on_enemy_killed(enemy_type: String, score: int):
+	print_debug("Враг убит!")
+	var level_id = current_level_data.get_level_id()
+	SaveMenager.add_kill(level_id, enemy_type)
+	SaveMenager.add_score(level_id, score)
+	
+	var stars = calculate_stars()
+	var current_stars = SaveMenager.get_current_stars(level_id)
+	var max_stars = SaveMenager.get_max_stars()
+	
+	# Обновляем только если звезд стало больше
+	if current_stars < max_stars:
+		if stars > current_stars:
+			for i in range(stars - current_stars):
+				SaveMenager.add_star(current_level_data.get_level_id())
+				print_debug("ДОБАВЛЕНА ЗВЕЗДА! Кол-во звёзд на уровне: ",  current_stars)
+		
+	SaveMenager.save_game()
+
 
 func _on_player_destroyed() -> void:
 	await get_tree().create_timer(1.0).timeout

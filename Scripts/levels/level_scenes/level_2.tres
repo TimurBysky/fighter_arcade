@@ -8,6 +8,7 @@ level_id = 1
 level_name = "Уровень 2"
 level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
 spawn_interval = 1.0
+max_score = 2000
 object_list = {
 "ammo_crate": {
 "chance": 10,
