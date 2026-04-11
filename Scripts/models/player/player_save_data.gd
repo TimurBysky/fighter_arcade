@@ -60,6 +60,7 @@ func unlock_level(level_id: int) -> void:
 
 	# Добавляем его в основной словарь
 	unlocked_levels[level_id] = level_data
+	print_debug("Открыт уровень: ", level_id)
 	# Если уровень уже был открыт, не увеличиваем счетчик
 	if not is_level_unlocked(level_id):
 		print("Уровень %d открыт!" % level_id)

@@ -8,6 +8,7 @@ level_id = 3
 level_name = "Уровень 4"
 level_scene = "res://Scripts/levels/level_scenes/level_4.tscn"
 spawn_interval = 0.2
+stars_to_unlock = 2
 object_list = {
 "ammo_crate": {
 "chance": 20,

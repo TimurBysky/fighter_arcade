@@ -14,6 +14,7 @@ const SPAWN_POSITIONS = {
 @export var level_scene: String = "res://Scripts/levels/level_scenes/level_1.tscn"
 @export var spawn_interval: float = 2.0
 @export var max_score: int = 1000
+@export var stars_to_unlock: int = 0
 @export var object_list = {
 	"enemy_light_plane": {"chance" : 60, "scene": "res://Scenes/enemy.tscn"},
 	"ammo_crate" : {"chance" : 20, "scene": "res://Scenes/ammo.tscn"},
@@ -28,6 +29,9 @@ func get_level_name() -> String:
 
 func get_level_max_score():
 	return max_score
+	
+func get_stars_for_unlock():
+	return stars_to_unlock
 	
 func get_level_scene() -> String:
 	return level_scene

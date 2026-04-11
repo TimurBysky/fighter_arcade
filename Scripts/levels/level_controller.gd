@@ -17,7 +17,6 @@ var all_levels: Array[LevelData] = []
 func _ready() -> void:
 	load_all_levels()
 	
-	
 func start_timer():
 	spawn_timer = Timer.new()
 	spawn_timer.timeout.connect(_create_object)
@@ -154,8 +153,27 @@ func _on_player_destroyed() -> void:
 	await get_tree().create_timer(1.0).timeout
 	if current_level_view and current_level_view.has_method("show_defeat_screen"):
 		current_level_view.show_defeat_screen()
+	var level_id = current_level_data.get_level_id()
+	complete_level(level_id)
 
-func complete_level(stars: int) -> void:
-	if current_level_data:
-		var level_id = current_level_data.get_level_id()
-		level_completed.emit(level_id, stars)
+func check_star_to_unlock(level_id: int) -> bool:
+	var next_level_id = level_id + 1
+	print_debug("Проверяем уровень: ", next_level_id, "Текущий уровень: ", level_id )
+	if all_levels[next_level_id] == null:
+		return false
+		
+	var current_stars = SaveMenager.get_current_stars(level_id)
+	var stars_to_unlock = all_levels[next_level_id].get_stars_for_unlock()
+	
+	if  current_stars >= stars_to_unlock:
+		return true
+		
+	return false
+
+func complete_level(level_id: int) -> void:
+	var next_level_id = level_id + 1
+	if all_levels[next_level_id] == null:
+		return
+		
+	if check_star_to_unlock(level_id):
+		SaveMenager.unlock_level(next_level_id)
