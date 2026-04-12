@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bgjhpcikpggnj"]
+
+[ext_resource type="Script" uid="uid://dvqhseyxggg04" path="res://Scripts/boses/boss_view.gd" id="1_jva8j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfb76"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jva8j"]
+radius = 2.1437693
+
+[node name="Boss" type="CharacterBody3D" unique_id=2145143732]
+script = ExtResource("1_jva8j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=787335934]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1166032738]
+shape = SubResource("BoxShape3D_hfb76")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=827713307]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1502923048]
+shape = SubResource("SphereShape3D_jva8j")
