@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dlsjn5so3y5qb"]
+
+[ext_resource type="PackedScene" uid="uid://bfoih8kgotppa" path="res://Scenes/bonus.tscn" id="1_iigpx"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_iigpx"]
+
+[node name="shoot_bonus" unique_id=253409948 groups=["shoot_bonus"] instance=ExtResource("1_iigpx")]
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1557855185]
+transform = Transform3D(-2.7101061e-08, -0.62, 0, 0.62, -2.7101061e-08, 0, 0, 0, 0.62, 0, 0, 0)
+mesh = SubResource("TorusMesh_iigpx")

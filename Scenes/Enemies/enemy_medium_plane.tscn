@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cov6mio7sxwvj"]
+
+[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="1_kgd0p"]
+[ext_resource type="Script" uid="uid://cjyoyfhmbkw3e" path="res://Scripts/views/enemy/enemy_medium_plane.gd" id="2_wipfy"]
+[ext_resource type="Resource" uid="uid://gmmq8a1k8ovg" path="res://Scripts/models/enemy/enemy_medium_plane_data.tres" id="3_ex0yj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wipfy"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ex0yj"]
+material = SubResource("StandardMaterial3D_wipfy")
+
+[node name="enemy_medium_plane" unique_id=455732525 instance=ExtResource("1_kgd0p")]
+script = ExtResource("2_wipfy")
+current_model = ExtResource("3_ex0yj")
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=2058456753]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_ex0yj")

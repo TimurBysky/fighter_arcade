@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cpxdqijh2cx3h"]
+
+[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_uh0lf"]
+
+[resource]
+script = ExtResource("1_uh0lf")
+level_name = "Уровень 1"
+spawn_interval = 0.2
+object_list = {
+"ammo_crate": {
+"chance": 20,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_light_plane": {
+"chance": 60,
+"scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
+},
+"health_pill": {
+"chance": 20,
+"scene": "res://Scenes/health.tscn"
+}
+}
+metadata/_custom_type_script = "uid://gpvxauv701we"

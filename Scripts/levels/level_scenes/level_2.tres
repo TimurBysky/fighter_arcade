@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://dyumymh6upxhp"]
+
+[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_cg23w"]
+
+[resource]
+script = ExtResource("1_cg23w")
+level_id = 1
+level_name = "Уровень 2"
+level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
+spawn_interval = 1.0
+max_score = 2000
+stars_to_unlock = 1
+object_list = {
+"ammo_crate": {
+"chance": 10,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_light_plane": {
+"chance": 50,
+"scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
+},
+"enemy_medium_plane": {
+"chance": 30,
+"scene": "res://Scenes/Enemies/enemy_medium_plane.tscn"
+},
+"health_pill": {
+"chance": 5,
+"scene": "res://Scenes/health.tscn"
+},
+"spread_bonus": {
+"chance": 5,
+"scene": "res://Scenes/shoot_bonus.tscn"
+}
+}
+metadata/_custom_type_script = "uid://gpvxauv701we"

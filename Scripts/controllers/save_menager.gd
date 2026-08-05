@@ -1,0 +1,69 @@
+# controllers/save_manager.gd (Autoload)
+extends Node
+
+var save_data: PlayerSaveData
+#const SAVE_PATH = "user://save_data.tres"
+const SAVE_PATH = "res://Scripts/models/player/Saves/player_save_data.tres"
+
+signal data_updated
+
+func _ready() -> void:
+	load_game()
+
+func load_game() -> void:
+	if ResourceLoader.exists(SAVE_PATH):
+		save_data = load(SAVE_PATH)
+	else:
+		save_data = PlayerSaveData.new()
+		# Открываем первый уровень
+		var first_level = load("res://Scripts/levels/level_scenes/level_1.tres")
+		var level_id = first_level.get_level_id()
+		save_data.unlock_level(level_id)
+		save_game()
+	
+	data_updated.emit()
+
+func save_game() -> void:
+	var error = ResourceSaver.save(save_data, SAVE_PATH)
+	if error == OK:
+		print("Сохранено в: ", SAVE_PATH)
+	else:
+		print("Ошибка сохранения: ", error)
+
+func get_level_progress(level_id: int) -> Dictionary:
+	return save_data.get_level_progress(level_id)
+
+func get_total_stars() -> int:
+	return save_data.total_stars_count
+	
+func get_current_score(level_id) -> int:
+	return save_data.get_current_level_score(level_id)
+
+func get_max_stars() -> int:
+	return save_data.get_max_stars()
+	
+func get_current_stars(level_id: int) -> int:
+	return save_data.get_current_stars(level_id)
+
+func is_level_unlocked(level_id: int) -> bool:
+	return save_data.is_level_unlocked(level_id)
+
+func unlock_level(level_id: int) -> void:
+	save_data.unlock_level(level_id)
+	save_game()
+	data_updated.emit()
+
+func add_kill(level_id: int, enemy_type: String) -> void:
+	save_data.add_kill(level_id, enemy_type)
+	save_game()
+	data_updated.emit()
+
+func add_star(level_id: int) -> void:
+	save_data.add_star(level_id)
+	save_game()
+	data_updated.emit()
+
+func add_score(level_id: int, score: int):
+	save_data.add_score(level_id, score)
+	save_game()
+	data_updated.emit()

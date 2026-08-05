@@ -11,14 +11,35 @@ config_version=5
 [application]
 
 config/name="Воздушная аркада"
+config/description="Воздушная аркада - скролл-шутер"
 config/tags=PackedStringArray("аркада", "на_реакцию")
-run/main_scene="uid://7105ohynf88f"
+run/main_scene="uid://dh4id21lxovra"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.7906201, 0.8690231, 0.97060484, 1)
+boot_splash/image="uid://dn5e7jrwxqwki"
+config/icon="uid://icip23u4mj4n"
+
+[autoload]
+
+PlayerController="*uid://3661ngyljnfs"
+EnemyFactory="*uid://c6by5rs2maytt"
+LevelController="*uid://c0u3kmbtjyoqc"
+MainMenuController="*uid://caqb2fe3m73bp"
+SaveMenager="*uid://7fmwvckh61o2"
 
 [display]
 
+window/size/mode=3
 window/size/always_on_top=true
+window/stretch/mode="canvas_items"
+
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="enemies"
+3d_physics/layer_3="player_bullets"
+3d_physics/layer_4="bonus"
+3d_physics/layer_5="enemy_bullets"
 
 [physics]
 

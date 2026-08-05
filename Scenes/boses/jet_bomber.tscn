@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://5i3r0u70q6hg"]
+
+[ext_resource type="PackedScene" uid="uid://bgjhpcikpggnj" path="res://Scenes/boses/boss.tscn" id="1_6xejd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tdary"]
+
+[node name="Jet_bomber" unique_id=2145143732 instance=ExtResource("1_6xejd")]
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=787335934]
+transform = Transform3D(-4.371139e-08, -2, 0, 1, -8.742278e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_tdary")

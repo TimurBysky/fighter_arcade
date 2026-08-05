@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://bl2m3esvqs2px"]
+
+[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_t80d6"]
+
+[resource]
+script = ExtResource("1_t80d6")
+spawn_interval = 0.89
+object_list = {
+"ammo_crate": {
+"chance": 0,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_light_plane": {
+"chance": 60,
+"scene": "res://Scenes/enemy.tscn"
+},
+"extra_damage": {
+"chance": 40,
+"scene": "res://Scenes/extra_damage_bonus.tscn"
+},
+"health_pill": {
+"chance": 0,
+"scene": "res://Scenes/health.tscn"
+},
+"shoot_bonus": {
+"chance": 0,
+"scene": "res://Scenes/shoot_bonus.tscn"
+}
+}
+metadata/_custom_type_script = "uid://gpvxauv701we"

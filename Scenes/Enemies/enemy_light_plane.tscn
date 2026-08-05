@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://denply58td21e"]
+
+[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="1_wgpk5"]
+[ext_resource type="Script" uid="uid://dxlahfxhw5rnp" path="res://Scripts/views/enemy/enemy_light_plane.gd" id="2_outpx"]
+[ext_resource type="Resource" uid="uid://c4gclvm8wcuod" path="res://Scripts/models/enemy/enemy_light_plane_data.tres" id="3_od7fn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_outpx"]
+albedo_color = Color(1, 0.047058824, 0.039215688, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_od7fn"]
+material = SubResource("StandardMaterial3D_outpx")
+
+[node name="enemy_light_plane" unique_id=455732525 instance=ExtResource("1_wgpk5")]
+script = ExtResource("2_outpx")
+current_model = ExtResource("3_od7fn")
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=2058456753]
+mesh = SubResource("PrismMesh_od7fn")

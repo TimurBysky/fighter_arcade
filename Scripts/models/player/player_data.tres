@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://cho0wj6v4ntq1"]
+
+[ext_resource type="Script" uid="uid://dt5ur2u31vqdc" path="res://Scripts/models/player/player_data.gd" id="1_j1yru"]
+
+[resource]
+script = ExtResource("1_j1yru")
+max_ammo = 99999
+current_ammo = 999999
+speed = 8.0
+metadata/_custom_type_script = "uid://dt5ur2u31vqdc"
