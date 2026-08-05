@@ -29,7 +29,9 @@ SaveMenager="*uid://7fmwvckh61o2"
 
 [display]
 
+window/size/mode=3
 window/size/always_on_top=true
+window/stretch/mode="canvas_items"
 
 [layer_names]
 
