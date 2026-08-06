@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_uh0lf")
 level_name = "Уровень 1"
-spawn_interval = 0.2
+spawn_interval = 2.2
 object_list = {
 "ammo_crate": {
 "chance": 20,
