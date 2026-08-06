@@ -8,7 +8,8 @@ extends Node3D
 @onready var player_controller = get_node("/root/PlayerController")
 @onready var restart_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Restart_button
 @onready var main_menu_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Main_menu_button
-
+@onready var timer_to_end: Timer = $Timer_to_end
+@onready var time_to_end_label: Label3D = $Time_to_end_label
 
 var level_model: LevelData
 
@@ -24,11 +25,19 @@ func _ready() -> void:
 	if player:
 		level_controller.init_player(player_controller)
 	
+	if timer_to_end:
+		timer_to_end.start(level_controller.get_game_over_timer_time()) 
+		level_controller.init_timer(timer_to_end)
+	
 	# Кнопка рестарта
 	if main_menu_button:
 		main_menu_button.pressed.connect(_exit_to_main_menu)
 	if restart_button:
 		restart_button.pressed.connect(_restart)
+
+func _process(delta: float) -> void:
+	
+	time_to_end_label.text = str(roundf(timer_to_end.time_left))
 
 func create_object() -> void:
 	if not level_model:

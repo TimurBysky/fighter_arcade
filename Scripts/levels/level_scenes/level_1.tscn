@@ -86,3 +86,12 @@ text = "RESTART"
 [node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=864545513]
 layout_mode = 2
 text = "MAIN MENU"
+
+[node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
+one_shot = true
+
+[node name="Time_to_end_label" type="Label3D" parent="." unique_id=2037422635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.914417, 8.355302, 0)
+pixel_size = 0.045
+billboard = 1
+text = "Time"

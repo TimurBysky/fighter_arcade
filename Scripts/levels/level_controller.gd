@@ -24,6 +24,9 @@ func start_timer():
 	spawn_timer.autostart = true
 	add_child(spawn_timer)
 
+func get_game_over_timer_time() -> float:
+	return current_level_data.get_level_time_to_game_over()
+
 func _create_object():
 	if not is_instance_valid(current_level_view):
 			return
@@ -71,6 +74,9 @@ func init_player(player_node: Node) -> void:
 	player = player_node
 	if player and player.has_signal("player_destroyed"):
 		player.player_destroyed.connect(_on_player_destroyed)
+
+func init_timer(timer: Timer):
+	timer.timeout.connect(_on_player_destroyed)
 
 func start_level(level_data: LevelData) -> void:
 	current_level_data = level_data
