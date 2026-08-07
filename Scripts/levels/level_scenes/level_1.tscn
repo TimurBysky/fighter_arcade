@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_r03fp"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_rv3wq"]
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_6xg4q"]
+[ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_r03fp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
 panorama = ExtResource("2_r03fp")
@@ -86,6 +87,30 @@ text = "RESTART"
 [node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=864545513]
 layout_mode = 2
 text = "MAIN MENU"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1949377509]
+process_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2" unique_id=1868964661]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/MarginContainer" unique_id=157484378]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="StartTimer" type="Label" parent="CanvasLayer2/MarginContainer/VBoxContainer" unique_id=391618793]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "3 2 1 Go!"
+script = ExtResource("5_r03fp")
 
 [node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
 one_shot = true

@@ -10,11 +10,16 @@ extends Node3D
 @onready var main_menu_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Main_menu_button
 @onready var timer_to_end: Timer = $Timer_to_end
 @onready var time_to_end_label: Label3D = $Time_to_end_label
+@onready var start_timer: Label = $CanvasLayer2/MarginContainer/VBoxContainer/StartTimer
 
 var level_model: LevelData
 
 func _ready() -> void:
 	# Получаем данные уровня из контроллера
+	start_timer.game_start.connect(start_game)
+	
+	game_stop()
+	
 	level_model = level_controller.get_current_level_data()
 	
 	if not level_model:
@@ -38,6 +43,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	time_to_end_label.text = str(roundf(timer_to_end.time_left))
+
+func game_stop():
+	get_tree().paused = true
+	
+func start_game():
+	get_tree().paused = false
 
 func create_object() -> void:
 	if not level_model:
