@@ -4,20 +4,20 @@
 
 [resource]
 script = ExtResource("1_dvpco")
-total_stars_count = 16
+total_stars_count = 22
 unlocked_levels = {
 0: {
-"current_score": 7300,
+"current_score": 8900,
 "killed": {
-"enemy_light_plane": 73
+"enemy_light_plane": 89
 },
 "stars_count": 3
 },
 1: {
-"current_score": 700,
+"current_score": 0,
 "killed": {
-"enemy_light_plane": 7
+"enemy_light_plane": 107
 },
-"stars_count": 1
+"stars_count": 3
 }
 }

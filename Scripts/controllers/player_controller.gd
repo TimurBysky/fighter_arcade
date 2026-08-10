@@ -40,7 +40,7 @@ func handle_shoot_input() -> void:
 	if not view or not view.is_alive:
 		return
 		
-	if Input.is_key_pressed(KEY_SPACE) and not shoot_cooldown and model.can_shoot():
+	if Input.is_key_pressed(KEY_SPACE) and not shoot_cooldown and model.can_shoot(): #Стрельба
 		shoot()
 
 func shoot() -> void:

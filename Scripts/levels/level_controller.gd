@@ -177,6 +177,9 @@ func check_star_to_unlock(level_id: int) -> bool:
 	return false
 
 func complete_level(level_id: int) -> void:
+	if level_id == all_levels.size() - 1:
+		return 
+	
 	var next_level_id = level_id + 1
 	if all_levels[next_level_id] == null:
 		return

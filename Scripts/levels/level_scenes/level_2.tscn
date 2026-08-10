@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://sj5jfpn60s80"]
 
-[ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_yimuw"]
-[ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_yjpwb"]
-[ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_jpy6y"]
-[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_oe6g2"]
+[ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_yjpwb"]
+[ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_jpy6y"]
+[ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_oe6g2"]
+[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_7u1fc"]
+[ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_cwpab"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
-panorama = ExtResource("2_yjpwb")
+panorama = ExtResource("2_jpy6y")
 energy_multiplier = 0.75
 
 [sub_resource type="Sky" id="Sky_vonw3"]
@@ -23,12 +24,12 @@ tonemap_exposure = 1.88
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
 
 [node name="Level" type="Node3D" unique_id=1222772376]
-script = ExtResource("1_yimuw")
+script = ExtResource("1_yjpwb")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=857818750]
 environment = SubResource("Environment_oi3di")
 
-[node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("3_jpy6y")]
+[node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("3_oe6g2")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
@@ -59,7 +60,7 @@ transform = Transform3D(0.9875652, -0.03319021, 0.15366666, -0.15721016, -0.2084
 light_energy = 1.027
 shadow_enabled = true
 
-[node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_oe6g2")]
+[node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_7u1fc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
@@ -86,3 +87,36 @@ text = "RESTART"
 [node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=864545513]
 layout_mode = 2
 text = "MAIN MENU"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1949377509]
+process_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2" unique_id=1868964661]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/MarginContainer" unique_id=157484378]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="StartTimer" type="Label" parent="CanvasLayer2/MarginContainer/VBoxContainer" unique_id=391618793]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "3 2 1 Go!"
+script = ExtResource("5_cwpab")
+
+[node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
+one_shot = true
+
+[node name="Time_to_end_label" type="Label3D" parent="." unique_id=2037422635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.914417, 8.355302, 0)
+pixel_size = 0.045
+billboard = 1
+text = "Time"

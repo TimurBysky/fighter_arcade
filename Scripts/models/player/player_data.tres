@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_j1yru")
-max_ammo = 99999
-current_ammo = 999999
+max_ammo = 200
+current_ammo = 200
 speed = 8.0
 metadata/_custom_type_script = "uid://dt5ur2u31vqdc"
