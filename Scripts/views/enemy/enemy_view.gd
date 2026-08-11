@@ -50,6 +50,20 @@ func shooting_effect():
 	add_child(instance)
 	instance.shoot_by_("enemy")
 
+func spread_shooting_effect():
+	var angles = [-205, -155]
+		
+	for angle in angles:
+		var instance = tracer_scene.instantiate() as Tracer
+		var angle_rad = deg_to_rad(angle)
+		
+		# Движение влево с отклонением по Z (горизонталь)
+		var direction = Vector3(-cos(angle_rad), 0, sin(angle_rad))
+		direction = direction.normalized()
+		
+		instance.direction = direction
+		add_child(instance)
+		instance.shoot_by_("enemy")
 
 func destroy():
 	if not is_alive:

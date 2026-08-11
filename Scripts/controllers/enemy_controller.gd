@@ -33,8 +33,15 @@ func shoot():
 	if !model.is_alive():
 		return
 		
-	if view.has_method("shooting_effect"):
+	if model.is_spread_fire():
+		spread_shoot()
+		
+	if view.has_method("shooting_effect") && !model.is_spread_fire():
 		view.shooting_effect()
+
+func spread_shoot():
+	if view.has_method("spread_shooting_effect"):
+		view.spread_shooting_effect()
 
 func handle_collision(other_body: Node) -> void:
 	if not view or not view.is_alive:

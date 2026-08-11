@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_gri2l")
-speed = 4.0
 max_health = 3
-fire_rate = 2.5
+score = 50
+fire_rate = 3.5
 metadata/_custom_type_script = "uid://h3nega2lwani"

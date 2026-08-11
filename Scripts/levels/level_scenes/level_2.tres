@@ -15,12 +15,16 @@ object_list = {
 "chance": 10,
 "scene": "res://Scenes/ammo.tscn"
 },
+"enemy_heavy_plane": {
+"chance": 40,
+"scene": "res://Scenes/Enemies/enemy_heavy_plane.tscn"
+},
 "enemy_light_plane": {
-"chance": 25,
+"chance": 15,
 "scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
 },
 "enemy_medium_plane": {
-"chance": 30,
+"chance": 20,
 "scene": "res://Scenes/Enemies/enemy_medium_plane.tscn"
 },
 "extra_damage_bonus.": {

@@ -6,6 +6,7 @@ class_name EnemyData
 @export var enemy_type: String = "enemy_light_plane"
 @export var score: int = 100
 @export var fire_rate: float = 2.0
+@export var spread_fire: bool = false
 var current_health: int
 
 signal health_changed(amount: int)
@@ -20,6 +21,9 @@ func reset():
 
 func is_alive():
 	return current_health > 0
+	
+func is_spread_fire() -> bool:
+	return spread_fire
 
 func take_damage(amount: int = 1) -> void:
 	if (current_health <=0):
