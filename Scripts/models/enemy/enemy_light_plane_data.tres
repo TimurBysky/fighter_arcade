@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_gri2l")
+speed = 6.0
 max_health = 3
 score = 50
 fire_rate = 3.5

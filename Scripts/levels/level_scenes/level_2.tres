@@ -6,10 +6,10 @@
 script = ExtResource("1_18yq2")
 level_id = 1
 level_name = "Уровень 2"
-spawn_interval = 0.9
+spawn_interval = 2.4
 max_score = 10000
 stars_to_unlock = 3
-time_to_game_over = 120.0
+time_to_game_over = 85.0
 object_list = {
 "ammo_crate": {
 "chance": 10,

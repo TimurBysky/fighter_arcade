@@ -67,3 +67,8 @@ func add_score(level_id: int, score: int):
 	save_data.add_score(level_id, score)
 	save_game()
 	data_updated.emit()
+	
+func reset_score_level(level_id: int):
+	save_data.reset_score_level(level_id)
+	save_game()
+	data_updated.emit()

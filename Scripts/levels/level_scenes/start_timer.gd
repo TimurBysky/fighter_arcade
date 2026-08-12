@@ -7,14 +7,10 @@ var index = 0
 func _ready():
 	modulate.a = 0.0
 	play_next()
-	if index >= values.size():
-		game_start.emit()
 
 func play_next():
-	if index >= values.size() - 1:
-		game_start.emit()
-		
 	if index >= values.size():
+		game_start.emit()
 		return
 	
 	text = values[index]
@@ -23,10 +19,10 @@ func play_next():
 	
 	var tween = create_tween()
 	tween.set_parallel()
-	tween.tween_property(self, "modulate:a", 1.0, 0.3)
-	tween.tween_property(self, "scale", Vector2(1.5, 1.5), 0.3)
+	tween.tween_property(self, "modulate:a", 1.0, 0.15)
+	tween.tween_property(self, "scale", Vector2(1.5, 1.5), 0.15)
 	tween.set_parallel(false)
-	tween.tween_property(self, "modulate:a", 0.0, 0.5).set_delay(0.2)
+	tween.tween_property(self, "modulate:a", 0.0, 0.25).set_delay(0.1)
 	
 	index += 1
-	tween.tween_callback(play_next).set_delay(0.3)
+	tween.tween_callback(play_next).set_delay(0.15)

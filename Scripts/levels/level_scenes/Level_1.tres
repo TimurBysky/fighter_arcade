@@ -6,17 +6,18 @@
 script = ExtResource("1_uh0lf")
 level_name = "Уровень 1"
 spawn_interval = 2.2
+time_to_game_over = 30.0
 object_list = {
 "ammo_crate": {
-"chance": 20,
+"chance": 10,
 "scene": "res://Scenes/ammo.tscn"
 },
 "enemy_light_plane": {
-"chance": 60,
+"chance": 70,
 "scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
 },
 "health_pill": {
-"chance": 20,
+"chance": 10,
 "scene": "res://Scenes/health.tscn"
 }
 }

@@ -40,6 +40,9 @@ func add_score(level_id: int, score: int):
 		unlocked_levels[level_id]["current_score"] += score
 		print("Добавлено очков: ", unlocked_levels[level_id]["current_score"])
 
+func reset_score_level(level_id: int):
+	unlocked_levels[level_id]["current_score"] = 0
+
 func unlock_level(level_id: int) -> void:
 	if level_id == -1:
 		print("Ошибка: level_id не найден")

@@ -112,6 +112,7 @@ func update_ammo_display(current: int) -> void:
 	if ammo_label:
 		ammo_label.text = "Ammo: %d" % current
 
+
 # Визуальная анимация уничтожения
 func destroy() -> void:
 	if not is_alive:

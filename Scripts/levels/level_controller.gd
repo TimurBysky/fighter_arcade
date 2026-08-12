@@ -12,6 +12,7 @@ var current_level_data: LevelData
 var current_level_view: Node
 var player: Node
 var all_levels: Array[LevelData] = []
+var time_is_over = false
 
 
 func _ready() -> void:
@@ -80,10 +81,13 @@ func init_timer(timer: Timer):
 
 func start_level(level_data: LevelData) -> void:
 	current_level_data = level_data
+	time_is_over = false
 	var level_name = level_data.get_level_name()
+	var level_id = current_level_data.get_level_id()
 	print("START LEVEL: ", level_name)
 	print("SCENE PATH: ", level_data.level_scene)
 	get_tree().change_scene_to_file(level_data.level_scene)
+	SaveMenager.reset_score_level(level_id)
 	start_timer()
 
 func get_current_level_data() -> LevelData:
@@ -135,32 +139,36 @@ func calculate_stars() -> int:
 		return 0
 
 func _on_enemy_killed(enemy_type: String, score: int):
-	print_debug("Враг убит!")
-	var level_id = current_level_data.get_level_id()
-	SaveMenager.add_kill(level_id, enemy_type)
-	SaveMenager.add_score(level_id, score)
+	if not time_is_over:
+		print_debug("Враг убит!")
+		var level_id = current_level_data.get_level_id()
+		SaveMenager.add_kill(level_id, enemy_type)
+		SaveMenager.add_score(level_id, score)
 	
-	var stars = calculate_stars()
-	var current_stars = SaveMenager.get_current_stars(level_id)
-	var max_stars = SaveMenager.get_max_stars()
-	
-	# Обновляем только если звезд стало больше
-	if current_stars < max_stars:
-		if stars > current_stars:
-			for i in range(stars - current_stars):
-				SaveMenager.add_star(current_level_data.get_level_id())
-				print_debug("ДОБАВЛЕНА ЗВЕЗДА! Кол-во звёзд на уровне: ",  current_stars)
+		var stars = calculate_stars()
+		var current_stars = SaveMenager.get_current_stars(level_id)
+		var max_stars = SaveMenager.get_max_stars()
 		
-	SaveMenager.save_game()
-	
-#TODO сделать reset поля current_score 
+		# Обновляем только если звезд стало больше
+		if current_stars < max_stars:
+			if stars > current_stars:
+				for i in range(stars - current_stars):
+					SaveMenager.add_star(current_level_data.get_level_id())
+					print_debug("ДОБАВЛЕНА ЗВЕЗДА! Кол-во звёзд на уровне: ",  current_stars)
+			
+		SaveMenager.save_game()
+		
+
 
 func _on_player_destroyed() -> void:
 	await get_tree().create_timer(1.0).timeout
+	time_is_over = true
 	if current_level_view and current_level_view.has_method("show_defeat_screen"):
 		current_level_view.show_defeat_screen()
 	var level_id = current_level_data.get_level_id()
 	complete_level(level_id)
+
+
 
 func check_star_to_unlock(level_id: int) -> bool:
 	var next_level_id = level_id + 1
@@ -175,6 +183,10 @@ func check_star_to_unlock(level_id: int) -> bool:
 		return true
 		
 	return false
+
+func on_restart():
+	var level_id = current_level_data.get_level_id()
+	SaveMenager.reset_score_level(level_id)
 
 func complete_level(level_id: int) -> void:
 	if level_id == all_levels.size() - 1:

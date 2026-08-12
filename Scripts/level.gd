@@ -78,4 +78,8 @@ func _exit_to_main_menu():
 func _restart() -> void:
 	if player_controller and player_controller.has_method("reset"):
 		player_controller.reset()
+	level_controller.time_is_over = false
+	level_controller.on_restart()
+	start_game()
 	get_tree().reload_current_scene()
+	

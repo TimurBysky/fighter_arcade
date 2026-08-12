@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_tfgo8")
 speed = 3.0
-max_health = 6
+max_health = 10
 enemy_type = "enemy_medium_plane"
 fire_rate = 2.5
 metadata/_custom_type_script = "uid://h3nega2lwani"
