@@ -15,6 +15,7 @@ extends Node3D
 var level_model: LevelData
 
 func _ready() -> void:
+	
 	# Получаем данные уровня из контроллера
 	start_timer.game_start.connect(start_game)
 	

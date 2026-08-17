@@ -97,7 +97,7 @@ func handle_collision(other_body: Node) -> void:
 		
 	# Логика обработки столкновений
 	if other_body.is_in_group("Ammo"):
-		model.add_ammo(30)
+		model.add_ammo(60)
 		if view.has_method("update_ammo_display"):
 			view.update_ammo_display(model.current_ammo)
 		if view.has_method("play_pickup_sound"):

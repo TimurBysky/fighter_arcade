@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://c74tb7neu4thg"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://u3xawr31jjpk"]
 
 [ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_18yq2"]
 
@@ -6,38 +6,23 @@
 script = ExtResource("1_18yq2")
 level_id = 1
 level_name = "Уровень 2"
-spawn_interval = 2.4
-max_score = 10000
-stars_to_unlock = 3
-time_to_game_over = 85.0
+level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
+spawn_interval = 1.4
+max_score = 1200
+stars_to_unlock = 1
+time_to_game_over = 30.0
 object_list = {
 "ammo_crate": {
-"chance": 10,
+"chance": 12,
 "scene": "res://Scenes/ammo.tscn"
 },
-"enemy_heavy_plane": {
-"chance": 40,
-"scene": "res://Scenes/Enemies/enemy_heavy_plane.tscn"
-},
 "enemy_light_plane": {
-"chance": 15,
+"chance": 66,
 "scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
 },
-"enemy_medium_plane": {
-"chance": 20,
-"scene": "res://Scenes/Enemies/enemy_medium_plane.tscn"
-},
-"extra_damage_bonus.": {
-"chance": 5,
-"scene": "res://Scenes/extra_damage_bonus.tscn"
-},
 "health_pill": {
-"chance": 5,
+"chance": 12,
 "scene": "res://Scenes/health.tscn"
-},
-"shoot_bonus": {
-"chance": 5,
-"scene": "res://Scenes/shoot_bonus.tscn"
 }
 }
 metadata/_custom_type_script = "uid://gpvxauv701we"

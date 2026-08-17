@@ -20,7 +20,9 @@ var controller: PlayerController
 func _ready() -> void:
 	# Находим контроллер (autoload)
 	controller = get_node("/root/PlayerController")
-	
+
+	var animation = fighter_model.get_node("AnimationPlayer") as AnimationPlayer
+	animation.play("Full")
 	# Подключаем сигналы Area3D
 	fighter.collision_layer = 1
 	area_3d.body_entered.connect(_on_body_entered)

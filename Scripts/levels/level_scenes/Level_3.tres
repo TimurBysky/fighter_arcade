@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://is5n1v6723tn"]
+
+[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_0fy3e"]
+
+[resource]
+script = ExtResource("1_0fy3e")
+level_id = 2
+level_name = "Уровень 3"
+level_scene = "res://Scripts/levels/level_scenes/level_3.tscn"
+spawn_interval = 1.2
+max_score = 1800
+stars_to_unlock = 1
+time_to_game_over = 35.0
+object_list = {
+"ammo_crate": {
+"chance": 20,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_light_plane": {
+"chance": 60,
+"scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
+},
+"health_pill": {
+"chance": 20,
+"scene": "res://Scenes/health.tscn"
+}
+}
+metadata/_custom_type_script = "uid://gpvxauv701we"

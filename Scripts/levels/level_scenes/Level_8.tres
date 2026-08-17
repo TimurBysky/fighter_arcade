@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cgfc8txd2hryh"]
+
+[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_dd8xb"]
+
+[resource]
+script = ExtResource("1_dd8xb")
+level_id = 7
+level_name = "Уровень 8"
+level_scene = "res://Scripts/levels/level_scenes/level_8.tscn"
+spawn_interval = 1.2
+max_score = 3500
+stars_to_unlock = 3
+time_to_game_over = 50.0
+object_list = {
+"ammo_crate": {
+"chance": 15,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_heavy_plane": {
+"chance": 30,
+"scene": "res://Scenes/Enemies/enemy_heavy_plane.tscn"
+},
+"enemy_light_plane": {
+"chance": 15,
+"scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
+},
+"enemy_medium_plane": {
+"chance": 25,
+"scene": "res://Scenes/Enemies/enemy_medium_plane.tscn"
+},
+"extra_damage_bonus.": {
+"chance": 9,
+"scene": "res://Scenes/extra_damage_bonus.tscn"
+},
+"health_pill": {
+"chance": 2,
+"scene": "res://Scenes/health.tscn"
+},
+"shoot_bonus": {
+"chance": 2,
+"scene": "res://Scenes/shoot_bonus.tscn"
+}
+}
+metadata/_custom_type_script = "uid://gpvxauv701we"

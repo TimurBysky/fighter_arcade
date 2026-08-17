@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://bgx4q636p5twb"]
+
+[ext_resource type="Script" uid="uid://gpvxauv701we" path="res://Scripts/levels/level_data.gd" id="1_ja4hw"]
+
+[resource]
+script = ExtResource("1_ja4hw")
+level_id = 5
+level_name = "Уровень 6"
+level_scene = "res://Scripts/levels/level_scenes/level_6.tscn"
+spawn_interval = 1.0
+max_score = 2300
+stars_to_unlock = 2
+time_to_game_over = 40.0
+object_list = {
+"ammo_crate": {
+"chance": 15,
+"scene": "res://Scenes/ammo.tscn"
+},
+"enemy_light_plane": {
+"chance": 30,
+"scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
+},
+"enemy_medium_plane": {
+"chance": 40,
+"scene": "res://Scenes/Enemies/enemy_medium_plane.tscn"
+},
+"health_pill": {
+"chance": 2,
+"scene": "res://Scenes/health.tscn"
+},
+"shoot_bonus": {
+"chance": 13,
+"scene": "res://Scenes/shoot_bonus.tscn"
+}
+}
+metadata/_custom_type_script = "uid://gpvxauv701we"
