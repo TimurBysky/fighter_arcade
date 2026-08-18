@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bpiodwk117hes" path="res://Scripts/levels/level_selector/level_selector_view.gd" id="2_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://dtd5xwg6l2ef1" path="res://Scenes/icon.tscn" id="3_n45e2"]
 [ext_resource type="PackedScene" uid="uid://6sfhrlkt3cp7" path="res://Assets/Sketchfab_2021_08_13_15_44_51.glb" id="4_n45e2"]
+[ext_resource type="Script" uid="uid://btwmfytsdipbv" path="res://Assets/sketchfab_2021_08_13_15_44_51.gd" id="6_opfnp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1ehe0"]
 panorama = ExtResource("2_48xlc")
@@ -122,3 +123,4 @@ transform = Transform3D(0.9733032, 0, -0.22952317, 0, 1, 0, 0.22952317, 0, 0.973
 
 [node name="Sketchfab_2021_08_13_15_44_51" parent="." unique_id=380458330 instance=ExtResource("4_n45e2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6633911, -1, -0.22166896)
+script = ExtResource("6_opfnp")

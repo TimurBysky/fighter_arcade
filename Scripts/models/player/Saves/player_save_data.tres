@@ -1,15 +1,15 @@
-[gd_resource type="Resource" script_class="PlayerSaveData" format=3 uid="uid://l4n0q0xnslbi"]
+[gd_resource type="Resource" script_class="PlayerSaveData" format=3]
 
-[ext_resource type="Script" uid="uid://xakmdxf7dkm" path="res://Scripts/models/player/player_save_data.gd" id="1_dvpco"]
+[ext_resource type="Script" path="res://Scripts/models/player/player_save_data.gd" id="1_dvpco"]
 
 [resource]
 script = ExtResource("1_dvpco")
 total_stars_count = 30
 unlocked_levels = {
 0: {
-"current_score": 800,
+"current_score": 550,
 "killed": {
-"enemy_light_plane": 314
+"enemy_light_plane": 347
 },
 "stars_count": 3
 },

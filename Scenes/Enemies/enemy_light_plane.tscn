@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="1_wgpk5"]
 [ext_resource type="Script" uid="uid://dxlahfxhw5rnp" path="res://Scripts/views/enemy/enemy_light_plane.gd" id="2_outpx"]
 [ext_resource type="Resource" uid="uid://c4gclvm8wcuod" path="res://Scripts/models/enemy/enemy_light_plane_data.tres" id="3_od7fn"]
+[ext_resource type="PackedScene" uid="uid://c1poyuqm6mkqg" path="res://Assets/Tomtato-light.glb" id="4_qyby6"]
+[ext_resource type="Script" uid="uid://vh534oejge8h" path="res://Assets/tomtato_light.gd" id="5_pmyjq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_outpx"]
 albedo_color = Color(1, 0.047058824, 0.039215688, 1)
@@ -15,4 +17,9 @@ script = ExtResource("2_outpx")
 current_model = ExtResource("3_od7fn")
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=2058456753]
+visible = false
 mesh = SubResource("PrismMesh_od7fn")
+
+[node name="Tomtato-light" parent="." index="1" unique_id=460124307 instance=ExtResource("4_qyby6")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.5555539, -0.42548802, 0)
+script = ExtResource("5_pmyjq")

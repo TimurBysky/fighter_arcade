@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://baxbwx7dxoitr"]
 
-[ext_resource type="PackedScene" uid="uid://bfoih8kgotppa" path="res://bonus.tscn" id="1_ledv5"]
+[ext_resource type="PackedScene" uid="uid://bfoih8kgotppa" path="res://Scenes/bonus.tscn" id="1_ledv5"]
+[ext_resource type="PackedScene" uid="uid://fb3ynmi57fai" path="res://Assets/Heal.glb" id="2_aswr4"]
+[ext_resource type="Script" uid="uid://dq1s4vm5lynxx" path="res://Assets/heal.gd" id="3_s36ud"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ledv5"]
 
 [node name="Health" unique_id=1362761265 groups=["Health"] instance=ExtResource("1_ledv5")]
 
-[node name="MeshInstance3D" parent="." index="0" unique_id=1557855185]
+[node name="Heal" parent="." index="0" unique_id=1924233667 instance=ExtResource("2_aswr4")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("3_s36ud")
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=1557855185]
+visible = false
 mesh = SubResource("CapsuleMesh_ledv5")
