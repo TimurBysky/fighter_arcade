@@ -1,10 +1,16 @@
 [gd_scene format=3 uid="uid://c021nq3dsh6bp"]
 
 [ext_resource type="PackedScene" uid="uid://bfoih8kgotppa" path="res://Scenes/bonus.tscn" id="1_mulmr"]
+[ext_resource type="PackedScene" uid="uid://bl4tjpjxd7lyx" path="res://Assets/Bullets.glb" id="2_vs3aj"]
+[ext_resource type="Script" uid="uid://yo0iamebp5ta" path="res://Assets/bullets.gd" id="3_7r188"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mulmr"]
 
 [node name="Ammo" unique_id=1362761265 groups=["Ammo"] instance=ExtResource("1_mulmr")]
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=1557855185]
+visible = false
 mesh = SubResource("BoxMesh_mulmr")
+
+[node name="Bullets" parent="." index="1" unique_id=1000943043 instance=ExtResource("2_vs3aj")]
+script = ExtResource("3_7r188")

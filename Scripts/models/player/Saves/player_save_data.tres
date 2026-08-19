@@ -14,14 +14,14 @@ unlocked_levels = {
 "stars_count": 3
 },
 1: {
-"current_score": 1250,
+"current_score": 300,
 "killed": {
-"enemy_light_plane": 25
+"enemy_light_plane": 38
 },
 "stars_count": 3
 },
 2: {
-"current_score": 2300,
+"current_score": 0,
 "killed": {
 "enemy_light_plane": 70
 },
