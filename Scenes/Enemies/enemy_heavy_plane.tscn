@@ -1,19 +1,19 @@
-[gd_scene format=3 uid="uid://c1tp6ayhs7k1h"]
+[gd_scene format=3 uid="uid://cov6mio7sxwvj"]
 
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="1_upu4t"]
 [ext_resource type="Script" uid="uid://cjyoyfhmbkw3e" path="res://Scripts/views/enemy/enemy_medium_plane.gd" id="2_32x2x"]
-[ext_resource type="Resource" uid="uid://gmmq8a1k8ovg" path="res://Scripts/models/enemy/enemy_medium_plane_data.tres" id="3_hyjpq"]
+[ext_resource type="Resource" uid="uid://cojpele188q4f" path="res://Scripts/models/enemy/enemy_heavy_plane_data.tres" id="3_upu4t"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wipfy"]
-albedo_color = Color(1, 0, 1, 1)
+[sub_resource type="SphereMesh" id="SphereMesh_hq7gd"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_ex0yj"]
-material = SubResource("StandardMaterial3D_wipfy")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p7ov"]
+albedo_color = Color(1, 0, 0, 1)
 
-[node name="enemy_medium_plane" unique_id=455732525 instance=ExtResource("1_upu4t")]
+[node name="enemy_heavy_plane" unique_id=455732525 instance=ExtResource("1_upu4t")]
 script = ExtResource("2_32x2x")
-current_model = ExtResource("3_hyjpq")
+current_model = ExtResource("3_upu4t")
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=2058456753]
 transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_ex0yj")
+mesh = SubResource("SphereMesh_hq7gd")
+surface_material_override/0 = SubResource("StandardMaterial3D_8p7ov")

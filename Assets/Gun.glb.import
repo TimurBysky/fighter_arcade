@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bl4tjpjxd7lyx"
-path="res://.godot/imported/Bullets.glb-c17801d7971c002b2bfc15921a422ea7.scn"
+uid="uid://bfapfa0jqnm61"
+path="res://.godot/imported/Gun.glb-2f3ef412c949cb29673a514d07c3320d.scn"
 
 [deps]
 
-source_file="res://Assets/Bullets.glb"
-dest_files=["res://.godot/imported/Bullets.glb-c17801d7971c002b2bfc15921a422ea7.scn"]
+source_file="res://Assets/Gun.glb"
+dest_files=["res://.godot/imported/Gun.glb-2f3ef412c949cb29673a514d07c3320d.scn"]
 
 [params]
 
@@ -25,7 +25,7 @@ nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
-meshes/create_shadow_meshes=false
+meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false

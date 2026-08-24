@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://cmx7r740q86ja"]
 
 [ext_resource type="PackedScene" uid="uid://bfoih8kgotppa" path="res://Scenes/bonus.tscn" id="1_tjnnn"]
+[ext_resource type="PackedScene" uid="uid://bfapfa0jqnm61" path="res://Assets/Gun.glb" id="2_ws8r2"]
+[ext_resource type="Script" uid="uid://yo0iamebp5ta" path="res://Assets/bullets.gd" id="3_p0e1p"]
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_ws8r2"]
 
 [node name="extra_damage_bonus" unique_id=253409948 groups=["extra_damage"] instance=ExtResource("1_tjnnn")]
 
-[node name="MeshInstance3D" parent="." index="0" unique_id=1557855185]
+[node name="Gun" parent="." index="0" unique_id=1653006854 instance=ExtResource("2_ws8r2")]
+script = ExtResource("3_p0e1p")
+
+[node name="MeshInstance3D" parent="." index="1" unique_id=1557855185]
 transform = Transform3D(0.05780974, 0.053942423, 0.9968692, -0.68222815, 0.7311394, 0, -0.72885036, -0.6800922, 0.07906801, 0, 0, 0)
+visible = false
 mesh = SubResource("TubeTrailMesh_ws8r2")

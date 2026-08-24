@@ -42,9 +42,9 @@ unlocked_levels = {
 "stars_count": 3
 },
 5: {
-"current_score": 2050,
+"current_score": 1300,
 "killed": {
-"enemy_light_plane": 20
+"enemy_light_plane": 74
 },
 "stars_count": 3
 },
@@ -56,9 +56,9 @@ unlocked_levels = {
 "stars_count": 3
 },
 7: {
-"current_score": 450,
+"current_score": 1950,
 "killed": {
-"enemy_light_plane": 175
+"enemy_light_plane": 192
 },
 "stars_count": 3
 },
@@ -70,9 +70,9 @@ unlocked_levels = {
 "stars_count": 3
 },
 9: {
-"current_score": 3400,
+"current_score": 850,
 "killed": {
-"enemy_light_plane": 131
+"enemy_light_plane": 160
 },
 "stars_count": 3
 }
