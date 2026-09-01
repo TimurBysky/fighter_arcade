@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="1_upu4t"]
 [ext_resource type="Script" uid="uid://cjyoyfhmbkw3e" path="res://Scripts/views/enemy/enemy_medium_plane.gd" id="2_32x2x"]
 [ext_resource type="Resource" uid="uid://cojpele188q4f" path="res://Scripts/models/enemy/enemy_heavy_plane_data.tres" id="3_upu4t"]
+[ext_resource type="PackedScene" uid="uid://0qncj2inlt3" path="res://Assets/Tomtato-heavy2.glb" id="4_32x2x"]
+[ext_resource type="Script" uid="uid://yo0iamebp5ta" path="res://Assets/bullets.gd" id="5_hyjpq"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hq7gd"]
 
@@ -15,5 +17,13 @@ current_model = ExtResource("3_upu4t")
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=2058456753]
 transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0, 0, 0)
+visible = false
 mesh = SubResource("SphereMesh_hq7gd")
 surface_material_override/0 = SubResource("StandardMaterial3D_8p7ov")
+
+[node name="Tomtato-heavy2" parent="." index="1" unique_id=939691903 instance=ExtResource("4_32x2x")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0.78, -1.3579091, 0)
+script = ExtResource("5_hyjpq")
+
+[node name="HealthBar" parent="." index="4" unique_id=1244497600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.291245, 0)

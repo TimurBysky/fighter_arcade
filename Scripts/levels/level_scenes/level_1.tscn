@@ -17,9 +17,9 @@ sky_material = SubResource("PanoramaSkyMaterial_oi3di")
 background_mode = 2
 background_color = Color(0.38039216, 0.7921569, 0.9254902, 1)
 sky = SubResource("Sky_vonw3")
-sky_custom_fov = 8.2
-ambient_light_sky_contribution = 0.0
-tonemap_exposure = 1.88
+sky_custom_fov = 87.5
+ambient_light_sky_contribution = 0.05
+tonemap_exposure = 1.68
 
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
 
@@ -56,9 +56,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
 mesh = SubResource("BoxMesh_u52ul")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1800400399]
-transform = Transform3D(0.9875652, -0.03319021, 0.15366666, -0.15721016, -0.20849478, 0.9653056, 0, -0.97746015, -0.21112004, 3.1510062, 3.8153665, -5.493323)
-light_energy = 1.027
+transform = Transform3D(0.97547317, -0.18527493, 0.118848845, -0.15721016, -0.20849483, 0.96530557, -0.15406755, -0.96031415, -0.23250827, 3.1510062, 3.8153665, -5.493323)
+light_energy = 0.562
+light_angular_distance = 6.35
 shadow_enabled = true
+shadow_transmittance_bias = -2.19
+shadow_opacity = 0.82
 
 [node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_6xg4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)

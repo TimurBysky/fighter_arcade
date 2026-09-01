@@ -14,6 +14,9 @@ class_name PlayerView
 @onready var health_label: Label3D = $UI_Panel/Health_UI
 @onready var ammo_label: Label3D = $UI_Panel/Ammo_UI
 
+@export var max_tilt_angle: float = 30.0  # Максимальный угол наклона в градусах
+@export var tilt_speed: float = 4.0       # Скорость наклона
+
 var is_alive: bool = true
 var controller: PlayerController
 
@@ -34,11 +37,12 @@ func _ready() -> void:
 	var player_model = load("res://Scripts/models/player/player_data.tres")
 	controller.setup(self, player_model)
 
+var current_tilt: float = 0.0
+
 func _process(delta: float) -> void:
 	if not is_alive:
 		return
-		
-	# Получаем движение от контроллера
+	
 	var movement = controller.process_input()
 	
 	fighter.velocity = movement
@@ -49,11 +53,25 @@ func _process(delta: float) -> void:
 	pos.z = clamp(pos.z, -11.0, 11.0)
 	fighter.global_position = pos
 	ui_panel.move_to_player(fighter, delta)
-
-
+	
+	# Наклон самолёта
+	update_tilt(delta, movement.z)
+	
 	# Обработка стрельбы
 	controller.handle_shoot_input()
 
+func update_tilt(delta: float, movement_z: float) -> void:
+	# Вычисляем целевой угол наклона
+	var target_tilt = 0.0
+	if controller.model.speed > 0:
+		target_tilt = movement_z / controller.model.speed * max_tilt_angle
+	
+	# Плавно интерполируем текущий наклон к целевому
+	current_tilt = lerp(current_tilt, target_tilt, tilt_speed * delta)
+	
+	# Применяем поворот к модели по оси X
+	fighter_model.rotation_degrees.x = current_tilt
+	
 # Визуальный эффект выстрела
 func shot_effect(params: Dictionary = {}) -> void:
 	
@@ -100,6 +118,52 @@ func play_heal_effect() -> void:
 	
 	if $HealSound:
 		$HealSound.play()
+
+func start_fall_animation() -> void:
+	# Отключаем управление (для игрока) или ИИ (для врага)
+	is_alive = false
+	
+	# Случайное направление вращения
+	var spin_direction = 1.0 if randf() > 0.5 else -1.0
+	
+	# Создаём Tween для анимации
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	# Падение вниз
+	tween.tween_property(
+		fighter,
+		"global_position:y",
+		fighter.global_position.y - 10.0,
+		2.0
+	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	
+	# Вращение по оси X (кувырок)
+	tween.tween_property(
+		fighter_model,
+		"rotation_degrees:x",
+		fighter_model.rotation_degrees.x + 360.0 * spin_direction * 3.0,
+		2.0
+	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	
+	# Небольшой наклон вбок для эффекта спирали
+	tween.tween_property(
+		fighter_model,
+		"rotation_degrees:z",
+		fighter_model.rotation_degrees.z + 45.0 * spin_direction,
+		2.0
+	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	# Постепенное исчезновение (опционально)
+	tween.tween_property(
+		fighter_model,
+		"modulate:a",
+		0.0,
+		1.5
+	).set_delay(0.5)
+	
+	# Удаляем объект после падения
+	tween.chain().tween_callback(fighter.queue_free)
 
 func play_pickup_sound() -> void:
 	if $PickupSound:

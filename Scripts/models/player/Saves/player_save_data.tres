@@ -9,7 +9,7 @@ unlocked_levels = {
 0: {
 "current_score": 550,
 "killed": {
-"enemy_light_plane": 347
+"enemy_light_plane": 514
 },
 "stars_count": 3
 },
@@ -35,30 +35,30 @@ unlocked_levels = {
 "stars_count": 3
 },
 4: {
-"current_score": 3050,
+"current_score": 650,
 "killed": {
-"enemy_light_plane": 40
+"enemy_light_plane": 49
 },
 "stars_count": 3
 },
 5: {
-"current_score": 1300,
+"current_score": 2200,
 "killed": {
-"enemy_light_plane": 74
+"enemy_light_plane": 112
 },
 "stars_count": 3
 },
 6: {
-"current_score": 1650,
+"current_score": 950,
 "killed": {
-"enemy_light_plane": 108
+"enemy_light_plane": 118
 },
 "stars_count": 3
 },
 7: {
-"current_score": 1950,
+"current_score": 1050,
 "killed": {
-"enemy_light_plane": 192
+"enemy_light_plane": 210
 },
 "stars_count": 3
 },
@@ -70,9 +70,9 @@ unlocked_levels = {
 "stars_count": 3
 },
 9: {
-"current_score": 850,
+"current_score": 1400,
 "killed": {
-"enemy_light_plane": 160
+"enemy_light_plane": 177
 },
 "stars_count": 3
 }

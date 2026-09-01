@@ -33,6 +33,7 @@ func process_input() -> Vector3:
 		
 	var input_direction = Input.get_axis("ui_right", "ui_left")
 	var movement = Vector3.ZERO
+	
 	movement.z = input_direction * model.speed
 	return movement
 

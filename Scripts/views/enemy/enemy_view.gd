@@ -71,17 +71,25 @@ func destroy():
 	
 	is_alive = false
 	
-	var tween = create_tween()
-
-	# Увеличиваемся
-	tween.tween_property(self, "scale", Vector3(2.0, 2.0, 2.0), 0.3)\
-			.set_ease(Tween.EASE_OUT)\
-			.set_trans(Tween.TRANS_BACK)
-
-	# Уменьшаемся до нормального размера
-	tween.tween_property(self, "scale", Vector3.ONE, 0.3)\
-			.set_ease(Tween.EASE_IN)\
-			.set_trans(Tween.TRANS_ELASTIC)
+	var spin_direction = 1.0 if randf() > 0.5 else -1.0
 	
-	await tween.finished
-	queue_free()
+	var tween = create_tween()
+	
+	# Падение вниз (дольше, но та же скорость)
+	tween.tween_property(self, "global_position:y", self.global_position.y - 20.0, 4.0)
+	
+	# Летит вперёд по X+
+	tween.parallel().tween_property(self, "global_position:x", self.global_position.x + 25.0, 4.0)
+	
+	# Вращение по оси X (кувырок, медленнее из-за большей длительности)
+	tween.parallel().tween_property(self, "rotation_degrees:x", self.rotation_degrees.x + 360.0 * spin_direction * 3.0, 4.0)
+	
+	# Наклон вбок
+	#tween.parallel().tween_property(self, "rotation_degrees:z", self.rotation_degrees.z + 45.0 * spin_direction, 4.0)
+	
+	# Исчезновение (начинается через 1 сек)
+	tween.tween_interval(1.0)
+	tween.tween_property(self, "modulate:a", 0.0, 3.0)
+	
+	# Удаление
+	tween.tween_callback(queue_free)

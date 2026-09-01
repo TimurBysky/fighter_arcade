@@ -1,6 +1,6 @@
 extends Camera3D
 @onready var fighter = $"../CharacterBody3D/Fighter_Model"
-@export var speed = 2.0
+@export var speed = 3.0
 @export var offest = Vector3(2, 2,0)
 
 # Called when the node enters the scene tree for the first time.
