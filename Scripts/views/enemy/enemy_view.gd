@@ -6,6 +6,7 @@ class_name EnemyView
 @onready var area3D = $Area3D
 @onready var ui = $HealthBar
 @onready var tracer_scene = preload("res://Scenes/tracer.tscn")
+@onready var explode_scene = preload("res://Scenes/explode.tscn")
 var controller: EnemyController
 
 var is_alive = true
@@ -70,7 +71,9 @@ func destroy():
 		return
 	
 	is_alive = false
-	
+	var instance = explode_scene.instantiate()
+	add_child(instance)
+
 	var spin_direction = 1.0 if randf() > 0.5 else -1.0
 	
 	var tween = create_tween()
