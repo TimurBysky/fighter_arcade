@@ -25,20 +25,21 @@ color_ramp = SubResource("GradientTexture1D_vqbjk")
 hue_variation_min = -2.2351742e-08
 hue_variation_max = -2.2351742e-08
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmu8l"]
-albedo_color = Color(1, 1, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u42y8"]
+albedo_color = Color(1, 0.47657922, 0.012920001, 0.48600003)
 
-[sub_resource type="SphereMesh" id="SphereMesh_u1khh"]
-material = SubResource("StandardMaterial3D_jmu8l")
+[sub_resource type="SphereMesh" id="SphereMesh_3ps7p"]
+material = SubResource("StandardMaterial3D_u42y8")
+radius = 0.2
+height = 0.3
 
 [node name="Explode" type="GPUParticles3D" unique_id=951144890]
 emitting = false
 amount = 128
-lifetime = 5.0
-interp_to_end = 1.0
+lifetime = 3.5
 one_shot = true
-speed_scale = 11.55
+speed_scale = 3.52
 explosiveness = 1.0
 randomness = 0.38
 process_material = SubResource("ParticleProcessMaterial_biqig")
-draw_pass_1 = SubResource("SphereMesh_u1khh")
+draw_pass_1 = SubResource("SphereMesh_3ps7p")

@@ -73,7 +73,7 @@ func destroy():
 	is_alive = false
 	var instance = explode_scene.instantiate()
 	add_child(instance)
-
+	
 	var spin_direction = 1.0 if randf() > 0.5 else -1.0
 	
 	var tween = create_tween()
