@@ -34,7 +34,6 @@ radius = 0.2
 height = 0.3
 
 [node name="Explode" type="GPUParticles3D" unique_id=951144890]
-emitting = false
 amount = 128
 lifetime = 3.5
 one_shot = true
