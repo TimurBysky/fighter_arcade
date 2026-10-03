@@ -11,6 +11,8 @@ extends Node3D
 @onready var timer_to_end: Timer = $Timer_to_end
 @onready var time_to_end_label: Label3D = $Time_to_end_label
 @onready var start_timer: Label = $CanvasLayer2/MarginContainer/VBoxContainer/StartTimer
+@onready var end_of_clouds:Area3D = $End/Area3D
+@onready var clouds_scene:PackedScene = preload("res://Scenes/clouds.tscn")
 
 var level_model: LevelData
 
@@ -41,6 +43,15 @@ func _ready() -> void:
 	if restart_button:
 		restart_button.pressed.connect(_restart)
 
+	end_of_clouds.area_entered.connect(_on_area_3d_area_entered)
+
+func _on_area_3d_area_entered(cloud: Area3D)-> void:
+	if cloud.is_in_group("Clouds"):
+		print("Entered!!!", cloud)
+		var instance = clouds_scene.instantiate() as Node3D
+		instance.position = $Start.position
+		add_child(instance)
+		
 func _process(delta: float) -> void:
 	
 	time_to_end_label.text = str(roundf(timer_to_end.time_left))

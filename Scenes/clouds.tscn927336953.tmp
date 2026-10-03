@@ -4,13 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://jufsq6dhvs2k" path="res://Assets/cloud.png" id="2_hmje7"]
 [ext_resource type="Script" uid="uid://dll3ypxijo6e7" path="res://Scenes/cloud_sprite.gd" id="2_kt4y7"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_tv6yn"]
-radius = 22.54632
-
 [node name="Clouds" type="Node3D" unique_id=1044847598]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_hmje7")
-speed = 9.0
+speed = null
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1305639763]
 script = ExtResource("2_kt4y7")
@@ -45,7 +41,6 @@ texture = ExtResource("2_hmje7")
 
 [node name="Node3D2" type="Node3D" parent="." unique_id=2060177873]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.026812, -3.5629683, 0)
-script = ExtResource("2_kt4y7")
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D2" unique_id=1026260348]
 transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -24.316238, 8.639088, -36.221348)
@@ -73,39 +68,8 @@ modulate = Color(0.93, 0.93, 0.93, 1)
 billboard = 1
 texture = ExtResource("2_hmje7")
 
-[node name="Node3D5" type="Node3D" parent="." unique_id=1566293712]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.066926, -3.5629683, -103.47696)
-script = ExtResource("2_kt4y7")
-
-[node name="Sprite3D" type="Sprite3D" parent="Node3D5" unique_id=739987782]
-transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -24.316238, 8.639088, -36.221348)
-billboard = 1
-texture = ExtResource("2_hmje7")
-
-[node name="Sprite3D2" type="Sprite3D" parent="Node3D5" unique_id=1012152324]
-transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, 0, 0, -10.478981)
-billboard = 1
-texture = ExtResource("2_hmje7")
-
-[node name="Sprite3D3" type="Sprite3D" parent="Node3D5" unique_id=1602207292]
-transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, 38.273697, -11.865688, 3.327034)
-billboard = 1
-texture = ExtResource("2_hmje7")
-
-[node name="Sprite3D4" type="Sprite3D" parent="Node3D5" unique_id=1429942152]
-transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -48.406303, -16.84647, 0)
-billboard = 1
-texture = ExtResource("2_hmje7")
-
-[node name="Sprite3D5" type="Sprite3D" parent="Node3D5" unique_id=186429202]
-transform = Transform3D(3.0098968, -0.014311941, -0.020426497, 0.014129341, 3.009847, -0.026877396, 0.020553304, 0.02678055, 3.009811, 28.166634, 9.293976, -13.794788)
-modulate = Color(0.93, 0.93, 0.93, 1)
-billboard = 1
-texture = ExtResource("2_hmje7")
-
 [node name="Node3D3" type="Node3D" parent="." unique_id=1767288396]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2128, -3.5629683, 8.561028)
-script = ExtResource("2_kt4y7")
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D3" unique_id=1445638775]
 transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -24.316238, 8.639088, -36.221348)
@@ -134,7 +98,6 @@ texture = ExtResource("2_hmje7")
 
 [node name="Node3D4" type="Node3D" parent="." unique_id=1784288489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.34591, 5.11798, -49.63907)
-script = ExtResource("2_kt4y7")
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D4" unique_id=629436419]
 transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -24.316238, 8.639088, -36.221348)
@@ -160,9 +123,3 @@ texture = ExtResource("2_hmje7")
 transform = Transform3D(3.0098968, -0.014311941, -0.020426497, 0.014129341, 3.009847, -0.026877396, 0.020553304, 0.02678055, 3.009811, 28.166634, -5.7221813, -13.794788)
 billboard = 1
 texture = ExtResource("2_hmje7")
-
-[node name="Area3D" type="Area3D" parent="." unique_id=1049430393 groups=["Clouds"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.052988)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=605173242]
-shape = SubResource("SphereShape3D_tv6yn")
