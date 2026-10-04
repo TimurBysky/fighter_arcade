@@ -47,7 +47,6 @@ func _ready() -> void:
 
 func _on_area_3d_area_entered(cloud: Area3D)-> void:
 	if cloud.is_in_group("Clouds"):
-		print("Entered!!!", cloud)
 		var instance = clouds_scene.instantiate() as Node3D
 		instance.position = $Start.position
 		add_child(instance)
@@ -95,3 +94,7 @@ func _restart() -> void:
 	start_game()
 	get_tree().reload_current_scene()
 	
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.

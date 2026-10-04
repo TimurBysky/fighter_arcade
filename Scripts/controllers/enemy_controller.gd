@@ -52,6 +52,8 @@ func handle_collision(other_body: Node) -> void:
 		take_damage.emit(model.current_health, model.max_health)
 		if(other_body.has_method("destroy")):
 			other_body.destroy()
+			
+		
 
 func _on_enemy_died(enemy_type: String):
 	if view.has_method("destroy"):

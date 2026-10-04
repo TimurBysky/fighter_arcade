@@ -38,3 +38,4 @@ func take_damage(amount: int = 1) -> void:
 
 func die():
 	enemy_died.emit(enemy_type)
+	
