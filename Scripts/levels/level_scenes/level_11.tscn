@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://dsiv5sp42clk"]
+
+[ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_7l4ga"]
+[ext_resource type="Texture2D" uid="uid://ca15l4h45xfw8" path="res://Assets/natural-disaster-volcanic-eruption.jpg" id="2_7l4ga"]
+[ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_a81lf"]
+[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_b6apv"]
+[ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_qhrel"]
+[ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_ejjti"]
+[ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_fixvs"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_famt5"]
+panorama = ExtResource("2_7l4ga")
+
+[sub_resource type="Sky" id="Sky_vonw3"]
+sky_material = SubResource("PanoramaSkyMaterial_famt5")
+
+[sub_resource type="Environment" id="Environment_oi3di"]
+background_mode = 2
+background_color = Color(0.38039216, 0.7921569, 0.9254902, 1)
+sky = SubResource("Sky_vonw3")
+sky_custom_fov = 85.4
+sky_rotation = Vector3(0.31415927, -1.5358897, 0.061086524)
+ambient_light_sky_contribution = 0.05
+tonemap_exposure = 1.68
+
+[sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pod41"]
+radius = 2.4536133
+height = 33.882202
+
+[node name="Level" type="Node3D" unique_id=1222772376]
+script = ExtResource("1_7l4ga")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=857818750]
+environment = SubResource("Environment_oi3di")
+
+[node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("3_a81lf")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=429894954]
+transform = Transform3D(0.9999958, 0, 0.0028972425, 0, 1, 0, -0.0028972425, 0, 0.9999958, -27, 6.525, 0)
+visible = false
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=715005551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 6.525, 8)
+visible = false
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1604731037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 6.525, -8)
+visible = false
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1707181267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 11)
+visible = false
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=389290977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
+visible = false
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1800400399]
+transform = Transform3D(0.97547317, -0.18527493, 0.118848845, -0.15721016, -0.20849483, 0.96530557, -0.15406755, -0.96031415, -0.23250827, 3.1510062, 3.8153665, -5.493323)
+light_energy = 0.562
+light_angular_distance = 6.35
+shadow_enabled = true
+shadow_transmittance_bias = -2.19
+shadow_opacity = 0.82
+
+[node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_b6apv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1229010264]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=968091158]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Restart_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=686251265]
+layout_mode = 2
+text = "RESTART"
+
+[node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=864545513]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1949377509]
+process_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer2" unique_id=1868964661]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/MarginContainer" unique_id=157484378]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="StartTimer" type="Label" parent="CanvasLayer2/MarginContainer/VBoxContainer" unique_id=391618793]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "3 2 1 Go!"
+script = ExtResource("5_qhrel")
+
+[node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
+one_shot = true
+
+[node name="Time_to_end_label" type="Label3D" parent="." unique_id=2037422635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.914417, 8.355302, 0)
+pixel_size = 0.045
+billboard = 1
+text = "Time"
+
+[node name="Clouds" parent="." unique_id=1044847598 instance=ExtResource("6_ejjti")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.430786, -5.468, 0)
+
+[node name="End" type="Marker3D" parent="." unique_id=1313508628]
+gizmo_extents = 14.0
+
+[node name="Area3D" type="Area3D" parent="End" unique_id=372895390 groups=["level_border"]]
+script = ExtResource("7_fixvs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/Area3D" unique_id=1390325846]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.09326458, -3.2396713e-08, 0.7411494)
+shape = SubResource("CapsuleShape3D_pod41")
+
+[node name="Start" type="Marker3D" parent="." unique_id=842392146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.431, -5.468, 0)
+
+[connection signal="body_entered" from="End/Area3D" to="End/Area3D" method="_on_body_entered"]
