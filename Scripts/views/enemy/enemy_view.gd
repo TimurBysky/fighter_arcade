@@ -7,10 +7,17 @@ class_name EnemyView
 @onready var ui = $HealthBar
 @onready var tracer_scene = preload("res://Scenes/tracer.tscn")
 @onready var explode_scene = preload("res://Scenes/explode.tscn")
+
+
 var controller: EnemyController
 
 var is_alive = true
-
+var is_boss = false
+var amplitude: float = 7.0      # Насколько далеко влево/вправо
+var speed: float = 2.0          # Скорость качания
+var start_position: Vector3
+var time: float = 0.0
+var max_tilt_angle: float = 15.0 
 
 func _ready() -> void:
 	controller = EnemyController.new()
@@ -25,12 +32,18 @@ func _ready() -> void:
 	collision_mask = 0
 	collision_layer = 2
 	area3D.collision_mask = 4
+	
+		
+	start_position = global_position
 	 
 func _process(delta: float) -> void:
 
 	if not is_alive:
 		return
-		
+	
+	if controller.moving_glide():
+		move_glide(delta)
+	
 	velocity = controller.moving()
 	move_and_slide()
 	
@@ -52,20 +65,30 @@ func shooting_effect():
 	instance.shoot_by_("enemy")
 
 func spread_shooting_effect():
+
+		
 	var angles = [-205, -155]
 		
 	for angle in angles:
 		var instance = tracer_scene.instantiate() as Tracer
 		var angle_rad = deg_to_rad(angle)
-		
+		instance.global_position = global_position
 		# Движение влево с отклонением по Z (горизонталь)
 		var direction = Vector3(-cos(angle_rad), 0, sin(angle_rad))
 		direction = direction.normalized()
 		
 		instance.direction = direction
-		add_child(instance)
+		get_tree().current_scene.add_child(instance)
 		instance.shoot_by_("enemy")
 
+func move_glide(delta: float):
+	time += delta * speed
+	global_position.z = start_position.z + sin(time) * amplitude
+	
+	# Добавляем наклон (крен) по оси X
+	var target_tilt = cos(time) * max_tilt_angle 
+	rotation_degrees.z = -target_tilt
+	
 func destroy():
 	if not is_alive:
 		return

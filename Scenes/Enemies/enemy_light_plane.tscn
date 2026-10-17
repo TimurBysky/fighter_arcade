@@ -20,6 +20,6 @@ current_model = ExtResource("3_od7fn")
 visible = false
 mesh = SubResource("PrismMesh_od7fn")
 
-[node name="Tomtato-light" parent="." index="1" unique_id=460124307 instance=ExtResource("4_qyby6")]
+[node name="Tomato-light" parent="." index="1" unique_id=460124307 instance=ExtResource("4_qyby6")]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.5555539, -0.42548802, 0)
 script = ExtResource("5_pmyjq")

@@ -2,18 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="1_docdb"]
 [ext_resource type="Script" uid="uid://cjyoyfhmbkw3e" path="res://Scripts/views/enemy/enemy_medium_plane.gd" id="2_g0ahl"]
-[ext_resource type="Resource" uid="uid://cojpele188q4f" path="res://Scripts/models/enemy/enemy_heavy_plane_data.tres" id="3_bwuae"]
-[ext_resource type="PackedScene" uid="uid://0qncj2inlt3" path="res://Assets/Tomtato-heavy2.glb" id="4_66mfj"]
-[ext_resource type="Script" uid="uid://yo0iamebp5ta" path="res://Assets/bullets.gd" id="5_ehi8f"]
+[ext_resource type="Resource" uid="uid://bvrnn7c8on8wh" path="res://Scripts/models/enemy/enemy_boss_plane_data.tres" id="3_g0fcy"]
+[ext_resource type="PackedScene" uid="uid://byos1uvtr4t7g" path="res://Assets/Tomtato-boss.glb" id="4_415fb"]
+[ext_resource type="Script" uid="uid://cvrwo7x8co1bj" path="res://Assets/tomtato_boss.gd" id="5_docdb"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hq7gd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p7ov"]
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="enemy_heavy_plane" unique_id=455732525 instance=ExtResource("1_docdb")]
+[node name="enemy_boss_plane" unique_id=455732525 instance=ExtResource("1_docdb")]
 script = ExtResource("2_g0ahl")
-current_model = ExtResource("3_bwuae")
+current_model = ExtResource("3_g0fcy")
 
 [node name="MeshInstance3D" parent="." index="0" unique_id=2058456753]
 transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -1, -1, -4.371139e-08, -4.371139e-08, 0, 0, 0)
@@ -21,9 +21,9 @@ visible = false
 mesh = SubResource("SphereMesh_hq7gd")
 surface_material_override/0 = SubResource("StandardMaterial3D_8p7ov")
 
-[node name="Tomtato-heavy2" parent="." index="1" unique_id=939691903 instance=ExtResource("4_66mfj")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0.78, -1.3579091, 0)
-script = ExtResource("5_ehi8f")
+[node name="Tomato_plane" parent="." index="1" unique_id=1101959303 instance=ExtResource("4_415fb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("5_docdb")
 
 [node name="HealthBar" parent="." index="4" unique_id=1244497600]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.291245, 0)

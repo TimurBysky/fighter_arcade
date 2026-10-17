@@ -141,6 +141,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.
 gizmo_extents = 14.0
 
 [node name="Area3D" type="Area3D" parent="End" unique_id=372895390 groups=["level_border"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.699, 0, 0)
+collision_mask = 255
 script = ExtResource("7_r5jb2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="End/Area3D" unique_id=1390325846]

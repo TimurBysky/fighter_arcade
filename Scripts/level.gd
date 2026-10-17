@@ -13,6 +13,8 @@ extends Node3D
 @onready var start_timer: Label = $CanvasLayer2/MarginContainer/VBoxContainer/StartTimer
 @onready var end_of_clouds:Area3D = $End/Area3D
 @onready var clouds_scene:PackedScene = preload("res://Scenes/clouds.tscn")
+@onready var boss_hp_bar = $CanvasLayer3/MarginContainer/VBoxContainer/boss_hp_bar
+@onready var boss = $enemy_boss_plane
 
 var level_model: LevelData
 
@@ -54,6 +56,7 @@ func _on_area_3d_area_entered(cloud: Area3D)-> void:
 func _process(delta: float) -> void:
 	
 	time_to_end_label.text = str(roundf(timer_to_end.time_left))
+	#boss_hp_bar.update_health()
 
 func game_stop():
 	get_tree().paused = true

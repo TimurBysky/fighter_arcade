@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_qhrel"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_ejjti"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_fixvs"]
+[ext_resource type="PackedScene" uid="uid://bbddu1qyss4j0" path="res://Scenes/Enemies/enemy_boss_plane.tscn" id="8_abu84"]
+[ext_resource type="Script" uid="uid://cjgy6wjlp3xi5" path="res://Scripts/levels/level_scenes/boss_hp_bar.gd" id="10_b6apv"]
+[ext_resource type="Texture2D" uid="uid://bvvdnlgarhb22" path="res://Assets/PNG/Button13.png" id="10_qhrel"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_famt5"]
 panorama = ExtResource("2_7l4ga")
@@ -26,8 +29,8 @@ tonemap_exposure = 1.68
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pod41"]
-radius = 2.4536133
-height = 33.882202
+radius = 0.95654297
+height = 49.77646
 
 [node name="Level" type="Node3D" unique_id=1222772376]
 script = ExtResource("1_7l4ga")
@@ -36,6 +39,7 @@ script = ExtResource("1_7l4ga")
 environment = SubResource("Environment_oi3di")
 
 [node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("3_a81lf")]
+transform = Transform3D(1.0000004, 0, 0, 0, 1, 0, 0, 0, 1.0000004, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
@@ -69,6 +73,7 @@ mesh = SubResource("BoxMesh_u52ul")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1800400399]
 transform = Transform3D(0.97547317, -0.18527493, 0.118848845, -0.15721016, -0.20849483, 0.96530557, -0.15406755, -0.96031415, -0.23250827, 3.1510062, 3.8153665, -5.493323)
+light_color = Color(0.92, 0.74520004, 0.736, 1)
 light_energy = 0.562
 light_angular_distance = 6.35
 shadow_enabled = true
@@ -143,13 +148,40 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.
 gizmo_extents = 14.0
 
 [node name="Area3D" type="Area3D" parent="End" unique_id=372895390 groups=["level_border"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6988792, 0, 0)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("7_fixvs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="End/Area3D" unique_id=1390325846]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.09326458, -3.2396713e-08, 0.7411494)
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.09326458, 3.1498328e-07, -7.2059784)
 shape = SubResource("CapsuleShape3D_pod41")
+debug_color = Color(0.84705883, 0.6313726, 0, 1)
 
 [node name="Start" type="Marker3D" parent="." unique_id=842392146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.431, -5.468, 0)
+
+[node name="enemy_boss_plane" parent="." unique_id=70072708 instance=ExtResource("8_abu84")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -24.19, 0, 0)
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=323530126]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer3" unique_id=1580835811]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 71
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer3/MarginContainer" unique_id=1627919745]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="boss_hp_bar" type="Sprite2D" parent="CanvasLayer3/MarginContainer/VBoxContainer" unique_id=1286379684]
+texture = ExtResource("10_qhrel")
+script = ExtResource("10_b6apv")
 
 [connection signal="body_entered" from="End/Area3D" to="End/Area3D" method="_on_body_entered"]

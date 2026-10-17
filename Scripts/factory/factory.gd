@@ -15,6 +15,7 @@ func create_enemy(model: EnemyData = enemy_template) -> EnemyData:
 	new_enemy.fire_rate = model.fire_rate
 	new_enemy.spread_fire = model.spread_fire
 	new_enemy.score = model.score
+	new_enemy.boss = model.boss
 	new_enemy.current_health = new_enemy.max_health  # Сброс здоровья
 	
 	return new_enemy

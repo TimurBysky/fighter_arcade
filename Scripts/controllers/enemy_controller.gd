@@ -5,7 +5,11 @@ var Shoot_timer: Timer
 var model: EnemyData
 var view: Node
 var shoot_cooldown: bool
+var start_position: Vector3
+var time: float = 0.0
 # Called when the node enters the scene tree for the first time.
+
+
 
 signal enemy_destroy(enemy_type: String, score: int)
 signal take_damage(current_health: int, max_health: int)
@@ -22,12 +26,17 @@ func setup(enemy_view: CharacterBody3D, enemy_model: EnemyData):
 	add_child(Shoot_timer)
 	print_debug("Таймер врага: ", Shoot_timer.time_left)
 	model.enemy_died.connect(_on_enemy_died)
+	start_position = view.global_position
+	
 	
 func moving() -> Vector3:
 	var movement = Vector3.ZERO
 	movement.x = model.speed
-	
+		
 	return movement
+	
+func moving_glide():
+	return model.is_boss()
 	
 func shoot():
 	if !model.is_alive():

@@ -14,3 +14,6 @@ mesh = SubResource("BoxMesh_mulmr")
 
 [node name="Bullets" parent="." index="1" unique_id=1000943043 instance=ExtResource("2_vs3aj")]
 script = ExtResource("3_7r188")
+
+[node name="CollisionShape3D" parent="." index="2" unique_id=1102294874]
+debug_color = Color(0.9019608, 0, 0.5882353, 0.6666667)

@@ -21,7 +21,7 @@ visible = false
 mesh = SubResource("SphereMesh_hq7gd")
 surface_material_override/0 = SubResource("StandardMaterial3D_8p7ov")
 
-[node name="Tomtato-heavy2" parent="." index="1" unique_id=939691903 instance=ExtResource("4_32x2x")]
+[node name="Tomato_plane" parent="." index="1" unique_id=939691903 instance=ExtResource("4_32x2x")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0.78, -1.3579091, 0)
 script = ExtResource("5_hyjpq")
 

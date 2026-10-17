@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bvrnn7c8on8wh"]
+
+[ext_resource type="Script" uid="uid://h3nega2lwani" path="res://Scripts/models/enemy/enemy_data.gd" id="1_ql6xt"]
+
+[resource]
+script = ExtResource("1_ql6xt")
+speed = 0.1
+max_health = 200
+enemy_type = "enemy_boss_plane"
+score = 200
+fire_rate = 0.1
+spread_fire = true
+boss = true
+metadata/_custom_type_script = "uid://h3nega2lwani"
