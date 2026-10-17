@@ -46,6 +46,10 @@ func _ready() -> void:
 		restart_button.pressed.connect(_restart)
 
 	end_of_clouds.area_entered.connect(_on_area_3d_area_entered)
+	if boss:
+		var boss_controller = boss.controller
+		boss_controller.take_damage.connect(boss_hp_changed)
+
 
 func _on_area_3d_area_entered(cloud: Area3D)-> void:
 	if cloud.is_in_group("Clouds"):
@@ -56,7 +60,9 @@ func _on_area_3d_area_entered(cloud: Area3D)-> void:
 func _process(delta: float) -> void:
 	
 	time_to_end_label.text = str(roundf(timer_to_end.time_left))
-	#boss_hp_bar.update_health()
+
+func boss_hp_changed(current_health: int, max_health: int):
+	boss_hp_bar.update_health(current_health, max_health)
 
 func game_stop():
 	get_tree().paused = true

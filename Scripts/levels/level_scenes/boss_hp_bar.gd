@@ -16,7 +16,7 @@ func update_health(current_health: int, max_health: int) -> void:
 	var health_percent = float(current_health) / float(max_health)
 	
 	# Применяем масштаб (исходный масштаб = 1.0)
-	health_bar.scale.x = health_percent
+	health_bar.scale.x = health_percent * 5
 	
 	# Проверка на минимальный размер
 	if health_percent <= 0.01:

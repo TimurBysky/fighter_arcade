@@ -1,6 +1,6 @@
 extends CharacterBody3D
 class_name Tracer
-#@export var tracer_lifetime = 2.0
+@export var tracer_lifetime = 3.5
 
 @export var speed = 10.0
 @export var direction: Vector3 = Vector3(-1, 0, 0) 
@@ -9,8 +9,8 @@ var damage: float = 1.0
 func _ready() -> void:
 	add_to_group("bullets")
 	collision_mask = 0
-	#await get_tree().create_timer(tracer_lifetime).timeout
-	#queue_free()
+	await get_tree().create_timer(tracer_lifetime).timeout
+	queue_free()
 	 
 func shoot_by_(owner: String = "player"):
 	match(owner):
