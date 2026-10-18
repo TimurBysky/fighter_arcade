@@ -7,16 +7,16 @@ script = ExtResource("1_dvpco")
 total_stars_count = 30
 unlocked_levels = {
 0: {
-"current_score": 1200,
+"current_score": 1500,
 "killed": {
-"enemy_light_plane": 956
+"enemy_light_plane": 1173
 },
 "stars_count": 3
 },
 1: {
-"current_score": 550,
+"current_score": 0,
 "killed": {
-"enemy_light_plane": 85
+"enemy_light_plane": 98
 },
 "stars_count": 3
 },
@@ -70,16 +70,16 @@ unlocked_levels = {
 "stars_count": 3
 },
 9: {
-"current_score": 0,
+"current_score": 1100,
 "killed": {
-"enemy_light_plane": 210
+"enemy_light_plane": 220
 },
 "stars_count": 3
 },
 10: {
-"current_score": 0,
+"current_score": 150,
 "killed": {
-"enemy_light_plane": 83
+"enemy_light_plane": 214
 },
 "stars_count": 0
 }

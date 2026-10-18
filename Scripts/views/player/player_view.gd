@@ -36,6 +36,7 @@ func _ready() -> void:
 	# Регистрируем себя в контроллере
 	var player_model = load("res://Scripts/models/player/player_data.tres")
 	controller.setup(self, player_model)
+	controller.stop_shooting.connect(stop_shoting_sound)
 
 var current_tilt: float = 0.0
 
@@ -97,8 +98,12 @@ func shot_effect(params: Dictionary = {}) -> void:
 		instance.shoot_by_("player")
 	
 	# Воспроизводим звук выстрела
-	if $ShootSound:
+	if $ShootSound and not $ShootSound.playing:
 		$ShootSound.play()
+
+func stop_shoting_sound()->void:
+	if $ShootSound:
+		$ShootSound.stop()
 
 # Визуальный эффект попадания
 func play_hit_effect() -> void:
@@ -116,8 +121,8 @@ func play_heal_effect() -> void:
 	tween.tween_property(fighter_model, "modulate", Color.GREEN, 0.1)
 	tween.tween_property(fighter_model, "modulate", Color.WHITE, 0.1)
 	
-	if $HealSound:
-		$HealSound.play()
+	if $BonusPickUp:
+		$BonusPickUp.play()
 
 func start_fall_animation() -> void:
 	# Отключаем управление (для игрока) или ИИ (для врага)
@@ -165,9 +170,13 @@ func start_fall_animation() -> void:
 	# Удаляем объект после падения
 	tween.chain().tween_callback(fighter.queue_free)
 
-func play_pickup_sound() -> void:
-	if $PickupSound:
-		$PickupSound.play()
+func play_pickup_sound(type: String) -> void:
+	if type == "Bonus":
+		if $BonusPickUp:
+			$BonusPickUp.play()
+	if type == "Ammo":
+		if $AmmoPickup:
+			$AmmoPickup.play()
 
 # Обновление UI (если есть)
 func update_health_display(current: int, max: int) -> void:
@@ -185,6 +194,10 @@ func destroy() -> void:
 		return
 		
 	is_alive = false
+	
+	#Звуки
+	$ShootSound.stop()
+	$Engine.stop()
 	
 	var tween = create_tween()
 	

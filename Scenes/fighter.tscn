@@ -5,6 +5,10 @@
 [ext_resource type="Script" uid="uid://c0tso0m8d5xly" path="res://Scripts/camera_3d.gd" id="2_umvcx"]
 [ext_resource type="Texture2D" uid="uid://b08fo432ub7rb" path="res://Assets/PNG/MainPanel03.png" id="3_qq641"]
 [ext_resource type="Script" uid="uid://h5wpwigggx5i" path="res://Scripts/views/ui/ui_panel.gd" id="4_6p8wg"]
+[ext_resource type="AudioStream" uid="uid://c4poloayj3xsd" path="res://Assets/Sounds/482122__qubodup__clean-machine-gun-burst.ogg" id="6_khrw8"]
+[ext_resource type="AudioStream" uid="uid://bwk61c3uuc3pj" path="res://Assets/Sounds/457013__dylanthefish__propeller.ogg" id="7_0wtf0"]
+[ext_resource type="AudioStream" uid="uid://dgdwdpi8wb7vx" path="res://Assets/Sounds/Bonus.ogg" id="8_m668j"]
+[ext_resource type="AudioStream" uid="uid://dotbrqffaur7f" path="res://Assets/Sounds/ammo_pickup.ogg" id="9_bw1cg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_efvb3"]
 radius = 0.7558594
@@ -59,3 +63,20 @@ text = "Text"
 [node name="Ammo_UI" type="Label3D" parent="UI_Panel" unique_id=6103836]
 transform = Transform3D(1, 1.2434498e-14, 0, -1.2434498e-14, 1, 0, 5.293956e-23, 0, 1, 0.17875957, -0.30926323, 0.28380036)
 text = "Text"
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="." unique_id=756996785]
+stream = ExtResource("6_khrw8")
+volume_db = -5.0
+
+[node name="Engine" type="AudioStreamPlayer" parent="." unique_id=1365686150]
+stream = ExtResource("7_0wtf0")
+volume_db = -15.0
+autoplay = true
+
+[node name="BonusPickUp" type="AudioStreamPlayer" parent="." unique_id=1106931780]
+stream = ExtResource("8_m668j")
+volume_db = 10.0
+
+[node name="AmmoPickup" type="AudioStreamPlayer" parent="." unique_id=550514445]
+stream = ExtResource("9_bw1cg")
+volume_db = -5.0

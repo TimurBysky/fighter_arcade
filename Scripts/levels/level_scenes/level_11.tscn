@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbddu1qyss4j0" path="res://Scenes/Enemies/enemy_boss_plane.tscn" id="8_abu84"]
 [ext_resource type="Script" uid="uid://cjgy6wjlp3xi5" path="res://Scripts/levels/level_scenes/boss_hp_bar.gd" id="10_b6apv"]
 [ext_resource type="Texture2D" uid="uid://bvvdnlgarhb22" path="res://Assets/PNG/Button13.png" id="10_qhrel"]
+[ext_resource type="AudioStream" uid="uid://qynnavqj6sut" path="res://Assets/Sounds/Sketchbook 2025-12-11_NEURO.ogg" id="11_qhrel"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_famt5"]
 panorama = ExtResource("2_7l4ga")
@@ -149,8 +150,7 @@ gizmo_extents = 14.0
 
 [node name="Area3D" type="Area3D" parent="End" unique_id=372895390 groups=["level_border"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6988792, 0, 0)
-collision_layer = 0
-collision_mask = 0
+collision_mask = 255
 script = ExtResource("7_fixvs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="End/Area3D" unique_id=1390325846]
@@ -190,5 +190,10 @@ script = ExtResource("10_b6apv")
 layout_mode = 2
 size_flags_vertical = 1
 text = "BOSS"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=372944755]
+stream = ExtResource("11_qhrel")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="body_entered" from="End/Area3D" to="End/Area3D" method="_on_body_entered"]

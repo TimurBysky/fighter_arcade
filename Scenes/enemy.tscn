@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://s0sffbg35cgh" path="res://Scripts/views/enemy/enemy_view.gd" id="1_hghv2"]
 [ext_resource type="Texture2D" uid="uid://bvvdnlgarhb22" path="res://Assets/PNG/Button13.png" id="2_1f0kj"]
 [ext_resource type="Script" uid="uid://r7hwaq1kenxf" path="res://Scripts/health_bar.gd" id="2_afpow"]
+[ext_resource type="AudioStream" uid="uid://hkq8q80a27ju" path="res://Assets/Sounds/265303__klangfabrik__explosion006.ogg" id="4_287tu"]
+[ext_resource type="AudioStream" uid="uid://0o67b5xsqb2y" path="res://Assets/Sounds/418970__whatthes__explosion.ogg" id="5_ghaa6"]
+[ext_resource type="AudioStream" uid="uid://cm6ytrgv3wyui" path="res://Assets/Sounds/840510__qubodup__loud-firewords-bang-cut-off.ogg" id="6_1dp5w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k104"]
 
@@ -31,3 +34,15 @@ script = ExtResource("2_afpow")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1057668, 0)
 billboard = 1
 texture = ExtResource("2_1f0kj")
+
+[node name="Destroy_1" type="AudioStreamPlayer" parent="." unique_id=1316805356]
+stream = ExtResource("4_287tu")
+volume_db = -12.772
+
+[node name="Destroy_2" type="AudioStreamPlayer" parent="." unique_id=1236392089]
+stream = ExtResource("5_ghaa6")
+volume_db = -12.772
+
+[node name="Destroy_3" type="AudioStreamPlayer" parent="." unique_id=1810473240]
+stream = ExtResource("6_1dp5w")
+volume_db = -12.772

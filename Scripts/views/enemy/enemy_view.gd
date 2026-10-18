@@ -7,7 +7,7 @@ class_name EnemyView
 @onready var ui = $HealthBar
 @onready var tracer_scene = preload("res://Scenes/tracer.tscn")
 @onready var explode_scene = preload("res://Scenes/explode.tscn")
-
+@onready var destroy_sounds = [$Destroy_1, $Destroy_2, $Destroy_3]
 
 var controller: EnemyController
 
@@ -69,7 +69,7 @@ func shooting_effect():
 func spread_shooting_effect():
 
 		
-	var angles = [-205, -155]
+	var angles = [-200, -160]
 		
 	for angle in angles:
 		var instance = tracer_scene.instantiate() as Tracer
@@ -105,6 +105,12 @@ func destroy():
 	
 	if !current_model.is_boss():
 		
+		var chosen_sound = destroy_sounds.pick_random()
+	
+	# Если звук существует, проигрываем его
+		if chosen_sound and chosen_sound.stream:
+			chosen_sound.play()
+			
 		var instance = explode_scene.instantiate()
 		add_child(instance)
 		
@@ -191,6 +197,12 @@ func destroy():
 func _spawn_explosion_at_boss():
 	# Защита: если босс уже удален, не создаем взрыв
 	if not is_instance_valid(self): return 
+	
+	var chosen_sound = destroy_sounds.pick_random()
+	
+	# Если звук существует, проигрываем его
+	if chosen_sound and chosen_sound.stream:
+		chosen_sound.play()
 	
 	var explosion = explode_scene.instantiate()
 	get_tree().current_scene.add_child(explosion)

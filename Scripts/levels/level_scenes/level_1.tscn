@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_r03fp"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_rv3wq"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_6xg4q"]
+[ext_resource type="AudioStream" uid="uid://yfun8pe7cwyn" path="res://Assets/Sounds/musinova-mission-accomplished-liquid-jungle-drum-amp-bass-loop-version-354195.ogg" id="8_crorr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
 panorama = ExtResource("2_r03fp")
@@ -153,5 +154,10 @@ shape = SubResource("CapsuleShape3D_pod41")
 
 [node name="Start" type="Marker3D" parent="." unique_id=842392146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.431, -5.468, 0)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=155141184]
+stream = ExtResource("8_crorr")
+volume_db = -12.0
+autoplay = true
 
 [connection signal="body_entered" from="End/Area3D" to="End/Area3D" method="_on_body_entered"]
