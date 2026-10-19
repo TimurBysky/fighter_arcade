@@ -7,21 +7,21 @@ script = ExtResource("1_0bibf")
 level_id = 4
 level_name = "Уровень 5"
 level_scene = "res://Scripts/levels/level_scenes/level_5.tscn"
-spawn_interval = 1.0
-max_score = 2500
+spawn_interval = 0.9
+max_score = 3200
 stars_to_unlock = 2
-time_to_game_over = 35.0
+time_to_game_over = 100.0
 object_list = {
 "ammo_crate": {
-"chance": 17,
+"chance": 25,
 "scene": "res://Scenes/ammo.tscn"
 },
 "enemy_light_plane": {
-"chance": 43,
+"chance": 35,
 "scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
 },
 "enemy_medium_plane": {
-"chance": 15,
+"chance": 21,
 "scene": "res://Scenes/Enemies/enemy_medium_plane.tscn"
 },
 "health_pill": {
@@ -29,7 +29,7 @@ object_list = {
 "scene": "res://Scenes/health.tscn"
 },
 "shoot_bonus": {
-"chance": 21,
+"chance": 15,
 "scene": "res://Scenes/shoot_bonus.tscn"
 }
 }

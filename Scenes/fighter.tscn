@@ -70,7 +70,7 @@ volume_db = -5.0
 
 [node name="Engine" type="AudioStreamPlayer" parent="." unique_id=1365686150]
 stream = ExtResource("7_0wtf0")
-volume_db = -15.0
+volume_db = -10.0
 autoplay = true
 
 [node name="BonusPickUp" type="AudioStreamPlayer" parent="." unique_id=1106931780]

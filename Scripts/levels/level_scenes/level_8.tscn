@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_nxmtp"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_cwe62"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_dosde"]
+[ext_resource type="AudioStream" uid="uid://df5mj4typr88b" path="res://Assets/Sounds/alex-morgan-action-chase-sequence-drive-573649.mp3" id="8_8nq0s"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_famt5"]
 panorama = ExtResource("2_8s61d")
@@ -151,5 +152,10 @@ shape = SubResource("CapsuleShape3D_pod41")
 
 [node name="Start" type="Marker3D" parent="." unique_id=842392146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.431, -5.468, 0)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1713985860]
+stream = ExtResource("8_8nq0s")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="body_entered" from="End/Area3D" to="End/Area3D" method="_on_body_entered"]

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_t4t5i"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_q7ohm"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_vcpcu"]
+[ext_resource type="AudioStream" uid="uid://bpkeq0fo2tbox" path="res://Assets/Sounds/musinova-acid-bonus-liquid-breakbeat-jungle-drum-and-bass-loopable-version-354205.mp3" id="8_pxe2d"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
 panorama = ExtResource("2_368hx")
@@ -153,5 +154,10 @@ shape = SubResource("CapsuleShape3D_pod41")
 
 [node name="Start" type="Marker3D" parent="." unique_id=842392146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.431, -5.468, 0)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1048868627]
+stream = ExtResource("8_pxe2d")
+volume_db = -17.0
+autoplay = true
 
 [connection signal="body_entered" from="End/Area3D" to="End/Area3D" method="_on_body_entered"]

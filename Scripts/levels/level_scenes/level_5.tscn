@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_s0r8y"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_lislj"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_auwio"]
+[ext_resource type="AudioStream" uid="uid://bhfnjsl5nx77k" path="res://Assets/Sounds/alexgrohl-energetic-action-sport-500409.mp3" id="8_aq22h"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_famt5"]
 panorama = ExtResource("2_cmjvv")
@@ -152,5 +153,10 @@ shape = SubResource("CapsuleShape3D_pod41")
 
 [node name="Start" type="Marker3D" parent="." unique_id=842392146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.431, -5.468, 0)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=155416639]
+stream = ExtResource("8_aq22h")
+volume_db = -17.0
+autoplay = true
 
 [connection signal="body_entered" from="End/Area3D" to="End/Area3D" method="_on_body_entered"]

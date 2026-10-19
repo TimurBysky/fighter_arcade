@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_o5eiy")
 speed = 1.5
-max_health = 20
+max_health = 15
 enemy_type = "enemy_heavy_plane"
 score = 200
-fire_rate = 3.0
+fire_rate = 0.8
 spread_fire = true
 metadata/_custom_type_script = "uid://h3nega2lwani"

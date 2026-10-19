@@ -138,7 +138,7 @@ billboard = 1
 text = "Time"
 
 [node name="Clouds" parent="." unique_id=1044847598 instance=ExtResource("6_rv3wq")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.430786, -5.468, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -44.430786, -5.4114914, 0)
 
 [node name="End" type="Marker3D" parent="." unique_id=1313508628]
 gizmo_extents = 14.0
@@ -157,7 +157,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.431, -5.468, 0)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=155141184]
 stream = ExtResource("8_crorr")
-volume_db = -12.0
+volume_db = -16.0
 autoplay = true
 
 [connection signal="body_entered" from="End/Area3D" to="End/Area3D" method="_on_body_entered"]

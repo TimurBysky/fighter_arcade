@@ -7,21 +7,21 @@ script = ExtResource("1_jnweo")
 level_id = 6
 level_name = "Уровень 7"
 level_scene = "res://Scripts/levels/level_scenes/level_7.tscn"
-spawn_interval = 0.9
+spawn_interval = 1.1
 max_score = 3000
 stars_to_unlock = 3
-time_to_game_over = 50.0
+time_to_game_over = 70.0
 object_list = {
 "ammo_crate": {
-"chance": 15,
+"chance": 28,
 "scene": "res://Scenes/ammo.tscn"
 },
 "enemy_heavy_plane": {
-"chance": 40,
+"chance": 12,
 "scene": "res://Scenes/Enemies/enemy_heavy_plane.tscn"
 },
 "enemy_light_plane": {
-"chance": 30,
+"chance": 35,
 "scene": "res://Scenes/Enemies/enemy_light_plane.tscn"
 },
 "health_pill": {
@@ -29,7 +29,7 @@ object_list = {
 "scene": "res://Scenes/health.tscn"
 },
 "shoot_bonus": {
-"chance": 5,
+"chance": 10,
 "scene": "res://Scenes/shoot_bonus.tscn"
 }
 }

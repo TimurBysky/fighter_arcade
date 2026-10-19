@@ -25,5 +25,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8p7ov")
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0.78, -1.3579091, 0)
 script = ExtResource("5_hyjpq")
 
+[node name="CollisionShape3D" parent="Area3D" parent_id_path=PackedInt32Array(684457750) index="0" unique_id=1565551113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.415, 0.20709229, 0, -0.008026123)
+
 [node name="HealthBar" parent="." index="4" unique_id=1244497600]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.291245, 0)
