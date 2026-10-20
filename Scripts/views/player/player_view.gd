@@ -8,7 +8,7 @@ class_name PlayerView
 @onready var area_3d: Area3D = $CharacterBody3D/Area3D
 @onready var area_3d_for_bullets: Area3D = $CharacterBody3D/Area3D_for_Bullets
 @onready var tracer_scene = preload("res://Scenes/tracer.tscn")
-
+@onready var camera = $Camera3D
 # UI элементы (если есть)
 @onready var ui_panel: Sprite3D = $UI_Panel
 @onready var health_label: Label3D = $UI_Panel/Health_UI
@@ -79,6 +79,8 @@ func shot_effect(params: Dictionary = {}) -> void:
 	var have_shoot_bonus = params.get("have_shoot_bonus", false)
 	var damage_multiplier = params.get("damage_multiplier")
 	var angles = [0]
+	
+	camera.trigger_shake()
 	
 	if(have_shoot_bonus):
 		angles = [-25, 0, 25]

@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://cloqpoeykb360" path="res://Scripts/views/player/player_view.gd" id="1_3dnt7"]
 [ext_resource type="PackedScene" uid="uid://6sfhrlkt3cp7" path="res://Assets/Sketchfab_2021_08_13_15_44_51.glb" id="2_enrk2"]
 [ext_resource type="Script" uid="uid://c0tso0m8d5xly" path="res://Scripts/camera_3d.gd" id="2_umvcx"]
-[ext_resource type="Texture2D" uid="uid://b08fo432ub7rb" path="res://Assets/PNG/MainPanel03.png" id="3_qq641"]
 [ext_resource type="Script" uid="uid://h5wpwigggx5i" path="res://Scripts/views/ui/ui_panel.gd" id="4_6p8wg"]
+[ext_resource type="Texture2D" uid="uid://d10v18hdnrf71" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Button/Rect/Default.png" id="4_m668j"]
+[ext_resource type="Texture2D" uid="uid://dc804e8t81fxy" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Icon/Heart-1.png" id="6_bw1cg"]
 [ext_resource type="AudioStream" uid="uid://c4poloayj3xsd" path="res://Assets/Sounds/482122__qubodup__clean-machine-gun-burst.ogg" id="6_khrw8"]
 [ext_resource type="AudioStream" uid="uid://bwk61c3uuc3pj" path="res://Assets/Sounds/457013__dylanthefish__propeller.ogg" id="7_0wtf0"]
+[ext_resource type="Texture2D" uid="uid://c2y2gnfgifxmb" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Example.png" id="7_q03vb"]
 [ext_resource type="AudioStream" uid="uid://dgdwdpi8wb7vx" path="res://Assets/Sounds/Bonus.ogg" id="8_m668j"]
 [ext_resource type="AudioStream" uid="uid://dotbrqffaur7f" path="res://Assets/Sounds/ammo_pickup.ogg" id="9_bw1cg"]
 
@@ -49,11 +51,12 @@ shape = SubResource("SphereShape3D_6p8wg")
 transform = Transform3D(1.8126126e-08, -0.41467735, 0.9099685, -3.9775983e-08, 0.9099685, 0.41467735, -1, -4.3711385e-08, 3.5527137e-15, 2, 2, 0)
 fov = 105.0
 script = ExtResource("2_umvcx")
+shake_intensity = 0.05
 
 [node name="UI_Panel" type="Sprite3D" parent="." unique_id=743516293]
-transform = Transform3D(-0.05445303, -0.3239374, 0.5434376, -0.03229716, 0.5461589, 0.32232332, -0.631836, -1.5312027e-08, -0.06331066, 0.937901, -0.42926133, 2.4)
+transform = Transform3D(-0.07846388, -0.46677586, 0.7830637, -0.04653843, 0.7869849, 0.4644501, -0.9104409, 0, -0.09122722, 1.058, 0.474, 1.25)
 modulate = Color(18.892157, 18.892157, 18.892157, 0.84313726)
-texture = ExtResource("3_qq641")
+texture = ExtResource("4_m668j")
 script = ExtResource("4_6p8wg")
 
 [node name="Health_UI" type="Label3D" parent="UI_Panel" unique_id=1910362219]
@@ -61,8 +64,16 @@ transform = Transform3D(1, 1.2434498e-14, 0, -1.2434498e-14, 1, 0, 5.293956e-23,
 text = "Text"
 
 [node name="Ammo_UI" type="Label3D" parent="UI_Panel" unique_id=6103836]
-transform = Transform3D(1, 1.2434498e-14, 0, -1.2434498e-14, 1, 0, 5.293956e-23, 0, 1, 0.17875957, -0.30926323, 0.28380036)
+transform = Transform3D(1.0000002, -4.4569957e-09, 7.450581e-09, -1.8626451e-08, 1.0000002, 1.1920929e-07, 7.450581e-09, 2.9729005e-08, 1.0000002, 0.17570114, -0.046159685, 0.31432778)
 text = "Text"
+
+[node name="Heart" type="Sprite3D" parent="UI_Panel" unique_id=1090623486]
+transform = Transform3D(0.385, 1.3992546e-08, -1.1660453e-08, -1.3992546e-08, 0.385, 1.7993115e-08, 1.1660453e-08, -1.7993115e-08, 0.385, -0.133, 0.354, 0.324)
+texture = ExtResource("6_bw1cg")
+
+[node name="Ammo" type="Sprite3D" parent="UI_Panel" unique_id=1854719635]
+transform = Transform3D(0.26000017, 2.0189797e-09, -9.313226e-09, -1.8626451e-08, 0.26000035, 8.195639e-08, 5.5879354e-09, 6.791077e-08, 0.26000017, 0.1, -0.012, 0.202)
+texture = ExtResource("7_q03vb")
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="." unique_id=756996785]
 stream = ExtResource("6_khrw8")

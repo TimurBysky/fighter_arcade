@@ -1,29 +1,29 @@
-[gd_resource type="Resource" script_class="PlayerSaveData" format=3 uid="uid://dtc2xiawglp0c"]
+[gd_resource type="Resource" script_class="PlayerSaveData" format=3 uid="uid://caa0eaihecrjt"]
 
 [ext_resource type="Script" uid="uid://xakmdxf7dkm" path="res://Scripts/models/player/player_save_data.gd" id="1_dvpco"]
 
 [resource]
 script = ExtResource("1_dvpco")
-total_stars_count = 52
+total_stars_count = 60
 unlocked_levels = {
 0: {
-"current_score": 50,
+"current_score": 150,
 "killed": {
-"enemy_light_plane": 1273
+"enemy_light_plane": 1342
 },
 "stars_count": 2
 },
 1: {
-"current_score": 100,
+"current_score": 3350,
 "killed": {
-"enemy_light_plane": 215
+"enemy_light_plane": 290
 },
 "stars_count": 3
 },
 2: {
-"current_score": 3400,
+"current_score": 1400,
 "killed": {
-"enemy_light_plane": 260
+"enemy_light_plane": 288
 },
 "stars_count": 2
 },
@@ -63,22 +63,17 @@ unlocked_levels = {
 "stars_count": 3
 },
 8: {
-"current_score": 0,
+"current_score": 6350,
 "killed": {
-"enemy_light_plane": 11
+"enemy_light_plane": 189
 },
 "stars_count": 3
 },
 9: {
-"current_score": 0,
-"killed": {},
-"stars_count": 3
-},
-10: {
-"current_score": 700,
+"current_score": 12000,
 "killed": {
-"enemy_light_plane": 49
+"enemy_light_plane": 653
 },
-"stars_count": 0
+"stars_count": 2
 }
 }

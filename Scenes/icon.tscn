@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dtd5xwg6l2ef1"]
 
-[ext_resource type="Texture2D" uid="uid://emjwku6jrbh1" path="res://icon.svg" id="1_7vlay"]
 [ext_resource type="Script" uid="uid://cg2jpe3dakfpg" path="res://Scripts/levels/level_selector/icon.gd" id="1_mremn"]
-[ext_resource type="Texture2D" uid="uid://4ejwyjn8hgej" path="res://Assets/star_outline.png" id="2_rsedf"]
+[ext_resource type="Texture2D" uid="uid://du4lw0epkbmdj" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Level/Button/Dummy.png" id="2_mremn"]
+[ext_resource type="Texture2D" uid="uid://bb8rwpoqbpbhq" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Level/Star/Unactive.png" id="3_udduw"]
 
 [node name="icon" type="Control" unique_id=2042154271]
-custom_minimum_size = Vector2(128, 252)
+custom_minimum_size = Vector2(138.435, 252)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,36 +32,62 @@ offset_bottom = 113.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Picture" type="TextureRect" parent="VBoxContainer" unique_id=945654620]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1554498829]
 layout_mode = 2
-texture = ExtResource("1_7vlay")
+theme_override_constants/margin_top = -1
+theme_override_constants/margin_bottom = -73
 
-[node name="Level_name" type="Label" parent="VBoxContainer" unique_id=460041711]
+[node name="Picture" type="TextureRect" parent="VBoxContainer/MarginContainer" unique_id=945654620]
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -0.16)
+texture = ExtResource("2_mremn")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/Picture" unique_id=1817952500]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 48
+
+[node name="Level_name" type="Label" parent="VBoxContainer/MarginContainer/Picture/MarginContainer" unique_id=460041711]
+layout_mode = 2
+size_flags_vertical = 1
 text = "LEVEL NAME"
 horizontal_alignment = 1
 
-[node name="Start_button" type="Button" parent="VBoxContainer" unique_id=1766065540]
-layout_mode = 2
-text = "START"
-
 [node name="Stars_container" type="HBoxContainer" parent="VBoxContainer" unique_id=1566554239]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+theme_override_constants/separation = -14
+alignment = 1
 
 [node name="star1" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1664384867]
 custom_minimum_size = Vector2(38, 33)
 layout_mode = 2
-texture = ExtResource("2_rsedf")
-expand_mode = 1
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.605, 0.605)
+texture = ExtResource("3_udduw")
 
-[node name="star2" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=109363087]
+[node name="star2" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=1253322951]
 custom_minimum_size = Vector2(38, 33)
 layout_mode = 2
-texture = ExtResource("2_rsedf")
-expand_mode = 1
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.605, 0.605)
+texture = ExtResource("3_udduw")
 
-[node name="star3" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=314887299]
+[node name="star3" type="TextureRect" parent="VBoxContainer/Stars_container" unique_id=739455267]
 custom_minimum_size = Vector2(38, 33)
 layout_mode = 2
-texture = ExtResource("2_rsedf")
-expand_mode = 1
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.605, 0.605)
+texture = ExtResource("3_udduw")
+
+[node name="Start_button" type="Button" parent="VBoxContainer" unique_id=1766065540]
+layout_mode = 2
+offset_transform_enabled = true
+text = "START"
