@@ -9,7 +9,7 @@ level_name = "Уровень 11"
 level_scene = "res://Scripts/levels/level_scenes/level_11.tscn"
 spawn_interval = 1.1
 max_score = 4100
-stars_to_unlock = 3
+stars_to_unlock = 2
 time_to_game_over = 200.0
 object_list = {
 "ammo_crate": {

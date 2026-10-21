@@ -9,10 +9,12 @@ class_name PlayerView
 @onready var area_3d_for_bullets: Area3D = $CharacterBody3D/Area3D_for_Bullets
 @onready var tracer_scene = preload("res://Scenes/tracer.tscn")
 @onready var camera = $Camera3D
+
 # UI элементы (если есть)
 @onready var ui_panel: Sprite3D = $UI_Panel
 @onready var health_label: Label3D = $UI_Panel/Health_UI
 @onready var ammo_label: Label3D = $UI_Panel/Ammo_UI
+@onready var ammo_ui: AnimatedSprite3D = $UI_Panel/Ammo
 
 @export var max_tilt_angle: float = 30.0  # Максимальный угол наклона в градусах
 @export var tilt_speed: float = 4.0       # Скорость наклона
@@ -188,7 +190,16 @@ func update_health_display(current: int, max: int) -> void:
 func update_ammo_display(current: int) -> void:
 	if ammo_label:
 		ammo_label.text = "Ammo: %d" % current
-
+	if ammo_ui:
+		# 200 патронов делим на 9 кадров (индексы от 0 до 8)
+		var max_ammo = 200.0
+		var total_frames = 8.0 # Максимальный индекс кадра (0-8)
+		
+		# Считаем процент оставшихся патронов (от 1.0 до 0.0)
+		var ratio = clamp(current / max_ammo, 0.0, 1.0)
+		
+		# Переводим в кадры. Когда патронов 200 -> кадр 8. Когда 0 -> кадр 0.
+		ammo_ui.frame = int(ratio * total_frames)
 
 # Визуальная анимация уничтожения
 func destroy() -> void:

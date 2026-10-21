@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cg2jpe3dakfpg" path="res://Scripts/levels/level_selector/icon.gd" id="1_mremn"]
 [ext_resource type="Texture2D" uid="uid://du4lw0epkbmdj" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Level/Button/Dummy.png" id="2_mremn"]
 [ext_resource type="Texture2D" uid="uid://bb8rwpoqbpbhq" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Level/Star/Unactive.png" id="3_udduw"]
+[ext_resource type="StyleBox" uid="uid://bke3bbyqgcghs" path="res://Assets/Textures/Start.tres" id="4_jt2qf"]
+[ext_resource type="StyleBox" uid="uid://83gqfl6kovpj" path="res://Assets/Textures/Start_pressed.tres" id="5_8mboj"]
+[ext_resource type="StyleBox" uid="uid://bb24alfdv67qt" path="res://Assets/Textures/Start_hover.tres" id="6_e5gku"]
 
 [node name="icon" type="Control" unique_id=2042154271]
 custom_minimum_size = Vector2(138.435, 252)
@@ -20,17 +23,12 @@ script = ExtResource("1_mremn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2049248882]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -113.5
-offset_right = 64.0
-offset_bottom = 113.5
+anchors_preset = -1
+anchor_left = -0.0020406777
+anchor_right = 1.0020406
+anchor_bottom = 0.70238096
 grow_horizontal = 2
-grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1554498829]
 layout_mode = 2
@@ -88,6 +86,11 @@ offset_transform_scale = Vector2(0.605, 0.605)
 texture = ExtResource("3_udduw")
 
 [node name="Start_button" type="Button" parent="VBoxContainer" unique_id=1766065540]
+custom_minimum_size = Vector2(85.255, 41.01)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 offset_transform_enabled = true
-text = "START"
+theme_override_styles/normal = ExtResource("4_jt2qf")
+theme_override_styles/pressed = ExtResource("5_8mboj")
+theme_override_styles/hover = ExtResource("6_e5gku")

@@ -3,7 +3,7 @@ extends Control  # или Node2D
 class_name LevelIcon
 
 @onready var picture: TextureRect = $VBoxContainer/MarginContainer/Picture
-@onready var level_name: Label = $VBoxContainer/MarginContainer/Level_name
+@onready var level_name: Label = $VBoxContainer/MarginContainer/Picture/MarginContainer/Level_name
 @onready var start_button: Button = $VBoxContainer/Start_button
 @onready var star_1: TextureRect = $VBoxContainer/Stars_container/star1
 @onready var star_2: TextureRect = $VBoxContainer/Stars_container/star2
