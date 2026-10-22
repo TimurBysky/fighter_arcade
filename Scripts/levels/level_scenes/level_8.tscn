@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_h0qfx"]
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_nxmtp"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_cwe62"]
+[ext_resource type="StyleBox" uid="uid://du6p4qrusifg3" path="res://Assets/Textures/exit.tres" id="6_nxmtp"]
+[ext_resource type="StyleBox" uid="uid://ies8rj8gix4v" path="res://Assets/Textures/exit_pressed.tres" id="7_cwe62"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_dosde"]
 [ext_resource type="AudioStream" uid="uid://df5mj4typr88b" path="res://Assets/Sounds/alex-morgan-action-chase-sequence-drive-573649.mp3" id="8_8nq0s"]
+[ext_resource type="StyleBox" uid="uid://dsti8mqt0rg7d" path="res://Assets/Textures/exit_hover.tres" id="8_dosde"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_famt5"]
 panorama = ExtResource("2_8s61d")
@@ -79,6 +82,7 @@ shadow_opacity = 0.82
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
+process_mode = 3
 visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1229010264]
@@ -126,6 +130,33 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 44
 text = "3 2 1 Go!"
 script = ExtResource("5_nxmtp")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1743389596]
+process_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer3" unique_id=490007836]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="pause" type="Button" parent="CanvasLayer3/MarginContainer" unique_id=2028285405]
+visible = false
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("6_nxmtp")
+theme_override_styles/pressed = ExtResource("7_cwe62")
+theme_override_styles/hover = ExtResource("8_dosde")
 
 [node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
 one_shot = true

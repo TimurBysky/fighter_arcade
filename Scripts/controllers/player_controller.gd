@@ -159,7 +159,3 @@ func _on_player_respawned() -> void:
 
 func reset():
 	model.respawn()
-# Для тестирования
-#func destroy() -> void:
-	#if view and view.has_method("destroy"):
-		#view.destroy()

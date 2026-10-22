@@ -5,8 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_yaedp"]
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_oqm2k"]
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_kjirj"]
+[ext_resource type="StyleBox" uid="uid://du6p4qrusifg3" path="res://Assets/Textures/exit.tres" id="6_kjirj"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_sahef"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_hupm6"]
+[ext_resource type="StyleBox" uid="uid://ies8rj8gix4v" path="res://Assets/Textures/exit_pressed.tres" id="7_sahef"]
+[ext_resource type="StyleBox" uid="uid://dsti8mqt0rg7d" path="res://Assets/Textures/exit_hover.tres" id="8_hupm6"]
 [ext_resource type="AudioStream" uid="uid://djk4fs0oipy0b" path="res://Assets/Sounds/alexgrohl-action-rock-15038.mp3" id="8_sfd66"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_famt5"]
@@ -79,6 +82,7 @@ shadow_opacity = 0.82
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
+process_mode = 3
 visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1229010264]
@@ -126,6 +130,33 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 44
 text = "3 2 1 Go!"
 script = ExtResource("5_kjirj")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1720907523]
+process_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer3" unique_id=722552284]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="pause" type="Button" parent="CanvasLayer3/MarginContainer" unique_id=1040648744]
+visible = false
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("6_kjirj")
+theme_override_styles/pressed = ExtResource("7_sahef")
+theme_override_styles/hover = ExtResource("8_hupm6")
 
 [node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
 one_shot = true

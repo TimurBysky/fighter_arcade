@@ -22,3 +22,6 @@ mesh = SubResource("SphereMesh_yt2qg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=719839676]
 shape = SubResource("SphereShape3D_yt2qg")
+
+[node name="Timer" type="Timer" parent="." unique_id=1267663152]
+wait_time = 5.5

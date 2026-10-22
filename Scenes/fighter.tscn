@@ -104,6 +104,7 @@ script = ExtResource("4_6p8wg")
 
 [node name="Health_UI" type="Label3D" parent="UI_Panel" unique_id=1910362219]
 transform = Transform3D(1, 1.2434498e-14, 0, -1.2434498e-14, 1, 0, 5.293956e-23, 0, 1, 0.131, 0.28915143, 0.28380036)
+visible = false
 text = "Text"
 
 [node name="Ammo_UI" type="Label3D" parent="UI_Panel" unique_id=6103836]
