@@ -19,11 +19,20 @@ func _ready() -> void:
 	load_all_levels()
 	
 func start_timer():
+	# 1. Ищем всех детей и удаляем их, если это Timer
+	for child in get_children():
+		if child is Timer:
+			child.queue_free()
+			# Если нужно отвязать от родителя прямо сейчас (чтобы не мешал):
+			# remove_child(child) 
+	
+	# 2. Создаём новый таймер
 	spawn_timer = Timer.new()
 	spawn_timer.timeout.connect(_create_object)
 	spawn_timer.wait_time = current_level_data.spawn_interval
 	spawn_timer.autostart = true
 	add_child(spawn_timer)
+
 
 func get_game_over_timer_time() -> float:
 	return current_level_data.get_level_time_to_game_over()

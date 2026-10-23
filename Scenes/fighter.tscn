@@ -5,20 +5,27 @@
 [ext_resource type="Script" uid="uid://c0tso0m8d5xly" path="res://Scripts/camera_3d.gd" id="2_umvcx"]
 [ext_resource type="Script" uid="uid://h5wpwigggx5i" path="res://Scripts/views/ui/ui_panel.gd" id="4_6p8wg"]
 [ext_resource type="Texture2D" uid="uid://d10v18hdnrf71" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Button/Rect/Default.png" id="4_m668j"]
-[ext_resource type="Texture2D" uid="uid://dc804e8t81fxy" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Icon/Heart-1.png" id="6_bw1cg"]
 [ext_resource type="AudioStream" uid="uid://c4poloayj3xsd" path="res://Assets/Sounds/482122__qubodup__clean-machine-gun-burst.ogg" id="6_khrw8"]
+[ext_resource type="Texture2D" uid="uid://dsg1fs2j3dkah" path="res://Assets/heart empty.png" id="6_xgwev"]
 [ext_resource type="AudioStream" uid="uid://bwk61c3uuc3pj" path="res://Assets/Sounds/457013__dylanthefish__propeller.ogg" id="7_0wtf0"]
+[ext_resource type="Texture2D" uid="uid://co3tarvr20yky" path="res://Assets/Hearts/0.png" id="7_nfj8a"]
 [ext_resource type="Texture2D" uid="uid://bxqc8txxlo81" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/0.png" id="7_xgwev"]
 [ext_resource type="Texture2D" uid="uid://bmv0fdm04jbgg" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/1.png" id="8_4m6tn"]
+[ext_resource type="Texture2D" uid="uid://bxpk0pngsvotu" path="res://Assets/Hearts/1.png" id="8_fqskv"]
 [ext_resource type="AudioStream" uid="uid://dgdwdpi8wb7vx" path="res://Assets/Sounds/Bonus.ogg" id="8_m668j"]
 [ext_resource type="AudioStream" uid="uid://dotbrqffaur7f" path="res://Assets/Sounds/ammo_pickup.ogg" id="9_bw1cg"]
+[ext_resource type="Texture2D" uid="uid://besm0ponwulep" path="res://Assets/Hearts/2.png" id="9_ea0ho"]
 [ext_resource type="Texture2D" uid="uid://bjknakj4lef4w" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/2.png" id="9_lsst6"]
+[ext_resource type="Texture2D" uid="uid://o68hmv3000nj" path="res://Assets/Hearts/3.png" id="10_0ufmu"]
 [ext_resource type="Texture2D" uid="uid://sx4a7s5tbke4" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/3.png" id="10_nfj8a"]
 [ext_resource type="Texture2D" uid="uid://cnw5mjr8ergle" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/4.png" id="11_fqskv"]
 [ext_resource type="Texture2D" uid="uid://dnwssl2xqyyrf" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/5.png" id="12_ea0ho"]
 [ext_resource type="Texture2D" uid="uid://yloafd77n23w" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/6.png" id="13_0ufmu"]
 [ext_resource type="Texture2D" uid="uid://suwg7rm4txhn" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/7.png" id="14_bn23a"]
 [ext_resource type="Texture2D" uid="uid://blc82rdn0mqgc" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Load/Magazine/Animation/8.png" id="15_ftre5"]
+[ext_resource type="AudioStream" uid="uid://hkq8q80a27ju" path="res://Assets/Sounds/265303__klangfabrik__explosion006.ogg" id="24_0ufmu"]
+[ext_resource type="AudioStream" uid="uid://0o67b5xsqb2y" path="res://Assets/Sounds/418970__whatthes__explosion.ogg" id="25_bn23a"]
+[ext_resource type="AudioStream" uid="uid://cm6ytrgv3wyui" path="res://Assets/Sounds/840510__qubodup__loud-firewords-bang-cut-off.ogg" id="26_ftre5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_efvb3"]
 radius = 0.7558594
@@ -29,6 +36,34 @@ size = Vector3(1, 0.9268799, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6p8wg"]
 radius = 0.43455192
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tv6yn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_xgwev")
+}],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_nfj8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fqskv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ea0ho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ufmu")
+}],
+"loop": 0,
+"name": &"full",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_biqig"]
 animations = [{
@@ -112,17 +147,11 @@ transform = Transform3D(1.0000002, -4.4569957e-09, 7.450581e-09, -1.8626451e-08,
 visible = false
 text = "Text"
 
-[node name="Heart1" type="Sprite3D" parent="UI_Panel" unique_id=1090623486]
-transform = Transform3D(0.385, 1.3992546e-08, -1.1660453e-08, -1.3992546e-08, 0.385, 1.7993115e-08, 1.1660453e-08, -1.7993115e-08, 0.385, -0.132, 0.354, 0.324)
-texture = ExtResource("6_bw1cg")
-
-[node name="Heart2" type="Sprite3D" parent="UI_Panel" unique_id=933909751]
-transform = Transform3D(0.385, 1.3992546e-08, -1.1660453e-08, -1.3992546e-08, 0.385, 1.7993115e-08, 1.1660453e-08, -1.7993115e-08, 0.385, 0.132, 0.354, 0.324)
-texture = ExtResource("6_bw1cg")
-
-[node name="Heart3" type="Sprite3D" parent="UI_Panel" unique_id=191397446]
-transform = Transform3D(0.385, 1.3992546e-08, -1.1660453e-08, -1.3992546e-08, 0.385, 1.7993115e-08, 1.1660453e-08, -1.7993115e-08, 0.385, 0.396, 0.354, 0.324)
-texture = ExtResource("6_bw1cg")
+[node name="Health" type="AnimatedSprite3D" parent="UI_Panel" unique_id=1007457389]
+transform = Transform3D(0.14500003, -1.4614913e-09, 0, 1.3969839e-09, 0.14500001, 0, 9.313226e-10, -9.978331e-11, 0.145, 0.069, 0.314, 0.242)
+sprite_frames = SubResource("SpriteFrames_tv6yn")
+animation = &"full"
+autoplay = "full"
 
 [node name="Ammo" type="AnimatedSprite3D" parent="UI_Panel" unique_id=30468170]
 transform = Transform3D(0.26000017, 2.2167468e-09, -9.313226e-09, -1.7695129e-08, 0.26000035, 8.940697e-08, 3.7252903e-09, 6.7930586e-08, 0.26000017, 0.100000024, -0.011999965, 0.20200002)
@@ -144,3 +173,15 @@ volume_db = 10.0
 [node name="AmmoPickup" type="AudioStreamPlayer" parent="." unique_id=550514445]
 stream = ExtResource("9_bw1cg")
 volume_db = -5.0
+
+[node name="Destroy_1" type="AudioStreamPlayer" parent="." unique_id=558499282]
+stream = ExtResource("24_0ufmu")
+volume_db = -12.772
+
+[node name="Destroy_2" type="AudioStreamPlayer" parent="." unique_id=1973903849]
+stream = ExtResource("25_bn23a")
+volume_db = -12.772
+
+[node name="Destroy_3" type="AudioStreamPlayer" parent="." unique_id=1160006039]
+stream = ExtResource("26_ftre5")
+volume_db = -12.772

@@ -4,82 +4,82 @@
 
 [resource]
 script = ExtResource("1_dvpco")
-total_stars_count = 61
+total_stars_count = 63
 unlocked_levels = {
 0: {
-"current_score": 100,
+"current_score": 450,
 "killed": {
-"enemy_light_plane": 1406
+"enemy_light_plane": 1421
 },
 "stars_count": 2
 },
 1: {
 "current_score": 50,
 "killed": {
-"enemy_light_plane": 302
+"enemy_light_plane": 356
 },
-"stars_count": 0
+"stars_count": 2
 },
 2: {
 "current_score": 0,
 "killed": {
-"enemy_light_plane": 288
+"enemy_light_plane": 320
 },
 "stars_count": 2
 },
 3: {
-"current_score": 2700,
+"current_score": 0,
 "killed": {
 "enemy_light_plane": 98
 },
 "stars_count": 2
 },
 4: {
-"current_score": 3200,
+"current_score": 0,
 "killed": {
-"enemy_light_plane": 114
+"enemy_light_plane": 115
 },
 "stars_count": 3
 },
 5: {
-"current_score": 5250,
+"current_score": 50,
 "killed": {
-"enemy_light_plane": 197
+"enemy_light_plane": 198
 },
 "stars_count": 3
 },
 6: {
-"current_score": 3150,
+"current_score": 100,
 "killed": {
-"enemy_light_plane": 220
+"enemy_light_plane": 222
 },
 "stars_count": 3
 },
 7: {
-"current_score": 3800,
+"current_score": 1200,
 "killed": {
-"enemy_light_plane": 280
+"enemy_light_plane": 290
 },
 "stars_count": 3
 },
 8: {
-"current_score": 2850,
+"current_score": 0,
 "killed": {
-"enemy_light_plane": 216
+"enemy_light_plane": 219
 },
 "stars_count": 3
 },
 9: {
-"current_score": 100,
+"current_score": 0,
 "killed": {
-"enemy_light_plane": 739
+"enemy_light_plane": 808
 },
 "stars_count": 2
 },
 10: {
-"current_score": 300,
+"current_score": 1000,
 "killed": {
-"enemy_light_plane": 157
+"enemy_light_plane": 258
 },
 "stars_count": 1
 }

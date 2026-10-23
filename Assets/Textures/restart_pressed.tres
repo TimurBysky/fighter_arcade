@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://bo5gu3rvje6y2"]
+
+[ext_resource type="Texture2D" uid="uid://b05l6mljb70ac" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Buttons/Square/Repeat/Default.png" id="1_5cg0l"]
+
+[resource]
+texture = ExtResource("1_5cg0l")
+modulate_color = Color(0.3828125, 0.3828125, 0.3828125, 1)

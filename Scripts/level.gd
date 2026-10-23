@@ -6,8 +6,8 @@ extends Node3D
 @onready var player: Node = $Fighter
 @onready var UI: CanvasLayer = $CanvasLayer
 @onready var player_controller = get_node("/root/PlayerController")
-@onready var restart_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Restart_button
-@onready var main_menu_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Main_menu_button
+@onready var restart_button: Button = $CanvasLayer/MarginContainer/HBoxContainer/Restart_button
+@onready var main_menu_button: Button = $CanvasLayer/MarginContainer/HBoxContainer/Main_menu_button
 @onready var timer_to_end: Timer = $Timer_to_end
 @onready var time_to_end_label: Label3D = $Time_to_end_label
 @onready var start_timer: Label = $CanvasLayer2/MarginContainer/VBoxContainer/StartTimer
