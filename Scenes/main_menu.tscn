@@ -69,16 +69,6 @@ text = "$EXIT"
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Score" type="Label" parent="Main_screne/MarginContainer/VBoxContainer2" unique_id=1901496541]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "TOTAL SCORE:"
-
-[node name="Enemy_kill_count" type="Label" parent="Main_screne/MarginContainer/VBoxContainer2" unique_id=646746252]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "ENEMY KILL COUNT:"
-
 [node name="Level_selector_screne" type="CanvasLayer" parent="." unique_id=234729961]
 visible = false
 script = ExtResource("2_ce3w2")

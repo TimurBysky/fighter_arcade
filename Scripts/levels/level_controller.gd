@@ -187,11 +187,21 @@ func check_star_to_unlock(level_id: int) -> bool:
 		
 	var current_stars = SaveMenager.get_current_stars(level_id)
 	var stars_to_unlock = all_levels[next_level_id].get_stars_for_unlock()
-	
+
 	if  current_stars >= stars_to_unlock:
 		return true
 		
 	return false
+
+func check_star_to_boss(level_id: int)->bool:
+	var total_stars_to_unlock = all_levels[level_id].get_total_stars_for_unlock()
+	var current_total_stars = SaveMenager.get_total_stars()
+	
+	if total_stars_to_unlock > 0:
+		if current_total_stars >= total_stars_to_unlock:
+			return true
+	return false
+		
 
 func on_restart():
 	var level_id = current_level_data.get_level_id()
@@ -202,8 +212,13 @@ func complete_level(level_id: int) -> void:
 		return 
 	
 	var next_level_id = level_id + 1
+	var boss_level_id = current_level_data.get_boss_level_id()
+	
 	if all_levels[next_level_id] == null:
 		return
 		
 	if check_star_to_unlock(level_id):
 		SaveMenager.unlock_level(next_level_id)
+	
+	if check_star_to_boss(boss_level_id):
+		SaveMenager.unlock_level(boss_level_id)
