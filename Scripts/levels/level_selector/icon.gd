@@ -3,11 +3,13 @@ extends Control  # или Node2D
 class_name LevelIcon
 
 @onready var picture: TextureRect = $VBoxContainer/MarginContainer/Picture
-@onready var level_name: Label = $VBoxContainer/MarginContainer/Picture/MarginContainer/Level_name
+@onready var level_name: Label = $VBoxContainer/MarginContainer/Picture/MarginContainer/VBoxContainer/Level_name
 @onready var start_button: Button = $VBoxContainer/Start_button
 @onready var star_1: TextureRect = $VBoxContainer/Stars_container/star1
 @onready var star_2: TextureRect = $VBoxContainer/Stars_container/star2
 @onready var star_3: TextureRect = $VBoxContainer/Stars_container/star3
+@onready var stars: Label = $VBoxContainer/MarginContainer/Picture/MarginContainer/VBoxContainer/Stars
+
 
 @onready var controller = get_node("/root/LevelController")
 
@@ -28,9 +30,24 @@ func setup(level: LevelData, progress: Dictionary, level_controller: LevelContro
 
 func update_display() -> void:
 	var _level_name = level_data.get_level_name()
+	var is_level_unlocked = SaveMenager.is_level_unlocked(level_data.get_level_id())
+	var _stars: String
+	var _stars_text: String
 	
+	if !is_level_unlocked:
+	
+		if level_data.get_total_stars_for_unlock() <= 0:
+			_stars = str(level_data.get_stars_for_unlock())
+			_stars_text = ("Требуется \n" + _stars + " звёзд \n на прошлом \n уровне")
+			
+		if level_data.get_total_stars_for_unlock() > 0:
+			_stars = str(level_data.get_total_stars_for_unlock())
+			_stars_text = ("Требуется \n" + _stars + "\n звёзд в общем")
+		
 	# Название уровня
 	level_name.text = _level_name
+	#Сколько требуется звёзд
+	stars.text = _stars_text
 	# Проверяем, открыт ли уровень
 	var is_unlocked = not level_progress.is_empty()
 	

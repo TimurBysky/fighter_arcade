@@ -47,27 +47,25 @@ func _create_object():
 
 func load_all_levels() -> void:
 	all_levels.clear()
+	var dir_path = "res://Scripts/levels/level_scenes/"
 	
-	# Сканируем папку с .tres файлами уровней
-	var dir = DirAccess.open("res://Scripts/levels/level_scenes/")
+	# Используем ResourceLoader для получения списка файлов в экспорте
+	var files = ResourceLoader.list_directory(dir_path)
 	
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		
-		while file_name != "":
-			if file_name.ends_with(".tres") and file_name != "level_data.tres":
-				var level_path = "res://Scripts/levels/level_scenes/" + file_name
-				var level_data = load(level_path)
-				if level_data is LevelData:
-					all_levels.append(level_data)
-					#print("Загружен уровень: ", level_data.get_level_info().values()[0]["level_name"])
+	for file_name in files:
+		# В экспорте файлы могут иметь расширение .res или .remap, 
+		# поэтому проверяем вхождение подстроки, а не строгое совпадение в конце.
+		# Также отсекаем служебные файлы .import
+		if not file_name.contains("level_data") and (file_name.ends_with(".tres") or file_name.ends_with(".res") or file_name.ends_with(".remap")):
+			# Отсекаем расширение .remap, если оно есть, чтобы получить правильный путь
+			var clean_name = file_name.trim_suffix(".remap")
+			var level_path = dir_path.path_join(clean_name)
 			
-			file_name = dir.get_next()
-		
-		dir.list_dir_end()
+			var level_data = load(level_path)
+			if level_data is LevelData:
+				all_levels.append(level_data)
 	
-	# Сортируем по ID
+	# Сортируем по ID (твой код сортировки остается без изменений)
 	all_levels.sort_custom(func(a, b): 
 		return a.get_level_id() < b.get_level_id()
 	)

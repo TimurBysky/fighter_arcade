@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_368hx"]
 [ext_resource type="Texture2D" uid="uid://dmxvqrovcbkn2" path="res://Assets/natural-beautiful-winter-landscape.jpg" id="2_368hx"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_4tpjn"]
-[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_csnay"]
 [ext_resource type="StyleBox" uid="uid://y2grciwwv1qb" path="res://Assets/Textures/restart.tres" id="5_oxuni"]
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_t4t5i"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_q7ohm"]
@@ -84,9 +83,6 @@ light_angular_distance = 6.35
 shadow_enabled = true
 shadow_transmittance_bias = -2.19
 shadow_opacity = 0.82
-
-[node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_csnay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1813490725]
 process_mode = 3

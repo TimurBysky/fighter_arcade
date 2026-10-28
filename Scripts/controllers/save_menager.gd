@@ -2,8 +2,8 @@
 extends Node
 
 var save_data: PlayerSaveData
-#const SAVE_PATH = "user://save_data.tres"
-const SAVE_PATH = "res://Scripts/models/player/Saves/player_save_data.tres"
+
+const SAVE_PATH = "user://player_save_data.tres"
 
 signal data_updated
 

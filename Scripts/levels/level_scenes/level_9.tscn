@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://biplbqg8pmfhs" path="res://Scripts/level.gd" id="1_0gho6"]
 [ext_resource type="Texture2D" uid="uid://c3jq626n3unei" path="res://Assets/gorgeous-foggy-sunrise-carpathian-mountains-lovely-summer-landscape-volovets-district-purple-flowers-grassy-meadows-forested-hill-fog.jpg" id="2_0gho6"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_yaedp"]
-[ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_oqm2k"]
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_kjirj"]
 [ext_resource type="StyleBox" uid="uid://y2grciwwv1qb" path="res://Assets/Textures/restart.tres" id="5_rnp6s"]
 [ext_resource type="StyleBox" uid="uid://du6p4qrusifg3" path="res://Assets/Textures/exit.tres" id="6_kjirj"]
@@ -83,9 +82,6 @@ light_angular_distance = 6.35
 shadow_enabled = true
 shadow_transmittance_bias = -2.19
 shadow_opacity = 0.82
-
-[node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_oqm2k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1627733558]
 process_mode = 3

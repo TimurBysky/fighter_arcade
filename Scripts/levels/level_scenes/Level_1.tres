@@ -7,7 +7,7 @@ script = ExtResource("1_uh0lf")
 boss_level_id = 10
 level_name = "Уровень 1"
 spawn_interval = 1.2
-max_score = 1900
+max_score = 1800
 time_to_game_over = 70.0
 object_list = {
 "ammo_crate": {
