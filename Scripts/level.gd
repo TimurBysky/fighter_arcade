@@ -6,15 +6,18 @@ extends Node3D
 @onready var player: Node = $Fighter
 @onready var UI: CanvasLayer = $CanvasLayer
 @onready var player_controller = get_node("/root/PlayerController")
-@onready var restart_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Restart_button
-@onready var main_menu_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/Main_menu_button
+@onready var restart_button: Button = $CanvasLayer/MarginContainer/HBoxContainer/Restart_button
+@onready var main_menu_button: Button = $CanvasLayer/MarginContainer/HBoxContainer/Main_menu_button
 @onready var timer_to_end: Timer = $Timer_to_end
 @onready var time_to_end_label: Label3D = $Time_to_end_label
 @onready var start_timer: Label = $CanvasLayer2/MarginContainer/VBoxContainer/StartTimer
 @onready var end_of_clouds:Area3D = $End/Area3D
 @onready var clouds_scene:PackedScene = preload("res://Scenes/clouds.tscn")
-@onready var boss_hp_bar = $CanvasLayer3/MarginContainer/VBoxContainer/boss_hp_bar
+@onready var boss_hp_bar = $CanvasLayer4/MarginContainer/VBoxContainer/boss_hp_bar
 @onready var boss = $enemy_boss_plane
+@onready var pause: Button = $CanvasLayer3/MarginContainer/pause
+
+
 
 var level_model: LevelData
 
@@ -22,10 +25,14 @@ func _ready() -> void:
 	
 	# Получаем данные уровня из контроллера
 	start_timer.game_start.connect(start_game)
+	pause.pressed.connect(menu)
+	
 	
 	game_stop()
 	
 	level_model = level_controller.get_current_level_data()
+	
+	
 	
 	if not level_model:
 		print("Ошибка: данные уровня не загружены!")
@@ -69,6 +76,7 @@ func game_stop():
 	
 func start_game():
 	get_tree().paused = false
+	pause.visible = visible
 
 func create_object() -> void:
 	if not level_model:
@@ -90,9 +98,13 @@ func create_object() -> void:
 func show_defeat_screen() -> void:
 	UI.visible = true
 
+func hide_defeat_screen() -> void:
+	UI.visible = false
+
 func _exit_to_main_menu():
 	if player_controller and player_controller.has_method("reset"):
 		player_controller.reset()
+	start_game()
 	level_controller.exit_to_mani_menu()
 
 func _restart() -> void:
@@ -103,7 +115,17 @@ func _restart() -> void:
 	start_game()
 	get_tree().reload_current_scene()
 	
-
+func menu()->void:
+	if player.is_alive:
+		if !get_tree().paused:
+			game_stop()
+			show_defeat_screen()
+			return
+		if get_tree().paused:
+			start_game()
+			hide_defeat_screen()
+		
+		
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	pass # Replace with function body.

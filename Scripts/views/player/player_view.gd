@@ -8,17 +8,23 @@ class_name PlayerView
 @onready var area_3d: Area3D = $CharacterBody3D/Area3D
 @onready var area_3d_for_bullets: Area3D = $CharacterBody3D/Area3D_for_Bullets
 @onready var tracer_scene = preload("res://Scenes/tracer.tscn")
+@onready var camera = $Camera3D
 
 # UI элементы (если есть)
 @onready var ui_panel: Sprite3D = $UI_Panel
 @onready var health_label: Label3D = $UI_Panel/Health_UI
 @onready var ammo_label: Label3D = $UI_Panel/Ammo_UI
+@onready var ammo_ui: AnimatedSprite3D = $UI_Panel/Ammo
+@onready var health: AnimatedSprite3D = $UI_Panel/Health
+@onready var destroy_sounds = [$Destroy_1, $Destroy_2, $Destroy_3]
+@onready var explode_scene = preload("res://Scenes/explode.tscn")
 
 @export var max_tilt_angle: float = 30.0  # Максимальный угол наклона в градусах
 @export var tilt_speed: float = 4.0       # Скорость наклона
 
 var is_alive: bool = true
 var controller: PlayerController
+var current_tilt: float = 0.0
 
 func _ready() -> void:
 	# Находим контроллер (autoload)
@@ -38,7 +44,6 @@ func _ready() -> void:
 	controller.setup(self, player_model)
 	controller.stop_shooting.connect(stop_shoting_sound)
 
-var current_tilt: float = 0.0
 
 func _process(delta: float) -> void:
 	if not is_alive:
@@ -80,6 +85,8 @@ func shot_effect(params: Dictionary = {}) -> void:
 	var damage_multiplier = params.get("damage_multiplier")
 	var angles = [0]
 	
+	camera.trigger_shake()
+	
 	if(have_shoot_bonus):
 		angles = [-25, 0, 25]
 		
@@ -109,8 +116,8 @@ func stop_shoting_sound()->void:
 func play_hit_effect() -> void:
 	# Визуальная вспышка
 	var tween = create_tween()
-	tween.tween_property(fighter_model, "modulate", Color.RED, 0.1)
-	tween.tween_property(fighter_model, "modulate", Color.WHITE, 0.1)
+	tween.tween_property(fighter_model, "modulate", Color.RED, 1.1)
+	tween.tween_property(fighter_model, "modulate", Color.WHITE, 1.1)
 	
 	# Звук попадания
 	if $HitSound:
@@ -118,57 +125,11 @@ func play_hit_effect() -> void:
 
 func play_heal_effect() -> void:
 	var tween = create_tween()
-	tween.tween_property(fighter_model, "modulate", Color.GREEN, 0.1)
-	tween.tween_property(fighter_model, "modulate", Color.WHITE, 0.1)
+	tween.tween_property(fighter_model, "modulate", Color.GREEN, 1.1)
+	tween.tween_property(fighter_model, "modulate", Color.WHITE, 1.1)
 	
 	if $BonusPickUp:
 		$BonusPickUp.play()
-
-func start_fall_animation() -> void:
-	# Отключаем управление (для игрока) или ИИ (для врага)
-	is_alive = false
-	
-	# Случайное направление вращения
-	var spin_direction = 1.0 if randf() > 0.5 else -1.0
-	
-	# Создаём Tween для анимации
-	var tween = create_tween()
-	tween.set_parallel(true)
-	
-	# Падение вниз
-	tween.tween_property(
-		fighter,
-		"global_position:y",
-		fighter.global_position.y - 10.0,
-		2.0
-	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	
-	# Вращение по оси X (кувырок)
-	tween.tween_property(
-		fighter_model,
-		"rotation_degrees:x",
-		fighter_model.rotation_degrees.x + 360.0 * spin_direction * 3.0,
-		2.0
-	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	
-	# Небольшой наклон вбок для эффекта спирали
-	tween.tween_property(
-		fighter_model,
-		"rotation_degrees:z",
-		fighter_model.rotation_degrees.z + 45.0 * spin_direction,
-		2.0
-	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	
-	# Постепенное исчезновение (опционально)
-	tween.tween_property(
-		fighter_model,
-		"modulate:a",
-		0.0,
-		1.5
-	).set_delay(0.5)
-	
-	# Удаляем объект после падения
-	tween.chain().tween_callback(fighter.queue_free)
 
 func play_pickup_sound(type: String) -> void:
 	if type == "Bonus":
@@ -179,14 +140,54 @@ func play_pickup_sound(type: String) -> void:
 			$AmmoPickup.play()
 
 # Обновление UI (если есть)
-func update_health_display(current: int, max: int) -> void:
-	if health_label:
-		health_label.text = "HP: %d/%d" % [current, max]
 
+
+func update_health_display(current: int, max: int) -> void:
+	if health:
+		health.frame = current
+		play_shake_animation()
+
+var health_shake_tween: Tween
+
+func play_shake_animation() -> void:
+	# Если старая анимация еще играет — останавливаем её
+	if health_shake_tween and health_shake_tween.is_valid():
+		health_shake_tween.kill()
+
+	# Запоминаем изначальные позицию и масштаб
+	var original_x = health.position.x
+	var original_scale = health.scale
+
+	health_shake_tween = create_tween()
+	
+	# Тряска по X и одновременное увеличение
+	health_shake_tween.tween_property(health, "position:x", original_x + 0.3, 0.04)
+	health_shake_tween.parallel().tween_property(health, "scale", original_scale * 1.2, 0.04)
+	
+	# Влево
+	health_shake_tween.tween_property(health, "position:x", original_x - 0.3, 0.06)
+	
+	# Вправо (чуть меньше)
+	health_shake_tween.tween_property(health, "position:x", original_x + 0.15, 0.06)
+	
+	# Возврат на место и плавное уменьшение обратно
+	health_shake_tween.tween_property(health, "position:x", original_x, 0.04)
+	health_shake_tween.parallel().tween_property(health, "scale", original_scale, 0.08)\
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	
 func update_ammo_display(current: int) -> void:
 	if ammo_label:
 		ammo_label.text = "Ammo: %d" % current
-
+	if ammo_ui:
+		# 200 патронов делим на 9 кадров (индексы от 0 до 8)
+		var max_ammo = 200.0
+		var total_frames = 8.0 # Максимальный индекс кадра (0-8)
+		
+		# Считаем процент оставшихся патронов (от 1.0 до 0.0)
+		var ratio = clamp(current / max_ammo, 0.0, 1.0)
+		
+		# Переводим в кадры. Когда патронов 200 -> кадр 8. Когда 0 -> кадр 0.
+		ammo_ui.frame = int(ratio * total_frames)
 
 # Визуальная анимация уничтожения
 func destroy() -> void:
@@ -199,18 +200,42 @@ func destroy() -> void:
 	$ShootSound.stop()
 	$Engine.stop()
 	
+	var chosen_sound = destroy_sounds.pick_random()
+	
+	# Если звук существует, проигрываем его
+	if chosen_sound and chosen_sound.stream:
+		chosen_sound.play()
+		
+	var instance = explode_scene.instantiate()
+	add_child(instance)
+	
+	var spin_direction = 1.0 if randf() > 0.5 else -1.0
+	
 	var tween = create_tween()
 	
-	# Анимация взрыва/уничтожения
-	tween.tween_property(self, "scale", Vector3(2.0, 2.0, 2.0), 0.3)\
-			.set_ease(Tween.EASE_OUT)\
-			.set_trans(Tween.TRANS_BACK)
+	# Падение вниз (дольше, но та же скорость)
+	tween.tween_property(fighter_model, "global_position:y", fighter_model.global_position.y - 20.0, 4.0)
 	
-	tween.tween_property(self, "scale", Vector3.ONE, 0.3)\
-			.set_ease(Tween.EASE_IN)\
-			.set_trans(Tween.TRANS_ELASTIC)
+	# Летит вперёд по X+
+	tween.parallel().tween_property(fighter_model, "global_position:x", fighter_model.global_position.x + 25.0, 4.0)
 	
+	# Вращение по оси X (кувырок, медленнее из-за большей длительности)
+	tween.parallel().tween_property(fighter_model, "rotation_degrees:x", fighter_model.rotation_degrees.x + 360.0 * spin_direction * 3.0, 4.0)
+	
+	# Наклон вбок
+	#tween.parallel().tween_property(self, "rotation_degrees:z", self.rotation_degrees.z + 45.0 * spin_direction, 4.0)
+	
+	# Исчезновение (начинается через 1 сек)
+	tween.tween_interval(1.0)
+	tween.tween_property(fighter_model, "modulate:a", 0.0, 3.0)
+	
+	# Удаление
 	await tween.finished
+	chosen_sound = destroy_sounds.pick_random()
+	# Если звук существует, проигрываем его
+	if chosen_sound and chosen_sound.stream:
+		chosen_sound.play()
+	
 	fighter_model.visible = false
 	
 	# Воспроизводим звук взрыва

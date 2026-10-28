@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_uh0lf")
+boss_level_id = 10
 level_name = "Уровень 1"
 spawn_interval = 1.2
 max_score = 1900

@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://byp6ehpfp716"]
+
+[ext_resource type="Texture2D" uid="uid://3ymipldvimu5" path="res://Assets/Prinbles_Asset_UNDER (v 1.1) (9_7_2023)/png/Buttons/Square/Levels/Default.png" id="1_8xnox"]
+
+[resource]
+texture = ExtResource("1_8xnox")

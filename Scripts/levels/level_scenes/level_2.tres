@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_18yq2")
 level_id = 1
+boss_level_id = 10
 level_name = "Уровень 2"
 level_scene = "res://Scripts/levels/level_scenes/level_2.tscn"
 spawn_interval = 1.2

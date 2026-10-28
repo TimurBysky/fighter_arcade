@@ -4,10 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://3qa8ejp8uny8" path="res://Assets/Ясное небо с облаками.png" id="2_r03fp"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_rv3wq"]
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_6xg4q"]
+[ext_resource type="StyleBox" uid="uid://y2grciwwv1qb" path="res://Assets/Textures/restart.tres" id="5_o4v3k"]
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_r03fp"]
+[ext_resource type="StyleBox" uid="uid://du6p4qrusifg3" path="res://Assets/Textures/exit.tres" id="6_nky0y"]
+[ext_resource type="StyleBox" uid="uid://bo5gu3rvje6y2" path="res://Assets/Textures/restart_pressed.tres" id="6_r8vda"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_rv3wq"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_6xg4q"]
+[ext_resource type="StyleBox" uid="uid://r2tmwfi0dbvf" path="res://Assets/Textures/restart_hover.tres" id="7_mpvxu"]
+[ext_resource type="StyleBox" uid="uid://ies8rj8gix4v" path="res://Assets/Textures/exit_pressed.tres" id="7_ta74a"]
+[ext_resource type="StyleBox" uid="uid://dsti8mqt0rg7d" path="res://Assets/Textures/exit_hover.tres" id="8_b285d"]
 [ext_resource type="AudioStream" uid="uid://yfun8pe7cwyn" path="res://Assets/Sounds/musinova-mission-accomplished-liquid-jungle-drum-amp-bass-loop-version-354195.ogg" id="8_crorr"]
+[ext_resource type="StyleBox" uid="uid://bv1dykppca2ed" path="res://Assets/Textures/menu.tres" id="8_q4ojl"]
+[ext_resource type="StyleBox" uid="uid://byp6ehpfp716" path="res://Assets/Textures/menu_pressed.tres" id="9_xaybh"]
+[ext_resource type="StyleBox" uid="uid://cw7akk353kgic" path="res://Assets/Textures/menu_hover.tres" id="10_0c6mo"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
 panorama = ExtResource("2_r03fp")
@@ -37,6 +46,8 @@ script = ExtResource("1_4x21n")
 environment = SubResource("Environment_oi3di")
 
 [node name="Fighter" parent="." unique_id=760376573 instance=ExtResource("3_rv3wq")]
+max_tilt_angle = null
+tilt_speed = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1960587753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
@@ -79,10 +90,11 @@ shadow_opacity = 0.82
 [node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_6xg4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=360990047]
+process_mode = 3
 visible = false
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1229010264]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=199127446]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -91,18 +103,24 @@ grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=968091158]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=371882301]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Restart_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=686251265]
+[node name="Restart_button" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1028943911]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
-text = "RESTART"
+theme_override_styles/normal = ExtResource("5_o4v3k")
+theme_override_styles/pressed = ExtResource("6_r8vda")
+theme_override_styles/hover = ExtResource("7_mpvxu")
 
-[node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=864545513]
+[node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1245015065]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
-text = "MAIN MENU"
+theme_override_styles/normal = ExtResource("8_q4ojl")
+theme_override_styles/pressed = ExtResource("9_xaybh")
+theme_override_styles/hover = ExtResource("10_0c6mo")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1949377509]
 process_mode = 3
@@ -127,6 +145,33 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 44
 text = "3 2 1 Go!"
 script = ExtResource("5_r03fp")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=525094119]
+process_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer3" unique_id=258588884]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="pause" type="Button" parent="CanvasLayer3/MarginContainer" unique_id=1100223246]
+visible = false
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("6_nky0y")
+theme_override_styles/pressed = ExtResource("7_ta74a")
+theme_override_styles/hover = ExtResource("8_b285d")
 
 [node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
 one_shot = true

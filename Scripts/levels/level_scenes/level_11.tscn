@@ -4,10 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://ca15l4h45xfw8" path="res://Assets/natural-disaster-volcanic-eruption.jpg" id="2_7l4ga"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_a81lf"]
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_b6apv"]
+[ext_resource type="StyleBox" uid="uid://y2grciwwv1qb" path="res://Assets/Textures/restart.tres" id="5_pa1c4"]
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_qhrel"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_ejjti"]
+[ext_resource type="StyleBox" uid="uid://bo5gu3rvje6y2" path="res://Assets/Textures/restart_pressed.tres" id="6_i4j4w"]
+[ext_resource type="StyleBox" uid="uid://bv1dykppca2ed" path="res://Assets/Textures/menu.tres" id="6_r8t7p"]
+[ext_resource type="StyleBox" uid="uid://du6p4qrusifg3" path="res://Assets/Textures/exit.tres" id="6_sagkh"]
+[ext_resource type="StyleBox" uid="uid://r2tmwfi0dbvf" path="res://Assets/Textures/restart_hover.tres" id="7_b67lg"]
+[ext_resource type="StyleBox" uid="uid://byp6ehpfp716" path="res://Assets/Textures/menu_pressed.tres" id="7_embh4"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_fixvs"]
+[ext_resource type="StyleBox" uid="uid://ies8rj8gix4v" path="res://Assets/Textures/exit_pressed.tres" id="7_pa1c4"]
 [ext_resource type="PackedScene" uid="uid://bbddu1qyss4j0" path="res://Scenes/Enemies/enemy_boss_plane.tscn" id="8_abu84"]
+[ext_resource type="StyleBox" uid="uid://cw7akk353kgic" path="res://Assets/Textures/menu_hover.tres" id="8_i4j4w"]
+[ext_resource type="StyleBox" uid="uid://dsti8mqt0rg7d" path="res://Assets/Textures/exit_hover.tres" id="8_tb84h"]
 [ext_resource type="Script" uid="uid://cjgy6wjlp3xi5" path="res://Scripts/levels/level_scenes/boss_hp_bar.gd" id="10_b6apv"]
 [ext_resource type="Texture2D" uid="uid://bvvdnlgarhb22" path="res://Assets/PNG/Button13.png" id="10_qhrel"]
 [ext_resource type="AudioStream" uid="uid://qynnavqj6sut" path="res://Assets/Sounds/Sketchbook 2025-12-11_NEURO.ogg" id="11_qhrel"]
@@ -85,6 +94,7 @@ shadow_opacity = 0.82
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
+process_mode = 3
 visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1229010264]
@@ -96,18 +106,24 @@ grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=968091158]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=881858059]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Restart_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=686251265]
+[node name="Restart_button" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=686251265]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
-text = "RESTART"
+theme_override_styles/normal = ExtResource("5_pa1c4")
+theme_override_styles/pressed = ExtResource("6_i4j4w")
+theme_override_styles/hover = ExtResource("7_b67lg")
 
-[node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=864545513]
+[node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=864545513]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
-text = "MAIN MENU"
+theme_override_styles/normal = ExtResource("6_r8t7p")
+theme_override_styles/pressed = ExtResource("7_embh4")
+theme_override_styles/hover = ExtResource("8_i4j4w")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1949377509]
 process_mode = 3
@@ -132,6 +148,33 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 44
 text = "3 2 1 Go!"
 script = ExtResource("5_qhrel")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1308232627]
+process_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer3" unique_id=1033218347]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="pause" type="Button" parent="CanvasLayer3/MarginContainer" unique_id=1263216348]
+visible = false
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("6_sagkh")
+theme_override_styles/pressed = ExtResource("7_pa1c4")
+theme_override_styles/hover = ExtResource("8_tb84h")
 
 [node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
 one_shot = true
@@ -164,9 +207,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.431, -5.468, 0)
 [node name="enemy_boss_plane" parent="." unique_id=70072708 instance=ExtResource("8_abu84")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -24.19, 0, 0)
 
-[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=323530126]
+[node name="CanvasLayer4" type="CanvasLayer" parent="." unique_id=323530126]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer3" unique_id=1580835811]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer4" unique_id=1580835811]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -175,18 +218,18 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_top = 7
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer3/MarginContainer" unique_id=1627919745]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer4/MarginContainer" unique_id=1627919745]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="boss_hp_bar" type="Sprite2D" parent="CanvasLayer3/MarginContainer/VBoxContainer" unique_id=1286379684]
+[node name="boss_hp_bar" type="Sprite2D" parent="CanvasLayer4/MarginContainer/VBoxContainer" unique_id=1286379684]
 position = Vector2(0, 38.68)
 scale = Vector2(4.46, 1.145)
 texture = ExtResource("10_qhrel")
 script = ExtResource("10_b6apv")
 
-[node name="Label" type="Label" parent="CanvasLayer3/MarginContainer/VBoxContainer" unique_id=1669553526]
+[node name="Label" type="Label" parent="CanvasLayer4/MarginContainer/VBoxContainer" unique_id=1669553526]
 layout_mode = 2
 size_flags_vertical = 1
 text = "BOSS"

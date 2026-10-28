@@ -12,7 +12,7 @@ class_name EnemyView
 var controller: EnemyController
 
 var is_alive = true
-var is_boss = false
+#var is_boss = false
 var amplitude: float = 7.0      # Насколько далеко влево/вправо
 var speed: float = 2.0          # Скорость качания
 var start_position: Vector3
@@ -70,6 +70,9 @@ func spread_shooting_effect():
 
 		
 	var angles = [-200, -160]
+	
+	if current_model.is_boss:
+		angles = [-198, -162]
 		
 	for angle in angles:
 		var instance = tracer_scene.instantiate() as Tracer

@@ -4,10 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://dmxvqrovcbkn2" path="res://Assets/natural-beautiful-winter-landscape.jpg" id="2_368hx"]
 [ext_resource type="PackedScene" uid="uid://h5myw6qoksxo" path="res://Scenes/fighter.tscn" id="3_4tpjn"]
 [ext_resource type="PackedScene" uid="uid://5ei2k4nadsnd" path="res://Scenes/enemy.tscn" id="4_csnay"]
+[ext_resource type="StyleBox" uid="uid://y2grciwwv1qb" path="res://Assets/Textures/restart.tres" id="5_oxuni"]
 [ext_resource type="Script" uid="uid://c02re7s4nkof5" path="res://Scripts/levels/level_scenes/start_timer.gd" id="5_t4t5i"]
 [ext_resource type="PackedScene" uid="uid://cumfxbq4x3qyh" path="res://Scenes/clouds.tscn" id="6_q7ohm"]
+[ext_resource type="StyleBox" uid="uid://du6p4qrusifg3" path="res://Assets/Textures/exit.tres" id="6_t4t5i"]
+[ext_resource type="StyleBox" uid="uid://bo5gu3rvje6y2" path="res://Assets/Textures/restart_pressed.tres" id="6_t860l"]
+[ext_resource type="StyleBox" uid="uid://r2tmwfi0dbvf" path="res://Assets/Textures/restart_hover.tres" id="7_74wan"]
+[ext_resource type="StyleBox" uid="uid://ies8rj8gix4v" path="res://Assets/Textures/exit_pressed.tres" id="7_q7ohm"]
 [ext_resource type="Script" uid="uid://b758tet8lg2jv" path="res://Scripts/levels/level_scenes/area_3d.gd" id="7_vcpcu"]
+[ext_resource type="StyleBox" uid="uid://bv1dykppca2ed" path="res://Assets/Textures/menu.tres" id="8_1dfqh"]
 [ext_resource type="AudioStream" uid="uid://bpkeq0fo2tbox" path="res://Assets/Sounds/musinova-acid-bonus-liquid-breakbeat-jungle-drum-and-bass-loopable-version-354205.mp3" id="8_pxe2d"]
+[ext_resource type="StyleBox" uid="uid://dsti8mqt0rg7d" path="res://Assets/Textures/exit_hover.tres" id="8_vcpcu"]
+[ext_resource type="StyleBox" uid="uid://byp6ehpfp716" path="res://Assets/Textures/menu_pressed.tres" id="9_6rres"]
+[ext_resource type="StyleBox" uid="uid://cw7akk353kgic" path="res://Assets/Textures/menu_hover.tres" id="10_e2kqc"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_oi3di"]
 panorama = ExtResource("2_368hx")
@@ -79,10 +88,11 @@ shadow_opacity = 0.82
 [node name="CharacterBody3D" parent="." unique_id=455732525 instance=ExtResource("4_csnay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.894239, 4.7683716e-07, 0.6291027)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1137498653]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1813490725]
+process_mode = 3
 visible = false
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1229010264]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=497361073]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -91,18 +101,24 @@ grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=968091158]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=976693087]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Restart_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=686251265]
+[node name="Restart_button" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=349017011]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
-text = "RESTART"
+theme_override_styles/normal = ExtResource("5_oxuni")
+theme_override_styles/pressed = ExtResource("6_t860l")
+theme_override_styles/hover = ExtResource("7_74wan")
 
-[node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=864545513]
+[node name="Main_menu_button" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer" unique_id=1213933025]
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
-text = "MAIN MENU"
+theme_override_styles/normal = ExtResource("8_1dfqh")
+theme_override_styles/pressed = ExtResource("9_6rres")
+theme_override_styles/hover = ExtResource("10_e2kqc")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1949377509]
 process_mode = 3
@@ -127,6 +143,33 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 44
 text = "3 2 1 Go!"
 script = ExtResource("5_t4t5i")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1868069570]
+process_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer3" unique_id=1287904954]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="pause" type="Button" parent="CanvasLayer3/MarginContainer" unique_id=772992756]
+visible = false
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/normal = ExtResource("6_t4t5i")
+theme_override_styles/pressed = ExtResource("7_q7ohm")
+theme_override_styles/hover = ExtResource("8_vcpcu")
 
 [node name="Timer_to_end" type="Timer" parent="." unique_id=2123543670]
 one_shot = true
